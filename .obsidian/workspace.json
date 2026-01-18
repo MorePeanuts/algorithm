@@ -1,0 +1,190 @@
+{
+  "main": {
+    "id": "e5f887878bc8af0d",
+    "type": "split",
+    "children": [
+      {
+        "id": "231ca36f69474699",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fabf0e93a0c2f95e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2eff0629eaf69e25",
+    "type": "split",
+    "children": [
+      {
+        "id": "80cda81e5a298995",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1b7fd2a3f065444c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "8fc88782c53ea7f3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#哈希表",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "71c53a8f264ff5f3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a815f23981b5eb0f",
+    "type": "split",
+    "children": [
+      {
+        "id": "31fd97d6eabad6eb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "187fd8b30548951a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/leetcode/0001.Two_Sum.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "0001.Two_Sum 的反向链接列表"
+            }
+          },
+          {
+            "id": "876209b32b432711",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "0001.Two_Sum.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "0001.Two_Sum 的出链列表"
+            }
+          },
+          {
+            "id": "631d9e5c16a01519",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "8dd1321982018062",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "README 的大纲"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:新建数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "fabf0e93a0c2f95e",
+  "lastOpenFiles": [
+    "docs/README_zh.md",
+    "README.md",
+    "clrs",
+    "docs/CLRS",
+    "docs/leetcode/0001-0100/0001_Two_Sum.md",
+    "docs/leetcode/0001.Two_Sum.md",
+    "docs/leetcode/0001-0100",
+    "leetcode/0001-0100/0001_Two_Sum/solution_test.go",
+    "leetcode/0001-0100/0001_Two_Sum/solution.go",
+    "leetcode/0001-0100/0001_Two_Sum",
+    "leetcode/0001-0100",
+    "leetcode/0001.Two_Sum/__debug_bin4004130930",
+    "leetcode/0001.Two_Sum/solution.go~",
+    "leetcode/0001.Two_Sum/__debug_bin2384881970",
+    "0001.Two_Sum.md"
+  ]
+}
