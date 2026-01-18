@@ -77,4 +77,4 @@ Documents are stored in the `docs/` directory, following these principles:
 
 ## 📜 License
 
-This project is licensed under the MIT License. See [LICENSE](../LICENSE) for details.
+This project is licensed under the MIT License. See [LICENSE](./LICENSE) for details.
