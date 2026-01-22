@@ -86,6 +86,8 @@ Documents are stored in the `docs/` directory, following these principles:
 
 ## 🛠️ Future Feature Plans
 
+- **Automated Unit Test Generation**: Leverage AI agents to automatically generate comprehensive unit tests based on problem descriptions, ensuring thorough test coverage for algorithm implementations.
+
 - **Intelligent Chinese-English Documentation Translation Agent**: Develop an LLM Agent to automatically monitor changes in `docs` and translate Chinese notes into English, maintaining bilingual synchronization.
 
 - **RAG-Based Intelligent Q&A Assistant**: Build a knowledge index based on the local `docs` library; implement Q&A combining theory and practice, e.g., "How is a hash table implemented? What related problems are there on LeetCode?"
