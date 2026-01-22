@@ -18,6 +18,23 @@ The project documentation is organized using Obsidian, supporting full-repositor
 
 - **AI Empowerment**: Planned intelligent translation and RAG-based Q&A assistant to enhance learning efficiency using modern technology.
 
+## 💡 Why Golang
+
+Selecting the right programming language is crucial for learning data structures and algorithms. This project adopts Go for the following reasons:
+
+1. **Pointers for Data Structures**: The best way to understand data structures is through a language with explicit pointers (C, C++, Go, Rust). Pointers provide direct visibility into memory layout, making concepts like linked lists, trees, and graphs more tangible.
+
+2. **Rich Standard Library for Algorithms**: Effective algorithm learning benefits from built-in data structures and algorithms in the standard library. This eliminates C from consideration, as it lacks comprehensive built-in containers.
+
+3. **Simple Build System and Testing**: To focus on data structures and algorithms themselves—rather than fighting with build tools—a language should offer a straightforward build system and unit testing. This rules out C++, where setting up a proper testing environment can be cumbersome.
+
+4. **Accessibility and Practicality**: While Rust meets the technical criteria above, its ownership model makes implementing certain data structures (like linked lists) overly complex, and its steep learning curve can distract from algorithmic concepts. In contrast, Go satisfies all requirements while offering:
+   - Simple, clean syntax that's easy to learn
+   - Built-in testing framework with excellent tooling
+   - Direct applicability to real-world scenarios (backend development, microservices, cloud-native applications)
+
+Go strikes an ideal balance: it's simple enough for learning yet powerful enough for production use, making it the perfect choice for building a bridge between theoretical understanding and practical application.
+
 ## 🚀 Quick Start
 
 ### Environment Dependencies
