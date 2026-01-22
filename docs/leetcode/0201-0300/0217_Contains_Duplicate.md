@@ -28,7 +28,7 @@ tags:
 - `-10^9 <= nums[i] <= 10^9`
 ## 题解
 ```embed-go
-PATH: "vault://leetcode/0201-0300/0217_Contains_Duplicates/solution.go"
+PATH: "vault://leetcode/0201-0300/0217_Contains_Duplicate/solution.go"
 TITLE: "Leetcode 217.存在重复元素"
 ```
 
