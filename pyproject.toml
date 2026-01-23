@@ -1,0 +1,10 @@
+[project]
+name = "algo-tools"
+version = "0.0.0"
+description = "A collection of Python tools for this algorithm project."
+requireds-python = ">=3.12"
+
+[tool.uv.workspace]
+members = [
+  "python/*"
+]

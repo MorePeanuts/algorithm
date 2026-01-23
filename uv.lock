@@ -1,0 +1,31 @@
+version = 1
+revision = 3
+requires-python = ">=3.12"
+
+[manifest]
+members = [
+    "algo-chat",
+    "algo-tools",
+    "auto-docs",
+    "test-gen",
+]
+
+[[package]]
+name = "algo-chat"
+version = "0.1.0"
+source = { editable = "python/algo-chat" }
+
+[[package]]
+name = "algo-tools"
+version = "0.0.0"
+source = { virtual = "." }
+
+[[package]]
+name = "auto-docs"
+version = "0.1.0"
+source = { editable = "python/auto-docs" }
+
+[[package]]
+name = "test-gen"
+version = "0.1.0"
+source = { editable = "python/test-gen" }
