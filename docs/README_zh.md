@@ -1,9 +1,21 @@
-# 📚 Algorithm
->  一个基于 Go 语言、结合 LeetCode 实践 与 《算法导论（CLRS，第 4 版）》 的数据结构与算法学习仓库。
+<h1 align="center">📚 Algorithm</h1>
 
-[![Go](https://img.shields.io/badge/Go-1.25+-blue) ![[License](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE)
+<p align="center">
+  一个基于 Go 语言、结合 LeetCode 实践 与 《算法导论（CLRS，第 4 版）》 的数据结构与算法学习仓库。
+</p>
 
-本项目结合了经典的理论教材 《算法导论》第 4 版（CLRS） 与实战平台 LeetCode，旨在通过“理论学习 + 编码实践 + 文档沉淀”三位一体的方式，构建完整的算法知识体系。
+<p align="center">
+  <a href="https://go.dev/"><img src="https://img.shields.io/badge/Go-1.25+-blue" alt="Go"></a>
+  <a href="https://github.com/astral-sh/uv"><img src="https://img.shields.io/badge/uv-0.8+-purple" alt="uv"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.12-blue" alt="Python"></a>
+  <a href="../LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
+</p>
+
+<p align="center">
+  <img src="../assets/head.png" alt="Algorithm" width="600">
+</p>
+
+本项目结合了经典的理论教材 《算法导论》第 4 版（CLRS） 与实战平台 LeetCode，旨在通过"理论学习 + 编码实践 + 文档沉淀"三位一体的方式，构建完整的算法知识体系。
 
 项目文档采用 Obsidian 组织，支持全库双链跳转，方便在理论分析与代码实现之间无缝切换。
 

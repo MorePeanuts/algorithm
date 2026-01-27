@@ -1,8 +1,19 @@
-# 📚 Algorithm
+<h1 align="center">📚 Algorithm</h1>
 
-> A data structures and algorithms learning repository based on Go language, combining LeetCode practice and "Introduction to Algorithms (CLRS, 4th Edition)."
+<p align="center">
+  A data structures and algorithms learning repository based on Go language, combining LeetCode practice and "Introduction to Algorithms (CLRS, 4th Edition)."
+</p>
 
-![Go](https://img.shields.io/badge/Go-1.25+-blue) [![License](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+<p align="center">
+  <a href="https://go.dev/"><img src="https://img.shields.io/badge/Go-1.25+-blue" alt="Go"></a>
+  <a href="https://github.com/astral-sh/uv"><img src="https://img.shields.io/badge/uv-0.8+-purple" alt="uv"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.12-blue" alt="Python"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
+</p>
+
+<p align="center">
+  <img src="./assets/head.png" alt="Algorithm" width="600">
+</p>
 
 This project integrates the classic theoretical textbook "Introduction to Algorithms, 4th Edition (CLRS)" with the practical platform LeetCode. It aims to build a comprehensive algorithm knowledge system through a trinity approach of "theoretical learning + coding practice + documentation accumulation."
 
