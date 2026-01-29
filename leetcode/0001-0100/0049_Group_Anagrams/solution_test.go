@@ -8,9 +8,9 @@ import (
 
 func TestGroupAnagramsExamples(t *testing.T) {
 	tests := []struct {
-		name     string
-		strs     []string
-		expected [][]string
+		name string
+		strs []string
+		want [][]string
 	}{
 		{
 			"example_1",
@@ -32,18 +32,18 @@ func TestGroupAnagramsExamples(t *testing.T) {
 	for _, tst := range tests {
 		t.Run(tst.name, func(t *testing.T) {
 			got := groupAnagrams(tst.strs)
-			if !utils.MatchTwo2dStringSlice(got, tst.expected) {
-				t.Errorf("groupAnagrams(%v) = %v, want %v", tst.strs, got, tst.expected)
+			if !utils.MatchTwo2dStringSlice(got, tst.want) {
+				t.Errorf("groupAnagrams(%v) = %v, want %v", tst.strs, got, tst.want)
 			}
 
 			got = groupAnagrams2(tst.strs)
-			if !utils.MatchTwo2dStringSlice(got, tst.expected) {
-				t.Errorf("groupAnagrams(%v) = %v, want %v", tst.strs, got, tst.expected)
+			if !utils.MatchTwo2dStringSlice(got, tst.want) {
+				t.Errorf("groupAnagrams(%v) = %v, want %v", tst.strs, got, tst.want)
 			}
 
 			got = groupAnagrams3(tst.strs)
-			if !utils.MatchTwo2dStringSlice(got, tst.expected) {
-				t.Errorf("groupAnagrams(%v) = %v, want %v", tst.strs, got, tst.expected)
+			if !utils.MatchTwo2dStringSlice(got, tst.want) {
+				t.Errorf("groupAnagrams(%v) = %v, want %v", tst.strs, got, tst.want)
 			}
 		})
 	}
