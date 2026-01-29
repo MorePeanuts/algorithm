@@ -1,4 +1,3 @@
-// Package utils: contains util functions used in leetcode
 package utils
 
 import (
