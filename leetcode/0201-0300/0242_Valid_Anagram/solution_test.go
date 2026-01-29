@@ -2,15 +2,25 @@ package solution
 
 import "testing"
 
-func TestIsAnagram(t *testing.T) {
+func TestIsAnagramExamples(t *testing.T) {
 	tests := []struct {
 		name string
 		s    string
 		t    string
 		want bool
 	}{
-		{"pos case", "anagram", "nagaram", true},
-		{"neg case", "rat", "car", false},
+		{
+			"example_1",
+			"anagram",
+			"nagaram",
+			true,
+		},
+		{
+			"example_2",
+			"rat",
+			"car",
+			false,
+		},
 	}
 
 	for _, tst := range tests {

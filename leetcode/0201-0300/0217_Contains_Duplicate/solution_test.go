@@ -2,24 +2,24 @@ package solution
 
 import "testing"
 
-func TestContainsDuplicates(t *testing.T) {
+func TestContainsDuplicatesExamples(t *testing.T) {
 	tests := []struct {
 		name string
 		nums []int
 		want bool
 	}{
 		{
-			"true case 1",
+			"example_1",
 			[]int{1, 2, 3, 1},
 			true,
 		},
 		{
-			"false case 1",
+			"example_2",
 			[]int{1, 2, 3, 4},
 			false,
 		},
 		{
-			"true case 2",
+			"example_3",
 			[]int{1, 1, 1, 3, 3, 4, 3, 2, 4, 2},
 			true,
 		},
