@@ -6,9 +6,14 @@
 
 <p align="center">
   <a href="https://go.dev/"><img src="https://img.shields.io/badge/Go-1.25+-blue" alt="Go"></a>
-  <a href="https://github.com/astral-sh/uv"><img src="https://img.shields.io/badge/uv-0.8+-purple" alt="uv"></a>
+  <a href="https://obsidian.md/"><img src="https://img.shields.io/badge/Obsidian-1.11+-purple" alt="Obsidian"></a>
+  <a href="https://github.com/astral-sh/uv"><img src="https://img.shields.io/badge/uv-0.8+-green" alt="uv"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.12-blue" alt="Python"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
+</p>
+
+<p align="center">
+  English | <a href="./README_zh.md">中文</a>
 </p>
 
 <p align="center">
@@ -72,21 +77,32 @@ $ go test ./leetcode/0001-0100/0001_Two_Sum/...
 $ go test ./...
 ```
 
+3. **Crawl LeetCode Problems** Use the crawler tool to fetch problem descriptions and generate templates:
+
+```bash
+$ uv sync
+$ source .venv/bin/activate
+$ crawler https://leetcode.cn/problems/two-sum/
+```
+
 ## 📁 Repository Structure
 
 ```plain
 .
-├── clrs/   # Code implementations for "Introduction to Algorithms, 4th Edition"
+├── clrs/                        # Code implementations for "Introduction to Algorithms, 4th Edition"
 ├── leetcode/                    # LeetCode problem-solving code
 │   └── 0001-0100/               # Grouped by problem number range
-│       └── 0001_Two_Sum/
+│       └── 0001_two_sum/
 │           ├── solution.go      # Core algorithm
 │           └── solution_test.go # Unit tests
 ├── docs/                        # Obsidian documentation library root
-│   ├── CLRS/     # Study notes and exercise solutions for each chapter of CLRS
-│   └── leetcode/ # Problem descriptions and solution analyses (linked to source code)
-├── cmd/   # Self-developed auxiliary tools (crawlers, translation scripts, etc.)
-├── go.mod # Go module configuration
+│   ├── CLRS/                    # Study notes and exercise solutions for each chapter of CLRS
+│   └── leetcode/                # Problem descriptions and solution analyses (linked to source code)
+├── python/                      # Python tools workspace (uv)
+│   ├── crawler/                 # LeetCode problem crawler
+│   ├── test-gen/                # Unit test generator
+│   └── auto-docs/               # Documentation automation
+├── go.mod                       # Go module configuration
 └── README.md
 ```
 
@@ -102,8 +118,6 @@ Documents are stored in the `docs/` directory, following these principles:
 - **Intelligent Chinese-English Documentation Translation Agent**: Develop an LLM Agent to automatically monitor changes in `docs` and translate Chinese notes into English, maintaining bilingual synchronization.
 
 - **RAG-Based Intelligent Q&A Assistant**: Build a knowledge index based on the local `docs` library; implement Q&A combining theory and practice, e.g., "How is a hash table implemented? What related problems are there on LeetCode?"
-
-- **Automatic Problem Crawler**: Develop a Go tool under `cmd/` to automatically generate templates in `docs` and `leetcode` paths by inputting a LeetCode URL.
 
 ## 📜 License
 

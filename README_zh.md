@@ -6,13 +6,18 @@
 
 <p align="center">
   <a href="https://go.dev/"><img src="https://img.shields.io/badge/Go-1.25+-blue" alt="Go"></a>
-  <a href="https://github.com/astral-sh/uv"><img src="https://img.shields.io/badge/uv-0.8+-purple" alt="uv"></a>
+  <a href="https://obsidian.md/"><img src="https://img.shields.io/badge/Obsidian-1.11+-purple" alt="Obsidian"></a>
+  <a href="https://github.com/astral-sh/uv"><img src="https://img.shields.io/badge/uv-0.8+-green" alt="uv"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.12-blue" alt="Python"></a>
-  <a href="../LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
 </p>
 
 <p align="center">
-  <img src="../assets/head.png" alt="Algorithm" width="600">
+  <a href="./README.md">English</a> | 中文
+</p>
+
+<p align="center">
+  <img src="./assets/head.png" alt="Algorithm" width="600">
 </p>
 
 本项目结合了经典的理论教材 《算法导论》第 4 版（CLRS） 与实战平台 LeetCode，旨在通过"理论学习 + 编码实践 + 文档沉淀"三位一体的方式，构建完整的算法知识体系。
@@ -57,26 +62,36 @@ $ cd algorithm
 2. **运行测试** 每个 LeetCode 题目或 CLRS 示例均配有测试文件：
 ```bash
 # 测试特定题目
-$ go test ./leetcode/0001-0100/0001_Two_Sum/...
+$ go test ./leetcode/0001-0100/0001_two_sum/...
 
 # 运行所有测试
 $ go test ./...
 ```
 
+3. **爬取 LeetCode 题目** 使用爬虫工具获取题目描述并生成模板：
+```bash
+$ uv sync
+$ source .venv/bin/activate
+$ crawler https://leetcode.cn/problems/two-sum/
+```
+
 ## 📁 仓库结构
 ```plain
 .
-├── clrs/               # 《算法导论》第四版代码实现
-├── leetcode/           # LeetCode 刷题代码
-│   └── 0001-0100/      # 按题号区间分组
-│       └── 0001_Two_Sum/
-│           ├── solution.go       # 核心算法
-│           └── solution_test.go  # 单元测试
-├── docs/               # Obsidian 文档库根目录
-│   ├── CLRS/           # 算法导论各章节学习笔记与习题思路
-│   └── leetcode/       # 题目描述、解法分析（链接至源码）
-├── cmd/                # 自研辅助工具（爬虫、翻译脚本等）
-├── go.mod              # Go 模块配置
+├── clrs/                        # 《算法导论》第四版代码实现
+├── leetcode/                    # LeetCode 刷题代码
+│   └── 0001-0100/               # 按题号区间分组
+│       └── 0001_two_sum/
+│           ├── solution.go      # 核心算法
+│           └── solution_test.go # 单元测试
+├── docs/                        # Obsidian 文档库根目录
+│   ├── CLRS/                    # 算法导论各章节学习笔记与习题思路
+│   └── leetcode/                # 题目描述、解法分析（链接至源码）
+├── python/                      # Python 工具工作区 (uv)
+│   ├── crawler/                 # LeetCode 题目爬虫
+│   ├── test-gen/                # 单元测试生成器
+│   └── auto-docs/               # 文档自动化工具
+├── go.mod                       # Go 模块配置
 └── README.md
 ```
 
@@ -87,7 +102,7 @@ $ go test ./...
 
 - **自动单元测试生成**：利用智能体根据题目描述自动生成全面的单元测试，确保算法实现拥有充分的测试覆盖。
 - **中英文档自动翻译智能体**：开发一个 LLM Agent，自动监听 docs 变动并将中文笔记翻译为英文，保持双语同步。
-- **基于 RAG 的智能答疑助手**：基于本地 docs 库构建知识索引；实现“理论 + 实践”结合的问答，例如：“哈希表如何实现？LeetCode 中有哪些相关题目？”。
-- **自动题目爬虫**：在 `cmd/` 下开发 Go 工具，输入 LeetCode URL 自动在 docs 和 leetcode 路径下生成模板。
+- **基于 RAG 的智能答疑助手**：基于本地 docs 库构建知识索引；实现"理论 + 实践"结合的问答，例如："哈希表如何实现？LeetCode 中有哪些相关题目？"
+
 ## 📜 License
-本项目采用 MIT License，详见 [LICENSE](../LICENSE)。
+本项目采用 MIT License，详见 [LICENSE](./LICENSE)。
