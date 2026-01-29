@@ -61,7 +61,10 @@ $ cd algorithm
     
 2. **运行测试** 每个 LeetCode 题目或 CLRS 示例均配有测试文件：
 ```bash
-# 测试特定题目
+# 测试特定题目（快捷方式）
+$ ./lc-test.sh 0001
+
+# 测试特定题目（完整路径）
 $ go test ./leetcode/0001-0100/0001_two_sum/...
 
 # 运行所有测试

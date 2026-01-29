@@ -70,8 +70,11 @@ $ cd algorithm
 2. **Run Tests** Each LeetCode problem or CLRS example comes with test files:
 
 ```bash
-# Test a specific problem
-$ go test ./leetcode/0001-0100/0001_Two_Sum/...
+# Test a specific problem (quick way)
+$ ./lc-test.sh 0001
+
+# Test a specific problem (full path)
+$ go test ./leetcode/0001-0100/0001_two_sum/...
 
 # Run all tests
 $ go test ./...
