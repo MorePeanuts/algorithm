@@ -33,6 +33,6 @@ tags:
 - 只会存在一个有效答案
 ## 题解
 ```embed-go
-PATH: "vault://leetcode/0001-0100/0001_Two_Sum/solution.go"
+PATH: "vault://leetcode/0001-0100/0001_two_sum/solution.go"
 TITLE: "Leetcode 1.两数之和"
 ```

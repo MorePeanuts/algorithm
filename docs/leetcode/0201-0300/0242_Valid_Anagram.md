@@ -30,6 +30,6 @@ tags:
 
 ```
 ```embed-go
-PATH: "vault://leetcode/0201-0300/0242_Valid_Anagram/solution.go"
+PATH: "vault://leetcode/0201-0300/0242_valid_anagram/solution.go"
 TITLE: "Leetcode 242.有效的字母异位词"
 ```

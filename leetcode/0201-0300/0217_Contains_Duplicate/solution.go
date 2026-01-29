@@ -1,5 +1,5 @@
-// Package solution 0217
-package solution
+// Package leetcode0217 solves LeetCode 217. Contains Duplicate
+package leetcode0217
 
 func containsDuplicate(nums []int) bool {
 	set := make(map[int]struct{})

@@ -34,8 +34,7 @@ tags:
 ## 题解
 ### 解法1
 ```embed-go
-PATH: "vault://leetcode/0001-0100/0049_Group_Anagrams/solution.go"
-LINES: "10-24"
+PATH: "vault://leetcode/0001-0100/0049_group_anagrams/solution1.go"
 TITLE: "leetcode 49.字母异位词分组"
 ```
 ### 解法2
@@ -59,13 +58,11 @@ TITLE: "leetcode 49.字母异位词分组"
 > **整型溢出风险**：题目提示 `strs[i].length <= 100`。如果是 100 个 'z'，那么乘积就是 `(第26个质数)^100`，会导致整数溢出，因此需要使用大数类型。
 
 ```embed-go
-PATH: "vault://leetcode/0001-0100/0049_Group_Anagrams/solution.go"
-LINES: "26-51"
+PATH: "vault://leetcode/0001-0100/0049_group_anagrams/solution2.go"
 TITLE: "leetcode 49.字母异位词分组"
 ```
 ### 解法3
 ```embed-go
-PATH: "vault://leetcode/0001-0100/0049_Group_Anagrams/solution.go"
-LINES: "53-66"
+PATH: "vault://leetcode/0001-0100/0049_group_anagrams/solution3.go"
 TITLE: "leetcode 49.字母异位词分组"
 ```

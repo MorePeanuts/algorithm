@@ -1,5 +1,5 @@
-// Package solution 0001
-package solution
+// Package leetcode0001 solves LeetCode 1. Two Sum
+package leetcode0001
 
 func twoSum(nums []int, target int) []int {
 	hashTable := make(map[int]int)
