@@ -21,7 +21,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			p2 = p2.Next
 		}
 
-		node := ListNode{Val: sum % 10, Next: nil}
+		node := ListNode{Val: sum % 10}
 		carry = sum / 10
 
 		if res == nil {
@@ -34,7 +34,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 
 	if carry > 0 {
-		p0.Next = &ListNode{Val: carry, Next: nil}
+		p0.Next = &ListNode{Val: carry}
 	}
 
 	return res
