@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"reflect"
+	"slices"
 	"sort"
 )
 
@@ -41,5 +41,20 @@ func MatchTwo2dStringSlice(got, want [][]string) bool {
 	sortedGot := normalize(got)
 	sortedWant := normalize(want)
 
-	return reflect.DeepEqual(sortedGot, sortedWant)
+	return slices.EqualFunc(sortedGot, sortedWant, slices.Equal)
+}
+
+// MatchIntSlice compares two integer slices ignoring order.
+// Returns true if both slices contain the same elements (with same multiplicities).
+func MatchIntSlice(got, want []int) bool {
+	if len(got) != len(want) {
+		return false
+	}
+	gotCopy := make([]int, len(got))
+	wantCopy := make([]int, len(want))
+	copy(gotCopy, got)
+	copy(wantCopy, want)
+	sort.Ints(gotCopy)
+	sort.Ints(wantCopy)
+	return slices.Equal(gotCopy, wantCopy)
 }
