@@ -32,6 +32,20 @@ The project documentation is organized using Obsidian, supporting full-repositor
 
 - **AI Empowerment**: Planned intelligent translation and RAG-based Q&A assistant to enhance learning efficiency using modern technology.
 
+<!-- STATS_START -->
+## 📊 Progress
+
+| Total | Easy | Medium | Hard |
+|:-----:|:----:|:------:|:----:|
+| 12 | 4 | 8 | 0 |
+
+<p align="center">
+  <img src="./assets/difficulty_distribution.png" alt="Difficulty Distribution" width="400">
+  <img src="./assets/tag_cloud.png" alt="Tag Cloud" width="400">
+</p>
+
+<!-- STATS_END -->
+
 ## 💡 Why Golang
 
 Selecting the right programming language is crucial for learning data structures and algorithms. This project adopts Go for the following reasons:

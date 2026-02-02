@@ -29,6 +29,20 @@
 - Obsidian 知识库：在 docs 目录下记录解题思路、复杂度分析与学习笔记，打造个人算法百科。
 - AI 赋能：规划中的智能翻译与 RAG 答疑助手，利用现代技术提升学习效率。
 
+<!-- STATS_START -->
+## 📊 刷题进度
+
+| 总计 | 简单 | 中等 | 困难 |
+|:----:|:----:|:----:|:----:|
+| 12 | 4 | 8 | 0 |
+
+<p align="center">
+  <img src="./assets/difficulty_distribution.png" alt="难度分布" width="400">
+  <img src="./assets/tag_cloud.png" alt="标签云" width="400">
+</p>
+
+<!-- STATS_END -->
+
 ## 💡 为什么选择 Go
 
 选择合适的编程语言对学习数据结构与算法至关重要。本项目选择 Go 语言，基于以下考量：
