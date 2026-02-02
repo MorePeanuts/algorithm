@@ -45,14 +45,14 @@ The pie chart below shows the distribution of problems by difficulty level, whil
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/difficulty_distribution_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/difficulty_distribution_light.png">
-    <img src="./assets/stats/difficulty_distribution_light.png" alt="Difficulty Distribution" width="380">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/difficulty_distribution_en_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/difficulty_distribution_en_light.png">
+    <img src="./assets/stats/difficulty_distribution_en_light.png" alt="Difficulty Distribution" width="380">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/top_tags_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/top_tags_light.png">
-    <img src="./assets/stats/top_tags_light.png" alt="Top 10 Tags" width="420">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/top_tags_en_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/top_tags_en_light.png">
+    <img src="./assets/stats/top_tags_en_light.png" alt="Top 10 Tags" width="420">
   </picture>
 </p>
 
@@ -60,9 +60,9 @@ The word cloud below provides a visual overview of all tags covered in this repo
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/tag_cloud_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/tag_cloud_light.png">
-    <img src="./assets/stats/tag_cloud_light.png" alt="Tag Cloud" width="700">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/tag_cloud_en_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/tag_cloud_en_light.png">
+    <img src="./assets/stats/tag_cloud_en_light.png" alt="Tag Cloud" width="700">
   </picture>
 </p>
 
@@ -120,6 +120,23 @@ $ go test ./...
 $ uv sync
 $ source .venv/bin/activate
 $ crawler https://leetcode.cn/problems/two-sum/
+```
+
+4. **Enable Auto Statistics Update** (Optional) The progress statistics and charts can be automatically updated when you commit with a message containing "Add leetcode":
+
+```bash
+# Enable the git hook
+$ git config core.hooksPath .githooks
+
+# Now when you commit like this:
+$ git commit -m "Add leetcode 0001_two_sum solution"
+# The statistics will be auto-updated and included in your commit
+```
+
+To manually update statistics:
+
+```bash
+$ uv run --package lc-stats lc-stats
 ```
 
 ## 📁 Repository Structure

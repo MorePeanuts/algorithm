@@ -42,14 +42,14 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/difficulty_distribution_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/difficulty_distribution_light.png">
-    <img src="./assets/stats/difficulty_distribution_light.png" alt="难度分布" width="380">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/difficulty_distribution_zh_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/difficulty_distribution_zh_light.png">
+    <img src="./assets/stats/difficulty_distribution_zh_light.png" alt="难度分布" width="380">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/top_tags_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/top_tags_light.png">
-    <img src="./assets/stats/top_tags_light.png" alt="Top 10 标签" width="420">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/top_tags_zh_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/top_tags_zh_light.png">
+    <img src="./assets/stats/top_tags_zh_light.png" alt="Top 10 标签" width="420">
   </picture>
 </p>
 
@@ -57,9 +57,9 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/tag_cloud_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/tag_cloud_light.png">
-    <img src="./assets/stats/tag_cloud_light.png" alt="标签云" width="700">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/tag_cloud_zh_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/tag_cloud_zh_light.png">
+    <img src="./assets/stats/tag_cloud_zh_light.png" alt="标签云" width="700">
   </picture>
 </p>
 
@@ -111,6 +111,23 @@ $ go test ./...
 $ uv sync
 $ source .venv/bin/activate
 $ crawler https://leetcode.cn/problems/two-sum/
+```
+
+4. **启用自动统计更新**（可选）当提交信息中包含 "Add leetcode" 时，进度统计和图表会自动更新：
+
+```bash
+# 启用 git hook
+$ git config core.hooksPath .githooks
+
+# 之后当你这样提交时：
+$ git commit -m "Add leetcode 0001_two_sum solution"
+# 统计信息会自动更新并包含在你的提交中
+```
+
+手动更新统计信息：
+
+```bash
+$ uv run --package lc-stats lc-stats
 ```
 
 ## 📁 仓库结构

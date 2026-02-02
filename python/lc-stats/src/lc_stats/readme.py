@@ -8,37 +8,7 @@ from .stats import Statistics
 STATS_START_MARKER = "<!-- STATS_START -->"
 STATS_END_MARKER = "<!-- STATS_END -->"
 
-# Chinese to English tag mapping for common tags
-TAG_TRANSLATION = {
-    "数组": "Array",
-    "哈希表": "Hash Table",
-    "排序": "Sorting",
-    "字符串": "String",
-    "链表": "Linked List",
-    "树": "Tree",
-    "二叉树": "Binary Tree",
-    "动态规划": "Dynamic Programming",
-    "贪心": "Greedy",
-    "双指针": "Two Pointers",
-    "栈": "Stack",
-    "队列": "Queue",
-    "堆（优先队列）": "Heap",
-    "图": "Graph",
-    "深度优先搜索": "DFS",
-    "广度优先搜索": "BFS",
-    "二分查找": "Binary Search",
-    "回溯": "Backtracking",
-    "分治": "Divide and Conquer",
-    "位运算": "Bit Manipulation",
-    "数学": "Math",
-    "计数": "Counting",
-    "桶排序": "Bucket Sort",
-    "快速选择": "Quick Select",
-    "矩阵": "Matrix",
-}
-
-# Difficulty name mapping
-DIFFICULTY_NAME_EN = {"Easy": "Easy", "Medium": "Medium", "Hard": "Hard"}
+# Difficulty name mapping for display
 DIFFICULTY_NAME_ZH = {"Easy": "简单", "Medium": "中等", "Hard": "困难"}
 
 
@@ -62,18 +32,6 @@ def get_dominant_difficulty(stats: Statistics) -> str:
     return dominant
 
 
-def translate_tag(tag: str) -> str:
-    """Translate a Chinese tag to English.
-
-    Args:
-        tag: Tag name (possibly in Chinese)
-
-    Returns:
-        English tag name
-    """
-    return TAG_TRANSLATION.get(tag, tag)
-
-
 def generate_stats_section_en(stats: Statistics) -> str:
     """Generate English statistics section content.
 
@@ -89,11 +47,10 @@ def generate_stats_section_en(stats: Statistics) -> str:
 
     # Get dominant difficulty
     dominant = get_dominant_difficulty(stats)
-    dominant_name = DIFFICULTY_NAME_EN[dominant]
 
-    # Get top tags for description (translated to English)
+    # Get top tags for description
     sorted_tags = sorted(stats.tag_counts.items(), key=lambda x: x[1], reverse=True)
-    top_3_tags = [translate_tag(tag) for tag, _ in sorted_tags[:3]]
+    top_3_tags = [tag for tag, _ in sorted_tags[:3]]
     top_tags_str = ", ".join(top_3_tags) if top_3_tags else "various topics"
 
     return f"""{STATS_START_MARKER}
@@ -105,18 +62,18 @@ Currently, this repository contains solutions to **{stats.total}** LeetCode prob
 |:-----:|:----:|:------:|:----:|
 | {stats.total} | {easy} | {medium} | {hard} |
 
-The pie chart below shows the distribution of problems by difficulty level, while the bar chart highlights the top 10 most frequently encountered tags. The majority of problems fall into the **{dominant_name}** category, with a focus on fundamental topics like {top_tags_str}.
+The pie chart below shows the distribution of problems by difficulty level, while the bar chart highlights the top 10 most frequently encountered tags. The majority of problems fall into the **{dominant}** category, with a focus on fundamental topics like {top_tags_str}.
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/difficulty_distribution_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/difficulty_distribution_light.png">
-    <img src="./assets/stats/difficulty_distribution_light.png" alt="Difficulty Distribution" width="380">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/difficulty_distribution_en_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/difficulty_distribution_en_light.png">
+    <img src="./assets/stats/difficulty_distribution_en_light.png" alt="Difficulty Distribution" width="380">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/top_tags_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/top_tags_light.png">
-    <img src="./assets/stats/top_tags_light.png" alt="Top 10 Tags" width="420">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/top_tags_en_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/top_tags_en_light.png">
+    <img src="./assets/stats/top_tags_en_light.png" alt="Top 10 Tags" width="420">
   </picture>
 </p>
 
@@ -124,9 +81,9 @@ The word cloud below provides a visual overview of all tags covered in this repo
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/tag_cloud_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/tag_cloud_light.png">
-    <img src="./assets/stats/tag_cloud_light.png" alt="Tag Cloud" width="700">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/tag_cloud_en_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/tag_cloud_en_light.png">
+    <img src="./assets/stats/tag_cloud_en_light.png" alt="Tag Cloud" width="700">
   </picture>
 </p>
 
@@ -146,7 +103,7 @@ def generate_stats_section_zh(stats: Statistics) -> str:
     medium = stats.difficulty_counts.get("Medium", 0)
     hard = stats.difficulty_counts.get("Hard", 0)
 
-    # Get dominant difficulty
+    # Get dominant difficulty (in Chinese)
     dominant = get_dominant_difficulty(stats)
     dominant_name = DIFFICULTY_NAME_ZH[dominant]
 
@@ -168,14 +125,14 @@ def generate_stats_section_zh(stats: Statistics) -> str:
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/difficulty_distribution_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/difficulty_distribution_light.png">
-    <img src="./assets/stats/difficulty_distribution_light.png" alt="难度分布" width="380">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/difficulty_distribution_zh_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/difficulty_distribution_zh_light.png">
+    <img src="./assets/stats/difficulty_distribution_zh_light.png" alt="难度分布" width="380">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/top_tags_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/top_tags_light.png">
-    <img src="./assets/stats/top_tags_light.png" alt="Top 10 标签" width="420">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/top_tags_zh_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/top_tags_zh_light.png">
+    <img src="./assets/stats/top_tags_zh_light.png" alt="Top 10 标签" width="420">
   </picture>
 </p>
 
@@ -183,9 +140,9 @@ def generate_stats_section_zh(stats: Statistics) -> str:
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/tag_cloud_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/tag_cloud_light.png">
-    <img src="./assets/stats/tag_cloud_light.png" alt="标签云" width="700">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/tag_cloud_zh_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/tag_cloud_zh_light.png">
+    <img src="./assets/stats/tag_cloud_zh_light.png" alt="标签云" width="700">
   </picture>
 </p>
 
@@ -244,28 +201,3 @@ def update_readme(readme_path: Path, stats: Statistics, is_chinese: bool = False
 
     updated_content = update_readme_content(content, stats_section)
     readme_path.write_text(updated_content, encoding="utf-8")
-
-
-def update_all_readmes(project_root: Path, stats: Statistics) -> list[Path]:
-    """Update all README files with statistics.
-
-    Args:
-        project_root: Path to project root directory
-        stats: Statistics instance
-
-    Returns:
-        List of updated file paths
-    """
-    updated = []
-
-    readme_en = project_root / "README.md"
-    if readme_en.exists():
-        update_readme(readme_en, stats, is_chinese=False)
-        updated.append(readme_en)
-
-    readme_zh = project_root / "README_zh.md"
-    if readme_zh.exists():
-        update_readme(readme_zh, stats, is_chinese=True)
-        updated.append(readme_zh)
-
-    return updated

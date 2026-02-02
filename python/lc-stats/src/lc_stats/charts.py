@@ -230,12 +230,15 @@ def generate_word_cloud(stats: Statistics, output_path: Path, theme: str = "ligh
     wc.to_file(str(output_path))
 
 
-def generate_all_charts(stats: Statistics, assets_dir: Path) -> dict[str, Path]:
+def generate_all_charts(
+    stats: Statistics, assets_dir: Path, lang: str = "en"
+) -> dict[str, Path]:
     """Generate all charts and save to assets directory.
 
     Args:
         stats: Statistics instance
         assets_dir: Path to assets directory
+        lang: Language suffix ("en" or "zh")
 
     Returns:
         Dict mapping chart type to output path
@@ -247,7 +250,7 @@ def generate_all_charts(stats: Statistics, assets_dir: Path) -> dict[str, Path]:
     stats_dir.mkdir(parents=True, exist_ok=True)
 
     for theme in ["light", "dark"]:
-        suffix = f"_{theme}"
+        suffix = f"_{lang}_{theme}"
 
         pie_path = stats_dir / f"difficulty_distribution{suffix}.png"
         generate_pie_chart(stats, pie_path, theme=theme)

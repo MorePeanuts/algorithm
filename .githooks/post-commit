@@ -14,15 +14,15 @@ if echo "$commit_msg" | grep -iq "Add leetcode"; then
         uv run --package lc-stats lc-stats
 
         # Check if files were modified
-        if git diff --quiet assets/difficulty_distribution.png assets/tag_cloud.png README.md README_zh.md 2>/dev/null; then
+        if git diff --quiet assets/stats/*.png README.md README_zh.md 2>/dev/null; then
             echo "No changes to statistics."
         else
             echo "Amending commit with updated statistics..."
-            git add assets/difficulty_distribution.png assets/tag_cloud.png README.md README_zh.md 2>/dev/null
+            git add assets/stats/*.png README.md README_zh.md 2>/dev/null
             git commit --amend --no-edit
             echo "Statistics updated successfully!"
         fi
     else
-        echo "Warning: uv not found. Please run 'uv run lc-stats' manually."
+        echo "Warning: uv not found. Please run 'uv run --package lc-stats lc-stats' manually."
     fi
 fi
