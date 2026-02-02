@@ -54,6 +54,9 @@ def generate_markdown(problem: dict) -> str:
         link = f"https://leetcode.com/problems/{slug}/"
 
     tags = [problem["difficulty"]] + problem["tags"]
+    # Replace spaces with underscores for English tags (Obsidian compatibility)
+    if lang == "en":
+        tags = [tag.replace(" ", "_") for tag in tags]
     tags_yaml = "\n".join(f"  - {tag}" for tag in tags)
     frontmatter = f"---\nlink: {link}\ntags:\n{tags_yaml}\n---"
 
