@@ -1,7 +1,7 @@
 <h1 align="center">📚 Algorithm</h1>
 
 <p align="center">
-  一个基于 Go 语言、结合 LeetCode 实践 与 《算法导论（CLRS，第 4 版）》 的数据结构与算法学习仓库。
+  一个基于 Go 语言、结合 LeetCode 实践与多种学习资源（书籍、教程、博客、视频）的数据结构与算法学习仓库。
 </p>
 
 <p align="center">
@@ -20,12 +20,11 @@
   <img src="./assets/head.png" alt="Algorithm" width="600">
 </p>
 
-本项目结合了经典的理论教材 《算法导论》第 4 版（CLRS） 与实战平台 LeetCode，旨在通过"理论学习 + 编码实践 + 文档沉淀"三位一体的方式，构建完整的算法知识体系。
+本项目结合了多种数据结构与算法分析的学习资源（书籍、教程、博客、视频）与实战平台 LeetCode，旨在通过"理论学习 + 编码实践 + 文档沉淀"三位一体的方式，构建完整的算法知识体系。
 
 项目文档采用 Obsidian 组织，支持全库双链跳转，方便在理论分析与代码实现之间无缝切换。
 
 ## 📖 项目简介
-- CLRS 实践：实现《算法导论》中的伪代码，挑战课后习题，将抽象算法具象化。
 - LeetCode 刷题：精选高频算法题，使用 Go 语言实现，并附带详尽的单元测试。
 - Obsidian 知识库：在 docs 目录下记录解题思路、复杂度分析与学习笔记，打造个人算法百科。
 - AI 赋能：规划中的智能翻译与 RAG 答疑助手，利用现代技术提升学习效率。
@@ -59,7 +58,7 @@ $ git clone https://github.com/MorePeanuts/algorithm.git
 $ cd algorithm
 ```
     
-2. **运行测试** 每个 LeetCode 题目或 CLRS 示例均配有测试文件：
+2. **运行测试** 每个 LeetCode 题目均配有测试文件：
 ```bash
 # 测试特定题目（快捷方式）
 $ ./lc-test.sh 0001
@@ -81,14 +80,13 @@ $ crawler https://leetcode.cn/problems/two-sum/
 ## 📁 仓库结构
 ```plain
 .
-├── clrs/                        # 《算法导论》第四版代码实现
+├── assets/                      # 静态资源（图片等）
 ├── leetcode/                    # LeetCode 刷题代码
 │   └── 0001-0100/               # 按题号区间分组
 │       └── 0001_two_sum/
 │           ├── solution.go      # 核心算法
 │           └── solution_test.go # 单元测试
 ├── docs/                        # Obsidian 文档库根目录
-│   ├── CLRS/                    # 算法导论各章节学习笔记与习题思路
 │   └── leetcode/                # 题目描述、解法分析（链接至源码）
 ├── python/                      # Python 工具工作区 (uv)
 │   ├── crawler/                 # LeetCode 题目爬虫

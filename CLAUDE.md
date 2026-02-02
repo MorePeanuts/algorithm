@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A data structures and algorithms learning repository combining LeetCode practice and "Introduction to Algorithms (CLRS, 4th Edition)". Primary implementation language is Go, with Python tools for automation.
+A data structures and algorithms learning repository combining LeetCode practice and various learning resources (books, tutorials, blogs, videos). Primary implementation language is Go, with Python tools for automation.
 
 ## Common Commands
 
@@ -40,9 +40,6 @@ uv run algo-chat
 - Test cases are divided into "examples" (from problem description) and "cases" (comprehensive tests)
 - Test functions follow naming: `TestProblemNameExamples`, `TestProblemNameCases`
 
-### Shared Utilities
-- `leetcode/utils/testing_utils.go`: Helper functions for test assertions (e.g., `MatchTwo2dStringSlice` for order-independent slice comparison)
-
 ### Python Tools Workspace
 - Root `pyproject.toml` defines uv workspace with members in `python/*`
 - `python/test-gen/`: Automated unit test generation
@@ -52,4 +49,7 @@ uv run algo-chat
 ### Documentation
 - `docs/`: Obsidian-based knowledge base with bidirectional linking
 - `docs/leetcode/`: Problem descriptions and solution analyses
-- `docs/CLRS/`: Study notes for "Introduction to Algorithms"
+  - Location: `docs/leetcode/XXXX-XXXX/XXXX_problem_name.md` (mirrors code directory structure)
+  - Frontmatter contains tags for difficulty level and problem categories (e.g., array, hash table)
+  - Sections: problem description (with examples and constraints), solution analysis
+  - Uses `embed-go` syntax to link source code from the leetcode directory

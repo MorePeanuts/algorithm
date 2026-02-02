@@ -1,7 +1,7 @@
 <h1 align="center">📚 Algorithm</h1>
 
 <p align="center">
-  A data structures and algorithms learning repository based on Go language, combining LeetCode practice and "Introduction to Algorithms (CLRS, 4th Edition)."
+  A data structures and algorithms learning repository based on Go language, combining LeetCode practice and various learning resources (books, tutorials, blogs, videos).
 </p>
 
 <p align="center">
@@ -20,13 +20,11 @@
   <img src="./assets/head.png" alt="Algorithm" width="600">
 </p>
 
-This project integrates the classic theoretical textbook "Introduction to Algorithms, 4th Edition (CLRS)" with the practical platform LeetCode. It aims to build a comprehensive algorithm knowledge system through a trinity approach of "theoretical learning + coding practice + documentation accumulation."
+This project integrates various learning resources (books, tutorials, blogs, videos) on data structures and algorithm analysis with the practical platform LeetCode. It aims to build a comprehensive algorithm knowledge system through a trinity approach of "theoretical learning + coding practice + documentation accumulation."
 
 The project documentation is organized using Obsidian, supporting full-repository bidirectional linking for seamless switching between theoretical analysis and code implementation.
 
 ## 📖 Project Introduction
-
-- **CLRS Practice**: Implement pseudocode from "Introduction to Algorithms," tackle exercises, and materialize abstract algorithms.
 
 - **LeetCode Problem Solving**: Select high-frequency algorithm problems, implement them in Go, and include comprehensive unit tests.
 
@@ -67,7 +65,7 @@ $ git clone https://github.com/MorePeanuts/algorithm.git
 $ cd algorithm
 ```
 
-2. **Run Tests** Each LeetCode problem or CLRS example comes with test files:
+2. **Run Tests** Each LeetCode problem comes with test files:
 
 ```bash
 # Test a specific problem (quick way)
@@ -92,14 +90,13 @@ $ crawler https://leetcode.cn/problems/two-sum/
 
 ```plain
 .
-├── clrs/                        # Code implementations for "Introduction to Algorithms, 4th Edition"
+├── assets/                      # Static assets (images, etc.)
 ├── leetcode/                    # LeetCode problem-solving code
 │   └── 0001-0100/               # Grouped by problem number range
 │       └── 0001_two_sum/
 │           ├── solution.go      # Core algorithm
 │           └── solution_test.go # Unit tests
 ├── docs/                        # Obsidian documentation library root
-│   ├── CLRS/                    # Study notes and exercise solutions for each chapter of CLRS
 │   └── leetcode/                # Problem descriptions and solution analyses (linked to source code)
 ├── python/                      # Python tools workspace (uv)
 │   ├── crawler/                 # LeetCode problem crawler
