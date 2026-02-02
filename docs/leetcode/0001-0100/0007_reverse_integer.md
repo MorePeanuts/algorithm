@@ -1,80 +1,72 @@
 ---
+link: https://leetcode.com/problems/reverse-integer/
 tags:
-  - 中等
-  - 数学
+  - Medium
+  - Math
 ---
-## 题目描述
-给你一个 32 位的有符号整数 `x` ，返回将 `x` 中的数字部分反转后的结果。
+## Description
+Given a signed 32-bit integer `x`, return `x` *with its digits reversed*. If reversing `x` causes the value to go outside the signed 32-bit integer range `[-231, 231 - 1]`, then return `0`.
 
-如果反转后整数超过 32 位的有符号整数的范围 `[−2^31,  2^31 − 1]` ，就返回 0。
+**Assume the environment does not allow you to store 64-bit integers (signed or unsigned).**
 
-**假设环境不允许存储 64 位整数（有符号或无符号）。**
-
-**示例 1：**
+**Example 1:**
 
 ```
-输入：x = 123
-输出：321
+Input: x = 123
+Output: 321
 ```
 
-**示例 2：**
+**Example 2:**
 
 ```
-输入：x = -123
-输出：-321
+Input: x = -123
+Output: -321
 ```
 
-**示例 3：**
+**Example 3:**
 
 ```
-输入：x = 120
-输出：21
+Input: x = 120
+Output: 21
 ```
 
-**示例 4：**
+**Constraints:**
 
-```
-输入：x = 0
-输出：0
-```
+- `-231 <= x <= 231 - 1`
 
-**提示：**
+## Solution
 
-- `-2^31 <= x <= 2^31 - 1`
+### Approach 1
 
-## 题目解析
+**Mathematical Modulo Method**: Extract digits one by one and rebuild the reversed result, checking for overflow at each step.
 
-### 解法1
+**Principle:**
+Extract the least significant digit using modulo 10, accumulate it to the result, and remove the digit by dividing by 10. Since the problem requires not using 64-bit integers, overflow checks must be performed before each operation.
 
-**数学取余法**：逐位提取数字并重新构建反转结果，同时在每一步检查溢出。
+**Steps:**
+1. Initialize result `res = 0`
+2. Loop until `x` becomes 0:
+   - Get the last digit `last = x % 10`
+   - Multiplication overflow check: if `res > MaxInt32/10` or `res < MinInt32/10`, multiplying by 10 will overflow, return 0
+   - Addition overflow check: if `res*10 > MaxInt32-last` or `res*10 < MinInt32-last`, return 0
+   - Calculate new result `res = res*10 + last`
+   - Divide `x` by 10 to remove the processed digit
+3. Return `res`
 
-**原理：**
-通过对 10 取余获取最低位数字，将其累加到结果中，同时将原数除以 10 去掉最低位。由于题目要求不能使用 64 位整数，需要在运算前检查是否会溢出 32 位整数范围。
+**Example:**
+- Input `x = 123`:
+  - Round 1: `last = 3`, `res = 3`, `x = 12`
+  - Round 2: `last = 2`, `res = 32`, `x = 1`
+  - Round 3: `last = 1`, `res = 321`, `x = 0`
+  - Output `321`
 
-**步骤：**
-1. 初始化结果 `res = 0`
-2. 循环处理直到 `x` 为 0：
-   - 取 `x` 的最低位 `last = x % 10`
-   - 乘法溢出检查：若 `res > MaxInt32/10` 或 `res < MinInt32/10`，乘以 10 后必溢出，返回 0
-   - 加法溢出检查：若 `res*10 > MaxInt32-last` 或 `res*10 < MinInt32-last`，返回 0
-   - 计算新结果 `res = res*10 + last`
-   - 将 `x` 除以 10，去掉已处理的最低位
-3. 返回 `res`
-
-**示例：**
-- 输入 `x = 123`：
-  - 第1轮：`last = 3`, `res = 3`, `x = 12`
-  - 第2轮：`last = 2`, `res = 32`, `x = 1`
-  - 第3轮：`last = 1`, `res = 321`, `x = 0`
-  - 输出 `321`
-
-- 输入 `x = -123`：
-  - 第1轮：`last = -3`, `res = -3`, `x = -12`
-  - 第2轮：`last = -2`, `res = -32`, `x = -1`
-  - 第3轮：`last = -1`, `res = -321`, `x = 0`
-  - 输出 `-321`
+- Input `x = -123`:
+  - Round 1: `last = -3`, `res = -3`, `x = -12`
+  - Round 2: `last = -2`, `res = -32`, `x = -1`
+  - Round 3: `last = -1`, `res = -321`, `x = 0`
+  - Output `-321`
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0007_reverse_integer/solution.go"
-TITLE: "leetcode 7.整数反转"
+TITLE: "leetcode 7. Reverse Integer"
 ```

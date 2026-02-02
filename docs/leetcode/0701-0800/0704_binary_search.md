@@ -1,94 +1,96 @@
 ---
+link: https://leetcode.com/problems/binary-search/
 tags:
-  - 简单
-  - 数组
-  - 二分查找
+  - Easy
+  - Array
+  - Binary_Search
 ---
-## 题目描述
-给定一个 `n` 个元素有序的（升序）整型数组 `nums` 和一个目标值 `target`  ，写一个函数搜索 `nums` 中的 `target`，如果 `target` 存在返回下标，否则返回 `-1`。
+## Description
+Given an array of integers `nums` which is sorted in ascending order, and an integer `target`, write a function to search `target` in `nums`. If `target` exists, then return its index. Otherwise, return `-1`.
 
-你必须编写一个具有 `O(log n)` 时间复杂度的算法。
+You must write an algorithm with `O(log n)` runtime complexity.
 
-**示例 1:**
-
-```
-输入: nums = [-1,0,3,5,9,12], target = 9
-输出: 4
-解释: 9 出现在 nums 中并且下标为 4
-```
-
-**示例 2:**
+**Example 1:**
 
 ```
-输入: nums = [-1,0,3,5,9,12], target = 2
-输出: -1
-解释: 2 不存在 nums 中因此返回 -1
+Input: nums = [-1,0,3,5,9,12], target = 9
+Output: 4
+Explanation: 9 exists in nums and its index is 4
 ```
 
-**提示：**
+**Example 2:**
 
-1. 你可以假设 `nums` 中的所有元素是不重复的。
-2. `n` 将在 `[1, 10000]`之间。
-3. `nums` 的每个元素都将在 `[-9999, 9999]`之间。
+```
+Input: nums = [-1,0,3,5,9,12], target = 2
+Output: -1
+Explanation: 2 does not exist in nums so return -1
+```
 
-## 题目解析
+**Constraints:**
 
-### 解法1
+- `1 <= nums.length <= 104`
+- `-104 < nums[i], target < 104`
+- All the integers in `nums` are **unique**.
+- `nums` is sorted in ascending order.
 
-**递归二分查找**：通过递归不断缩小搜索区间，每次将搜索范围减半。
+## Solution
 
-**原理：**
-利用数组有序的特性，每次取中间元素与目标值比较，根据比较结果递归搜索左半部分或右半部分。
+### Approach 1
 
-**步骤：**
-1. 若数组为空，返回 -1
-2. 取中间位置 `center = n / 2`
-3. 若中间元素等于目标值，返回 `center`
-4. 若目标值小于中间元素，递归搜索左半部分 `nums[:center]`
-5. 若目标值大于中间元素，递归搜索右半部分 `nums[center+1:]`，并将返回的索引加上偏移量 `center + 1`
+**Recursive Binary Search**: Recursively narrow down the search interval, halving the search range each time.
+
+**Principle:**
+Utilize the sorted property of the array. Each time compare the middle element with the target value, then recursively search the left or right half based on the comparison result.
+
+**Steps:**
+1. If array is empty, return -1
+2. Get middle position `center = n / 2`
+3. If middle element equals target, return `center`
+4. If target is less than middle element, recursively search left half `nums[:center]`
+5. If target is greater than middle element, recursively search right half `nums[center+1:]`, adding offset `center + 1` to the returned index
 
 ```embed-go
 PATH: "vault://leetcode/0701-0800/0704_binary_search/solution.go"
-TITLE: "leetcode 704.二分查找"
+TITLE: "leetcode 704. Binary Search"
 ```
 
-### 解法2
+### Approach 2
 
-**迭代二分查找**：使用循环和双指针实现二分查找，避免递归开销。
+**Iterative Binary Search**: Use loops and two pointers to implement binary search, avoiding recursion overhead.
 
-**原理：**
-维护左右边界 `[left, right)` 形成左闭右开区间，每次根据中间元素与目标值的比较结果调整边界，直到找到目标或区间为空。
+**Principle:**
+Maintain left and right boundaries `[left, right)` as a left-closed, right-open interval. Each time adjust boundaries based on comparison of middle element with target, until the target is found or the interval becomes empty.
 
-**步骤：**
-1. 初始化 `left = 0`，`right = len(nums)`
-2. 当 `left < right` 时循环：
-   - 计算中间位置 `mid = left + (right - left) / 2`（避免整数溢出）
-   - 若 `target < nums[mid]`，收缩右边界 `right = mid`
-   - 若 `target > nums[mid]`，收缩左边界 `left = mid + 1`
-   - 若相等，返回 `mid`
-3. 循环结束仍未找到，返回 -1
+**Steps:**
+1. Initialize `left = 0`, `right = len(nums)`
+2. While `left < right`:
+   - Calculate middle position `mid = left + (right - left) / 2` (avoids integer overflow)
+   - If `target < nums[mid]`, shrink right boundary `right = mid`
+   - If `target > nums[mid]`, shrink left boundary `left = mid + 1`
+   - If equal, return `mid`
+3. If loop ends without finding, return -1
 
 ```embed-go
 PATH: "vault://leetcode/0701-0800/0704_binary_search/solution2.go"
-TITLE: "leetcode 704.二分查找"
+TITLE: "leetcode 704. Binary Search"
 ```
 
-### 解法3
+### Approach 3
 
-**双向比较二分查找**：循环中只做两路比较，最后在循环外判断是否找到目标值。
+**Two-Way Comparison Binary Search**: Only do two-way comparison in the loop, check for target match outside the loop.
 
-**原理：**
-与标准三路比较不同，每次循环只判断目标值是否小于中间元素，将搜索范围缩小到可能包含目标的一侧。循环结束后再验证 `left` 位置是否为目标值。
+**Principle:**
+Unlike standard three-way comparison, each iteration only checks if target is less than middle element, narrowing the search range to the side that might contain the target. After the loop, verify if the `left` position is the target value.
 
-**步骤：**
-1. 初始化 `left = 0`，`right = len(nums)`
-2. 当 `left < right - 1` 时循环：
-   - 计算中间位置 `mid = left + (right - left) / 2`
-   - 若 `target < nums[mid]`，收缩右边界 `right = mid`
-   - 否则，收缩左边界 `left = mid`（目标可能在 mid 或其右侧）
-3. 循环结束后，检查 `nums[left]` 是否等于目标值，相等则返回 `left`，否则返回 -1
+**Steps:**
+1. Initialize `left = 0`, `right = len(nums)`
+2. While `left < right - 1`:
+   - Calculate middle position `mid = left + (right - left) / 2`
+   - If `target < nums[mid]`, shrink right boundary `right = mid`
+   - Otherwise, shrink left boundary `left = mid` (target might be at mid or to its right)
+3. After loop ends, check if `nums[left]` equals target, return `left` if equal, otherwise return -1
 
 ```embed-go
 PATH: "vault://leetcode/0701-0800/0704_binary_search/solution3.go"
-TITLE: "leetcode 704.二分查找"
+TITLE: "leetcode 704. Binary Search"
 ```

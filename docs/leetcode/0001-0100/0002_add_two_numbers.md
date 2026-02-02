@@ -1,72 +1,71 @@
 ---
+link: https://leetcode.com/problems/add-two-numbers/
 tags:
-  - 中等
-  - 递归
-  - 链表
-  - 数学
+  - Medium
+  - Recursion
+  - Linked_List
+  - Math
 ---
-## 题目描述
-给你两个 **非空** 的链表，表示两个非负的整数。它们每位数字都是按照 **逆序** 的方式存储的，并且每个节点只能存储 **一位** 数字。
+## Description
+You are given two **non-empty** linked lists representing two non-negative integers. The digits are stored in **reverse order**, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 
-请你将两个数相加，并以相同形式返回一个表示和的链表。
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
-你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
+**Example 1:**
 
-**示例 1：**
-
-![](https://assets.leetcode.cn/aliyun-lc-upload/uploads/2021/01/02/addtwonumber1.jpg)
+![](https://assets.leetcode.com/uploads/2020/10/02/addtwonumber1.jpg)
 
 ```
-输入：l1 = [2,4,3], l2 = [5,6,4]
-输出：[7,0,8]
-解释：342 + 465 = 807.
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
 ```
 
-**示例 2：**
+**Example 2:**
 
 ```
-输入：l1 = [0], l2 = [0]
-输出：[0]
+Input: l1 = [0], l2 = [0]
+Output: [0]
 ```
 
-**示例 3：**
+**Example 3:**
 
 ```
-输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
-输出：[8,9,9,9,0,0,0,1]
+Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1]
 ```
 
-**提示：**
+**Constraints:**
 
-- 每个链表中的节点数在范围 `[1, 100]` 内
+- The number of nodes in each linked list is in the range `[1, 100]`.
 - `0 <= Node.val <= 9`
-- 题目数据保证列表表示的数字不含前导零
+- It is guaranteed that the list represents a number that does not have leading zeros.
 
-## 题目解析
+## Solution
 
-### 解法1
+### Approach 1
 
-**模拟加法**：逐位相加并处理进位
+**Simulate Addition**: Add digit by digit while handling carry.
 
-**原理：**
-模拟竖式加法的过程，从最低位开始逐位相加，用一个变量记录进位，直到两个链表都遍历完且无进位。
+**Principle:**
+Simulate the vertical addition process, starting from the least significant digit. Use a variable to track the carry until both linked lists are fully traversed and there's no remaining carry.
 
-**步骤：**
-1. 初始化结果链表和进位变量 `carry = 0`
-2. 同时遍历两个链表，计算当前位的和：`sum = carry + l1.Val + l2.Val`
-3. 创建新节点存储 `sum % 10`，更新进位 `carry = sum / 10`
-4. 将新节点链接到结果链表
-5. 遍历结束后，若 `carry > 0`，追加一个值为 `carry` 的节点
+**Steps:**
+1. Initialize a result linked list and a carry variable `carry = 0`
+2. Traverse both linked lists simultaneously, computing the sum: `sum = carry + l1.Val + l2.Val`
+3. Create a new node storing `sum % 10`, update carry as `carry = sum / 10`
+4. Link the new node to the result list
+5. After traversal, if `carry > 0`, append a node with value `carry`
 
-**示例：**
-- 输入：`l1 = [2,4,3]`（表示342），`l2 = [5,6,4]`（表示465）
-- 处理过程：
-  - 位1：`2 + 5 = 7`，进位0，结果节点值7
-  - 位2：`4 + 6 = 10`，进位1，结果节点值0
-  - 位3：`3 + 4 + 1 = 8`，进位0，结果节点值8
-- 输出：`[7,0,8]`（表示807）
+**Example:**
+- Input: `l1 = [2,4,3]` (represents 342), `l2 = [5,6,4]` (represents 465)
+- Process:
+  - Digit 1: `2 + 5 = 7`, carry 0, result node value 7
+  - Digit 2: `4 + 6 = 10`, carry 1, result node value 0
+  - Digit 3: `3 + 4 + 1 = 8`, carry 0, result node value 8
+- Output: `[7,0,8]` (represents 807)
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0002_add_two_numbers/solution.go"
-TITLE: "leetcode 2.两数相加"
+TITLE: "leetcode 2. Add Two Numbers"
 ```

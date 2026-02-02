@@ -1,98 +1,113 @@
 ---
+link: https://leetcode.com/problems/group-anagrams/
 tags:
-  - 中等
-  - 数组
-  - 哈希表
-  - 字符串
-  - 排序
+  - Medium
+  - Array
+  - Hash_Table
+  - String
+  - Sorting
 ---
-## 题目描述
-给你一个字符串数组，请你将 **字母异位词** 组合在一起。可以按任意顺序返回结果列表。
+## Description
+Given an array of strings `strs`, group the anagrams together. You can return the answer in **any order**.
 
----
-示例 1:
-- 输入: `strs = ["eat", "tea", "tan", "ate", "nat", "bat"]`
-- 输出: `[["bat"],["nat","tan"],["ate","eat","tea"]]`
-- 解释：
-	- 在 strs 中没有字符串可以通过重新排列来形成 "bat"。
-	- 字符串 "nat" 和 "tan" 是字母异位词，因为它们可以重新排列以形成彼此。
-	- 字符串 "ate" ，"eat" 和 "tea" 是字母异位词，因为它们可以重新排列以形成彼此。
+**Example 1:**
 
-示例 2:
-- 输入: `strs = [""]`
-- 输出: `[[""]]`
+**Input:** strs = ["eat","tea","tan","ate","nat","bat"]
 
-示例 3:
-- 输入: `strs = ["a"]`
-- 输出: `[["a"]]`
- 
----
-提示：
-- `1 <= strs.length <= 10^4`
+**Output:** [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+**Explanation:**
+
+- There is no string in strs that can be rearranged to form `"bat"`.
+- The strings `"nat"` and `"tan"` are anagrams as they can be rearranged to form each other.
+- The strings `"ate"`, `"eat"`, and `"tea"` are anagrams as they can be rearranged to form each other.
+
+**Example 2:**
+
+**Input:** strs = [""]
+
+**Output:** [[""]]
+
+**Example 3:**
+
+**Input:** strs = ["a"]
+
+**Output:** [["a"]]
+
+**Constraints:**
+
+- `1 <= strs.length <= 104`
 - `0 <= strs[i].length <= 100`
-- `strs[i]` 仅包含小写字母
-## 题目解析
-### 解法1
-**字符计数法**：字母异位词的本质是字符种类和数量相同，只是排列顺序不同。
+- `strs[i]` consists of lowercase English letters.
 
-**原理：**
-用一个长度为 26 的数组记录每个字母出现的次数，相同的计数数组对应相同的异位词组。
+## Solution
 
-**步骤：**
-1. 遍历字符串，统计每个字符出现次数，存入 `[26]byte` 数组。
-2. 以该数组作为 HashMap 的 Key，将字符串归入对应分组。
+### Approach 1
 
-**示例：**
-- `"eat"` -> `[1,0,0,0,1,...]`（a=1, e=1, t=1）
-- `"tea"` -> `[1,0,0,0,1,...]`（相同 Key）
-- `"tan"` -> `[1,0,0,0,0,...,1,...]`（a=1, n=1, t=1，不同 Key）
+**Character Counting Method**: The essence of anagrams is having the same character types and counts, just in different order.
+
+**Principle:**
+Use an array of length 26 to record the occurrence count of each letter. Identical count arrays correspond to the same anagram group.
+
+**Steps:**
+1. Iterate through the string, count each character's occurrence, store in a `[26]byte` array.
+2. Use this array as the HashMap key, group strings accordingly.
+
+**Example:**
+- `"eat"` -> `[1,0,0,0,1,...]` (a=1, e=1, t=1)
+- `"tea"` -> `[1,0,0,0,1,...]` (same key)
+- `"tan"` -> `[1,0,0,0,0,...,1,...]` (a=1, n=1, t=1, different key)
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0049_group_anagrams/solution1.go"
-TITLE: "leetcode 49.字母异位词分组"
+TITLE: "leetcode 49. Group Anagrams"
 ```
-### 解法2
-**算术基本定理**（Fundamental Theorem of Arithmetic）：**任何一个大于1的自然数都可以唯一分解成有限个质数的乘积**。
 
-**原理：**
-乘法满足交换律（`a * b = b * a`），这天然解决了“顺序无关”的问题。利用质数的特性，可以保证不同的字母组合乘积一定不同。
+### Approach 2
 
-**步骤：**
-1. 建立一个映射表，将 26 个字母映射到 26 个不同的**质数**上。
+**Fundamental Theorem of Arithmetic**: **Every integer greater than 1 can be uniquely represented as a product of prime numbers**.
+
+**Principle:**
+Multiplication is commutative (`a * b = b * a`), which naturally solves the "order-independent" problem. Using the property of primes, different letter combinations will always produce different products.
+
+**Steps:**
+1. Create a mapping table that maps 26 letters to 26 different **prime numbers**.
     - `a` -> 2, `b` -> 3, `c` -> 5, `d` -> 7, ...
-2. 遍历字符串，将每个字符对应的质数相乘。
-3. 乘积结果就是唯一的 Key。
+2. Iterate through the string, multiply the corresponding prime for each character.
+3. The product result is the unique key.
 
-**示例：**
-- `a` = 2, `e` = 11, `t` = 71 (假设)
-- `"eat"` 的 Key = $11 \times 2 \times 71 = 1562$
-- `"ate"` 的 Key = $2 \times 71 \times 11 = 1562$ 
-- `"aba"` 的 Key = $2 \times 3 \times 2 = 12$
+**Example:**
+- `a` = 2, `e` = 11, `t` = 71 (assumed)
+- Key for `"eat"` = $11 \times 2 \times 71 = 1562$
+- Key for `"ate"` = $2 \times 71 \times 11 = 1562$
+- Key for `"aba"` = $2 \times 3 \times 2 = 12$
 
-> **整型溢出风险**：题目提示 `strs[i].length <= 100`。如果是 100 个 'z'，那么乘积就是 `(第26个质数)^100`，会导致整数溢出，因此需要使用大数类型。
+> **Integer Overflow Risk**: The problem states `strs[i].length <= 100`. For 100 'z's, the product would be `(26th prime)^100`, causing integer overflow, so big integer types are needed.
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0049_group_anagrams/solution2.go"
-TITLE: "leetcode 49.字母异位词分组"
+TITLE: "leetcode 49. Group Anagrams"
 ```
-### 解法3
-**排序法**：最直观的思路——异位词排序后结果相同。
 
-**原理：**
-将字符串中的字符排序后，所有异位词会变成相同的字符串，以此作为分组依据。
+### Approach 3
 
-**步骤：**
-1. 对每个字符串的字符进行排序。
-2. 以排序后的字符串作为 HashMap 的 Key，将原字符串归入对应分组。
+**Sorting Method**: The most intuitive approach—anagrams become identical after sorting.
 
-**示例：**
-- `"eat"` -> 排序 -> `"aet"`
-- `"tea"` -> 排序 -> `"aet"`（相同 Key）
-- `"tan"` -> 排序 -> `"ant"`（不同 Key）
+**Principle:**
+Sort the characters in each string, and all anagrams will become the same string, which serves as the grouping key.
 
-> **复杂度**：排序每个字符串需要 $O(k \log k)$，总时间复杂度 $O(n \cdot k \log k)$，其中 $k$ 为字符串平均长度。
+**Steps:**
+1. Sort the characters of each string.
+2. Use the sorted string as the HashMap key, group original strings accordingly.
+
+**Example:**
+- `"eat"` -> sort -> `"aet"`
+- `"tea"` -> sort -> `"aet"` (same key)
+- `"tan"` -> sort -> `"ant"` (different key)
+
+> **Complexity**: Sorting each string takes $O(k \log k)$, total time complexity $O(n \cdot k \log k)$, where $k$ is the average string length.
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0049_group_anagrams/solution3.go"
-TITLE: "leetcode 49.字母异位词分组"
+TITLE: "leetcode 49. Group Anagrams"
 ```

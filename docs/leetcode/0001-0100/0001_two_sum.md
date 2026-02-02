@@ -1,54 +1,65 @@
 ---
+link: https://leetcode.com/problems/two-sum/
 tags:
-  - 简单
-  - 数组
-  - 哈希表
+  - Easy
+  - Array
+  - Hash_Table
 ---
-## 题目描述
-给定一个整数数组 `nums` 和一个整数目标值 `target`，请你在该数组中找出和为目标值 `target`  的那 **两个** 整数，并返回它们的数组下标。
+## Description
+Given an array of integers `nums` and an integer `target`, return *indices of the two numbers such that they add up to `target`*.
 
-你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。
+You may assume that each input would have ***exactly* one solution**, and you may not use the *same* element twice.
 
-你可以按任意顺序返回答案。
+You can return the answer in any order.
 
----
-示例 1：
-- 输入：`nums = [2,7,11,15], target = 9`
-- 输出：`[0,1]`
-- 解释：因为 `nums[0] + nums[1] == 9` ，返回 `[0, 1]`
+**Example 1:**
 
-示例 2：
-- 输入：`nums = [3,2,4], target = 6`
-- 输出：`[1,2]`
+```
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+```
 
-示例 3：
-- 输入：`nums = [3,3], target = 6`
-- 输出：`[0,1]`
- 
----
-提示：
+**Example 2:**
+
+```
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+```
+
+**Example 3:**
+
+```
+Input: nums = [3,3], target = 6
+Output: [0,1]
+```
+
+**Constraints:**
+
 - `2 <= nums.length <= 104`
 - `-109 <= nums[i] <= 109`
 - `-109 <= target <= 109`
-- 只会存在一个有效答案
+- **Only one valid answer exists.**
 
-## 题目解析
+**Follow-up:**Can you come up with an algorithm that is less than `O(n2)` time complexity?
 
-### 解法1
+## Solution
 
-**哈希表法**：利用哈希表存储已遍历元素的值和索引，实现 O(1) 时间查找配对元素。
+### Approach 1
 
-**原理：**
-对于每个元素 `num`，计算其配对值 `target - num`，通过哈希表快速判断配对值是否已存在，若存在则直接返回两个索引。
+**Hash Table Method**: Use a hash table to store traversed elements' values and indices, achieving O(1) time lookup for paired elements.
 
-**步骤：**
-1. 创建哈希表，键为数组元素值，值为对应索引
-2. 遍历数组，对每个元素计算差值 `diff = target - num`
-3. 检查 `diff` 是否已在哈希表中
-4. 若存在，返回 `[hashTable[diff], i]`
-5. 若不存在，将当前元素及其索引存入哈希表
+**Principle:**
+For each element `num`, calculate its complement `target - num`. Use the hash table to quickly check if the complement already exists. If it does, return both indices directly.
+
+**Steps:**
+1. Create a hash table with array element values as keys and their indices as values
+2. Iterate through the array, calculating `diff = target - num` for each element
+3. Check if `diff` exists in the hash table
+4. If exists, return `[hashTable[diff], i]`
+5. If not, store the current element and its index in the hash table
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0001_two_sum/solution.go"
-TITLE: "leetcode 1.两数之和"
+TITLE: "leetcode 1. Two Sum"
 ```

@@ -1,104 +1,105 @@
 ---
+link: https://leetcode.com/problems/longest-consecutive-sequence/
 tags:
-  - 中等
-  - 并查集
-  - 数组
-  - 哈希表
+  - Medium
+  - Union_Find
+  - Array
+  - Hash_Table
 ---
-## 题目描述
-给定一个未排序的整数数组 `nums` ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
+## Description
+Given an unsorted array of integers `nums`, return *the length of the longest consecutive elements sequence.*
 
-请你设计并实现时间复杂度为 `O(n)`的算法解决此问题。
+You must write an algorithm that runs in `O(n)` time.
 
-**示例 1：**
-
-```
-输入：nums = [100,4,200,1,3,2]
-输出：4
-解释：最长数字连续序列是 [1, 2, 3, 4]。它的长度为 4。
-```
-
-**示例 2：**
+**Example 1:**
 
 ```
-输入：nums = [0,3,7,2,5,8,4,6,0,1]
-输出：9
+Input: nums = [100,4,200,1,3,2]
+Output: 4
+Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
 ```
 
-**示例 3：**
+**Example 2:**
 
 ```
-输入：nums = [1,0,1,2]
-输出：3
+Input: nums = [0,3,7,2,5,8,4,6,0,1]
+Output: 9
 ```
 
-**提示：**
+**Example 3:**
+
+```
+Input: nums = [1,0,1,2]
+Output: 3
+```
+
+**Constraints:**
 
 - `0 <= nums.length <= 105`
-- `-10^9 <= nums[i] <= 10^9`
+- `-109 <= nums[i] <= 109`
 
-## 题目解析
+## Solution
 
-### 解法1
+### Approach 1
 
-**双向边界哈希表**：用两个哈希表分别记录连续区间的左边界到右边界、右边界到左边界的映射，遍历数组时动态扩展或合并区间。
+**Bidirectional Boundary Hash Tables**: Use two hash tables to record mappings from left boundary to right boundary and vice versa. Dynamically extend or merge intervals while traversing the array.
 
-**原理：**
-维护两个哈希表 `left2right` 和 `right2left`，分别记录"左边界外侧→右边界外侧"和"右边界外侧→左边界外侧"的映射。当新数字加入时，根据它与已有区间的相邻关系进行扩展或合并，最终遍历所有区间计算最大长度。
+**Principle:**
+Maintain two hash tables `left2right` and `right2left`, recording "left boundary outer → right boundary outer" and "right boundary outer → left boundary outer" mappings respectively. When a new number is added, extend or merge intervals based on its adjacency to existing intervals. Finally, traverse all intervals to calculate the maximum length.
 
-**步骤：**
-1. 初始化 `left2right`、`right2left` 两个哈希表和 `set` 去重集合
-2. 遍历数组中每个数字 `num`（跳过重复）：
-   - 查询 `num` 是否是某个区间的左边界外侧（`left2right[num]`）或右边界外侧（`right2left[num]`）
-   - **仅在左侧有区间**：将该区间向右扩展一位
-   - **仅在右侧有区间**：将该区间向左扩展一位
-   - **两侧都有区间**：合并两个区间
-   - **两侧都无区间**：创建新的单元素区间
-3. 遍历 `left2right`，计算每个区间长度（`右边界外侧 - 左边界外侧 - 1`），取最大值
+**Steps:**
+1. Initialize `left2right`, `right2left` hash tables and a `set` for deduplication
+2. Traverse each number `num` in the array (skip duplicates):
+   - Check if `num` is the left boundary outer (`left2right[num]`) or right boundary outer (`right2left[num]`) of some interval
+   - **Only left interval exists**: Extend that interval one position to the right
+   - **Only right interval exists**: Extend that interval one position to the left
+   - **Both sides have intervals**: Merge the two intervals
+   - **Neither side has interval**: Create a new single-element interval
+3. Traverse `left2right`, calculate each interval's length (`right boundary outer - left boundary outer - 1`), take the maximum
 
-> 注意每次更新区间时，两个哈希表均需要更新。
+> Note: Both hash tables need to be updated when modifying an interval.
 
-**示例：**
-以 `nums = [100, 4, 200, 1, 3, 2]` 为例：
-- `100`：创建区间，`left2right[99]=101`，`right2left[101]=99`
-- `4`：创建区间，`left2right[3]=5`，`right2left[5]=3`
-- `200`：创建区间，`left2right[199]=201`，`right2left[201]=199`
-- `1`：创建区间，`left2right[0]=2`，`right2left[2]=0`
-- `3`：3 在 `left2right` 中（区间 [4,4]），向左扩展为 [3,4]
-- `2`：2 同时在 `left2right`（区间 [3,4]）和 `right2left`（区间 [1,1]）中，合并为 [1,4]
-- 最终 `left2right[0]=5`，区间长度 = 5 - 0 - 1 = 4
+**Example:**
+Using `nums = [100, 4, 200, 1, 3, 2]`:
+- `100`: Create interval, `left2right[99]=101`, `right2left[101]=99`
+- `4`: Create interval, `left2right[3]=5`, `right2left[5]=3`
+- `200`: Create interval, `left2right[199]=201`, `right2left[201]=199`
+- `1`: Create interval, `left2right[0]=2`, `right2left[2]=0`
+- `3`: 3 exists in `left2right` (interval [4,4]), extend left to [3,4]
+- `2`: 2 exists in both `left2right` (interval [3,4]) and `right2left` (interval [1,1]), merge to [1,4]
+- Final `left2right[0]=5`, interval length = 5 - 0 - 1 = 4
 
 ```embed-go
 PATH: "vault://leetcode/0101-0200/0128_longest_consecutive_sequence/solution.go"
-TITLE: "leetcode 128.最长连续序列"
+TITLE: "leetcode 128. Longest Consecutive Sequence"
 ```
 
-### 解法2
+### Approach 2
 
-**哈希集合 + 起点枚举**：将所有数字存入哈希集合，只从每个连续序列的起点开始向右扩展计数。
+**Hash Set + Starting Point Enumeration**: Store all numbers in a hash set, only extend rightward from each consecutive sequence's starting point.
 
-**原理：**
-一个数字是连续序列的起点，当且仅当 `num-1` 不在集合中。通过跳过非起点数字，确保每个数字最多被访问两次（一次建表，一次计数），保证 O(n) 时间复杂度。
+**Principle:**
+A number is the starting point of a consecutive sequence if and only if `num-1` is not in the set. By skipping non-starting numbers, each number is visited at most twice (once for building the set, once for counting), ensuring O(n) time complexity.
 
-**步骤：**
-1. 将所有数字存入哈希集合 `set`（自动去重）
-2. 遍历集合中每个数字 `num`：
-   - 若 `num-1` 存在于集合中，跳过（非起点）
-   - 否则从 `num` 开始，不断检查 `num+1`, `num+2`, ... 是否存在，统计序列长度
-3. 返回最大长度
+**Steps:**
+1. Store all numbers in hash set `set` (automatic deduplication)
+2. Traverse each number `num` in the set:
+   - If `num-1` exists in the set, skip (not a starting point)
+   - Otherwise, starting from `num`, continuously check if `num+1`, `num+2`, ... exist, count sequence length
+3. Return maximum length
 
-**示例：**
-以 `nums = [100, 4, 200, 1, 3, 2]` 为例：
-- 集合：`{100, 4, 200, 1, 3, 2}`
-- `100`：99 不存在，是起点，向右扩展得长度 1
-- `4`：3 存在，跳过
-- `200`：199 不存在，是起点，向右扩展得长度 1
-- `1`：0 不存在，是起点，向右扩展 1→2→3→4，长度 4
-- `3`：2 存在，跳过
-- `2`：1 存在，跳过
-- 最大长度 = 4
+**Example:**
+Using `nums = [100, 4, 200, 1, 3, 2]`:
+- Set: `{100, 4, 200, 1, 3, 2}`
+- `100`: 99 doesn't exist, is starting point, extend right to get length 1
+- `4`: 3 exists, skip
+- `200`: 199 doesn't exist, is starting point, extend right to get length 1
+- `1`: 0 doesn't exist, is starting point, extend 1→2→3→4, length 4
+- `3`: 2 exists, skip
+- `2`: 1 exists, skip
+- Maximum length = 4
 
 ```embed-go
 PATH: "vault://leetcode/0101-0200/0128_longest_consecutive_sequence/solution2.go"
-TITLE: "leetcode 128.最长连续序列"
+TITLE: "leetcode 128. Longest Consecutive Sequence"
 ```

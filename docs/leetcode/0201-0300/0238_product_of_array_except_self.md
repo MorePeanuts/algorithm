@@ -1,117 +1,118 @@
 ---
+link: https://leetcode.com/problems/product-of-array-except-self/
 tags:
-  - 中等
-  - 数组
-  - 前缀和
+  - Medium
+  - Array
+  - Prefix_Sum
 ---
-## 题目描述
-给你一个整数数组 `nums`，返回 数组 `answer` ，其中 `answer[i]` 等于 `nums` 中除了 `nums[i]` 之外其余各元素的乘积 。
+## Description
+Given an integer array `nums`, return *an array* `answer` *such that* `answer[i]` *is equal to the product of all the elements of* `nums` *except* `nums[i]`.
 
-题目数据 **保证** 数组 `nums`之中任意元素的全部前缀元素和后缀的乘积都在  **32 位** 整数范围内。
+The product of any prefix or suffix of `nums` is **guaranteed** to fit in a **32-bit** integer.
 
-请 **不要** 使用除法，且在 `O(n)` 时间复杂度内完成此题。
+You must write an algorithm that runs in `O(n)` time and without using the division operation.
 
-**示例 1:**
-
-```
-输入: nums = [1,2,3,4]
-输出: [24,12,8,6]
-```
-
-**示例 2:**
+**Example 1:**
 
 ```
-输入: nums = [-1,1,0,-3,3]
-输出: [0,0,9,0,0]
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
 ```
 
-**提示：**
+**Example 2:**
 
-- `2 <= nums.length <= 10^5`
+```
+Input: nums = [-1,1,0,-3,3]
+Output: [0,0,9,0,0]
+```
+
+**Constraints:**
+
+- `2 <= nums.length <= 105`
 - `-30 <= nums[i] <= 30`
-- 输入 **保证** 数组 `answer[i]` 在  **32 位** 整数范围内
+- The input is generated such that `answer[i]` is **guaranteed** to fit in a **32-bit** integer.
 
-**进阶：可以在 `O(1)` 的额外空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组不被视为额外空间）**
+**Follow up:** Can you solve the problem in `O(1)` extra space complexity? (The output array **does not** count as extra space for space complexity analysis.)
 
-## 题目解析
+## Solution
 
-### 解法1
+### Approach 1
 
-**前缀积与后缀积数组**：分别预计算每个位置的前缀积和后缀积，相乘得到结果。
+**Prefix and Suffix Product Arrays**: Pre-compute prefix product and suffix product for each position, multiply them to get the result.
 
-**原理：**
-对于位置 i，除自身外的乘积 = 左边所有元素的乘积 × 右边所有元素的乘积。通过预计算前缀积数组和后缀积数组，可以 O(1) 获取任意位置的左右乘积。
+**Principle:**
+For position i, the product excluding itself = product of all elements to the left × product of all elements to the right. By pre-computing prefix product array and suffix product array, we can get the left and right products for any position in O(1).
 
-**步骤：**
-1. 创建 `leftAccProd` 数组存储前缀积，`leftAccProd[i]` = nums[0] × ... × nums[i]
-2. 创建 `rightAccProd` 数组存储后缀积，`rightAccProd[i]` = nums[i] × ... × nums[n-1]
-3. 结果 `res[i]` = `leftAccProd[i-1]` × `rightAccProd[i+1]`，边界特殊处理
+**Steps:**
+1. Create `leftAccProd` array for prefix products, `leftAccProd[i]` = nums[0] × ... × nums[i]
+2. Create `rightAccProd` array for suffix products, `rightAccProd[i]` = nums[i] × ... × nums[n-1]
+3. Result `res[i]` = `leftAccProd[i-1]` × `rightAccProd[i+1]`, handle boundary cases specially
 
-**示例：**
-- 输入：`nums = [1,2,3,4]`
-- 前缀积：`[1, 2, 6, 24]`
-- 后缀积：`[24, 24, 12, 4]`
-- 计算：`res[1] = leftAccProd[0] × rightAccProd[2] = 1 × 12 = 12`
+**Example:**
+- Input: `nums = [1,2,3,4]`
+- Prefix products: `[1, 2, 6, 24]`
+- Suffix products: `[24, 24, 12, 4]`
+- Calculation: `res[1] = leftAccProd[0] × rightAccProd[2] = 1 × 12 = 12`
 
-**复杂度：** 时间 O(n)，空间 O(n)
+**Complexity:** Time O(n), Space O(n)
 
 ```embed-go
 PATH: "vault://leetcode/0201-0300/0238_product_of_array_except_self/solution.go"
-TITLE: "leetcode 238.除自身以外数组的乘积"
+TITLE: "leetcode 238. Product of Array Except Self"
 ```
 
-### 解法2
+### Approach 2
 
-**前缀积数组 + 后缀积变量**：用一个数组存储前缀积，用变量动态计算后缀积，减少空间使用。
+**Prefix Product Array + Suffix Product Variable**: Use one array to store prefix products, use a variable to dynamically compute suffix products, reducing space usage.
 
-**原理：**
-后缀积可以在从右向左遍历时动态累乘计算，无需预存整个数组。
+**Principle:**
+Suffix products can be dynamically accumulated during right-to-left traversal, no need to pre-store the entire array.
 
-**步骤：**
-1. 先正向遍历构建前缀积数组 `accProd`
-2. 用变量 `rightAcc` 从右向左累乘，计算结果 `res[i] = accProd[i-1] × rightAcc`
-3. 边界位置特殊处理
+**Steps:**
+1. First forward traverse to build prefix product array `accProd`
+2. Use variable `rightAcc` to accumulate from right to left, compute result `res[i] = accProd[i-1] × rightAcc`
+3. Handle boundary positions specially
 
-**示例：**
-- 输入：`nums = [1,2,3,4]`
-- 前缀积：`[1, 2, 6, 24]`
-- 从右遍历：i=3 时 `res[3]=accProd[2]=6`，rightAcc=4
-- i=2 时 `res[2]=accProd[1]×4=2×4=8`，rightAcc=12
-- i=1 时 `res[1]=accProd[0]×12=1×12=12`，rightAcc=24
-- 最后 `res[0]=rightAcc=24`
+**Example:**
+- Input: `nums = [1,2,3,4]`
+- Prefix products: `[1, 2, 6, 24]`
+- Right traversal: at i=3, `res[3]=accProd[2]=6`, rightAcc=4
+- At i=2, `res[2]=accProd[1]×4=2×4=8`, rightAcc=12
+- At i=1, `res[1]=accProd[0]×12=1×12=12`, rightAcc=24
+- Finally `res[0]=rightAcc=24`
 
-**复杂度：** 时间 O(n)，空间 O(n)
+**Complexity:** Time O(n), Space O(n)
 
 ```embed-go
 PATH: "vault://leetcode/0201-0300/0238_product_of_array_except_self/solution2.go"
-TITLE: "leetcode 238.除自身以外数组的乘积"
+TITLE: "leetcode 238. Product of Array Except Self"
 ```
 
-### 解法3
+### Approach 3
 
-**原地计算（O(1) 额外空间）**：复用结果数组存储前缀积，再用变量计算后缀积。
+**In-Place Computation (O(1) Extra Space)**: Reuse the result array to store prefix products, then use a variable to compute suffix products.
 
-**原理：**
-将前缀积直接存入结果数组，然后从右向左遍历时，用后缀积变量更新结果数组。
+**Principle:**
+Store prefix products directly in the result array, then traverse from right to left, using a suffix product variable to update the result array.
 
-**步骤：**
-1. 先将前缀积存入 `res` 数组
-2. 用变量 `rightAcc` 从右向左遍历，将 `res[i]` 更新为 `res[i-1] × rightAcc`
-3. 边界位置特殊处理
+**Steps:**
+1. First store prefix products in `res` array
+2. Use variable `rightAcc` to traverse from right to left, update `res[i]` to `res[i-1] × rightAcc`
+3. Handle boundary positions specially
 
-**示例：**
-- 输入：`nums = [1,2,3,4]`
-- 初始化 res 为前缀积：`[1, 2, 6, 24]`
-- 从右遍历更新：
+**Example:**
+- Input: `nums = [1,2,3,4]`
+- Initialize res as prefix products: `[1, 2, 6, 24]`
+- Right traversal update:
   - i=3: `res[3]=res[2]=6`, rightAcc=4
   - i=2: `res[2]=res[1]×4=8`, rightAcc=12
   - i=1: `res[1]=res[0]×12=12`, rightAcc=24
-  - 最后: `res[0]=24`
-- 输出：`[24, 12, 8, 6]`
+  - Finally: `res[0]=24`
+- Output: `[24, 12, 8, 6]`
 
-**复杂度：** 时间 O(n)，空间 O(1)（不计输出数组）
+**Complexity:** Time O(n), Space O(1) (excluding output array)
 
 ```embed-go
 PATH: "vault://leetcode/0201-0300/0238_product_of_array_except_self/solution3.go"
-TITLE: "leetcode 238.除自身以外数组的乘积"
+TITLE: "leetcode 238. Product of Array Except Self"
 ```

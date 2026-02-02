@@ -1,140 +1,122 @@
 ---
+link: https://leetcode.com/problems/maximum-subarray/
 tags:
-  - 中等
-  - 数组
-  - 分治
-  - 动态规划
+  - Medium
+  - Array
+  - Divide_and_Conquer
+  - Dynamic_Programming
 ---
-## 题目描述
-给你一个整数数组 `nums` ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+## Description
+Given an integer array `nums`, find the subarray with the largest sum, and return *its sum*.
 
-**子数组** 是数组中的一个连续部分。
-
-**示例 1：**
+**Example 1:**
 
 ```
-输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
-输出：6
-解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
 ```
 
-**示例 2：**
+**Example 2:**
 
 ```
-输入：nums = [1]
-输出：1
+Input: nums = [1]
+Output: 1
+Explanation: The subarray [1] has the largest sum 1.
 ```
 
-**示例 3：**
+**Example 3:**
 
 ```
-输入：nums = [5,4,-1,7,8]
-输出：23
+Input: nums = [5,4,-1,7,8]
+Output: 23
+Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
 ```
 
-**提示：**
+**Constraints:**
 
-- `1 <= nums.length <= 10^5`
-- `-10^4 <= nums[i] <= 10^4`
+- `1 <= nums.length <= 105`
+- `-104 <= nums[i] <= 104`
 
-**进阶：如果你已经实现复杂度为 `O(n)` 的解法，尝试使用更为精妙的 分治法** 求解。
+**Follow up:** If you have figured out the `O(n)` solution, try coding another solution using the **divide and conquer** approach, which is more subtle.
 
-## 题目解析
+## Solution
 
-### 解法1
+### Approach 1
 
-**动态规划（Kadane算法）**：通过维护当前子数组和，遇到负前缀时重新开始计算。
+**Dynamic Programming (Kadane's Algorithm)**: Maintain the current subarray sum, restart calculation when encountering a negative prefix.
 
-**原理：**
-如果前一个位置的累加和为负数，说明它对当前位置没有增益效果，应该丢弃并从当前位置重新开始累加。
+**Principle:**
+If the cumulative sum at the previous position is negative, it provides no benefit to the current position and should be discarded, restarting accumulation from the current position.
 
-**步骤：**
-1. 初始化 `thisSum = 0`，`maxSum = nums[0]`
-2. 遍历数组，累加当前元素到 `thisSum`
-3. 如果前一位置的累加和 `lastSum < 0`，则从 `thisSum` 中减去（相当于重新开始）
-4. 更新 `maxSum` 为 `thisSum` 和 `maxSum` 的较大值
+**Steps:**
+1. Initialize `thisSum = 0`, `maxSum = nums[0]`
+2. Iterate through the array, accumulate current element to `thisSum`
+3. If the previous cumulative sum `lastSum < 0`, subtract it from `thisSum` (equivalent to restarting)
+4. Update `maxSum` to be the larger of `thisSum` and `maxSum`
 
-**示例：**
-- 输入 `[-2,1,-3,4,-1,2,1,-5,4]`
-- 遍历过程：`-2 → 1（重置）→ -2 → 4（重置）→ 3 → 5 → 6 → 1 → 5`
-- 最大值为 `6`
+**Example:**
+- Input `[-2,1,-3,4,-1,2,1,-5,4]`
+- Traversal process: `-2 → 1 (reset) → -2 → 4 (reset) → 3 → 5 → 6 → 1 → 5`
+- Maximum value is `6`
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0053_maximum_subarray/solution.go"
-TITLE: "leetcode 53.最大子数组和"
+TITLE: "leetcode 53. Maximum Subarray"
 ```
 
-### 解法2
+### Approach 2
 
-**分治法**：将数组分成左右两半，最大子数组要么在左半部分、要么在右半部分、要么跨越中点。
+**Divide and Conquer**: Split the array into left and right halves; the maximum subarray is either in the left half, right half, or crosses the midpoint.
 
-**原理：**
-递归地将问题分解为更小的子问题，然后合并结果。跨越中点的情况需要分别从中点向左和向右扩展求最大和。
+**Principle:**
+Recursively decompose the problem into smaller subproblems, then merge results. The case crossing the midpoint requires extending from the midpoint both left and right to find the maximum sum.
 
-**步骤：**
-1. 递归终止条件：数组长度为1时返回该元素
-2. 将数组从中点分成左右两半
-3. 递归求解左半部分的最大子数组和
-4. 递归求解右半部分的最大子数组和
-5. 从中点向左扩展，求左边界最大和
-6. 从中点向右扩展，求右边界最大和
-7. 返回三者的最大值
-
-**示例：**
-- 输入 `[-2,1,-3,4,-1,2,1,-5,4]`，中点为 `-1`
-- 左半最大：`max([-2,1,-3,4])` = 4
-- 右半最大：`max([2,1,-5,4])` = 4
-- 跨中点：左边界 `4+-3+1+-2=0` 或 `4+-3+1=2` 或 `4+-3=1` 或 `4`，最大为 4；右边界 `-1` 或 `-1+2=1` 或 ... 最大为 3
-- 跨中点最大 = 4 + 3 = 7，但实际最优为从 4 开始的 `[4,-1,2,1]` = 6
+**Steps:**
+1. Base case: when array length is 1, return that element
+2. Split the array at the midpoint into left and right halves
+3. Recursively solve for the maximum subarray sum in the left half
+4. Recursively solve for the maximum subarray sum in the right half
+5. Extend from the midpoint leftward to find the maximum left boundary sum
+6. Extend from the midpoint rightward to find the maximum right boundary sum
+7. Return the maximum of the three values
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0053_maximum_subarray/solution2.go"
-TITLE: "leetcode 53.最大子数组和"
+TITLE: "leetcode 53. Maximum Subarray"
 ```
 
-### 解法3
+### Approach 3
 
-**暴力枚举（优化版）**：枚举所有子数组的起点和终点，利用前缀和思想累加求和。
+**Brute Force (Optimized)**: Enumerate all subarray start and end points, using prefix sum concept for cumulative summation.
 
-**原理：**
-固定起点 i，从 i 开始逐个扩展终点 j，每次只需加上新增的元素 `nums[j]` 即可得到子数组 `[i,j]` 的和。
+**Principle:**
+Fix starting point i, extend ending point j from i, each time only adding the new element `nums[j]` to get the sum of subarray `[i,j]`.
 
-**步骤：**
-1. 外层循环枚举起点 i
-2. 内层循环枚举终点 j，累加 `nums[j]` 到 `thisSum`
-3. 每次累加后更新 `maxSum`
-
-**示例：**
-- 输入 `[1,-2,3]`
-- i=0: `[1]=1`, `[1,-2]=-1`, `[1,-2,3]=2`
-- i=1: `[-2]=-2`, `[-2,3]=1`
-- i=2: `[3]=3`
-- 最大值为 `3`
+**Steps:**
+1. Outer loop enumerates starting point i
+2. Inner loop enumerates ending point j, accumulating `nums[j]` to `thisSum`
+3. Update `maxSum` after each accumulation
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0053_maximum_subarray/solution3.go"
-TITLE: "leetcode 53.最大子数组和"
+TITLE: "leetcode 53. Maximum Subarray"
 ```
 
-### 解法4
+### Approach 4
 
-**暴力枚举（朴素版）**：枚举所有子数组，每次独立计算子数组的和。
+**Brute Force (Naive)**: Enumerate all subarrays, independently calculate the sum of each subarray.
 
-**原理：**
-三重循环：外两层枚举子数组的起点 i 和终点 j，内层循环计算 `[i,j]` 区间的元素和。
+**Principle:**
+Triple loop: outer two loops enumerate subarray start i and end j, inner loop calculates the element sum from i to j.
 
-**步骤：**
-1. 外层循环枚举起点 i
-2. 中层循环枚举终点 j
-3. 内层循环从 i 到 j 累加求和
-4. 每次求和后更新 `maxSum`
-
-**示例：**
-- 输入 `[1,-2,3]`
-- 枚举所有 `(i,j)` 组合，每次从头计算和
-- 相比解法3，内层循环重复计算了公共前缀
+**Steps:**
+1. Outer loop enumerates starting point i
+2. Middle loop enumerates ending point j
+3. Inner loop accumulates sum from i to j
+4. Update `maxSum` after each sum calculation
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0053_maximum_subarray/solution4.go"
-TITLE: "leetcode 53.最大子数组和"
+TITLE: "leetcode 53. Maximum Subarray"
 ```

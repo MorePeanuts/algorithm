@@ -1,48 +1,50 @@
 ---
+link: https://leetcode.com/problems/valid-anagram/
 tags:
-  - 简单
-  - 哈希表
-  - 排序
-  - 字符串
+  - Easy
+  - Hash_Table
+  - String
+  - Sorting
 ---
-## 题目描述
-给定两个字符串 `s` 和 `t` ，编写一个函数来判断 `t` 是否是 `s` 的 **字母异位词**。
+## Description
+Given two strings `s` and `t`, return `true` if `t` is an anagram of `s`, and `false` otherwise.
 
-> 字母异位词是通过重新排列不同单词或短语的字母而形成的单词或短语，并使用所有原字母一次。
---- 
+**Example 1:**
 
-示例 1:
-- 输入: `s = "anagram", t = "nagaram"`
-- 输出: `true`
+**Input:** s = "anagram", t = "nagaram"
 
-示例 2:
-- 输入: `s = "rat", t = "car"`
-- 输出: `false`
+**Output:** true
 
----
-提示:
-- `1 <= s.length, t.length <= 5 * 10^4`
-- `s` 和 `t` 仅包含小写字母
----
-进阶: 如果输入字符串包含 unicode 字符怎么办？你能否调整你的解法来应对这种情况？
+**Example 2:**
 
-## 题目解析
+**Input:** s = "rat", t = "car"
 
-### 解法1
+**Output:** false
 
-**哈希表计数法**：使用哈希表统计字符频率，通过增减计数判断两字符串是否为异位词。
+**Constraints:**
 
-**原理：**
-字母异位词的本质是两个字符串包含相同的字符且每个字符出现次数相同。通过哈希表记录第一个字符串中各字符的出现次数，然后遍历第二个字符串进行递减，若任何字符计数变为负数则说明不是异位词。
+- `1 <= s.length, t.length <= 5 * 104`
+- `s` and `t` consist of lowercase English letters.
 
-**步骤：**
-1. 首先比较两字符串长度，长度不等则直接返回 `false`
-2. 创建哈希表 `count`，遍历字符串 `s`，统计每个字符出现次数
-3. 遍历字符串 `t`，对每个字符在哈希表中递减计数
-4. 若某字符计数变为负数，说明 `t` 中该字符出现次数超过 `s`，返回 `false`
-5. 遍历完成后返回 `true`
+**Follow up:** What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
+
+## Solution
+
+### Approach 1
+
+**Hash Table Counting Method**: Use a hash table to count character frequencies, determine if two strings are anagrams by incrementing and decrementing counts.
+
+**Principle:**
+The essence of anagrams is that two strings contain the same characters with the same occurrence count for each. Use a hash table to record the occurrence count of each character in the first string, then iterate through the second string to decrement counts. If any character count becomes negative, they are not anagrams.
+
+**Steps:**
+1. First compare the lengths of both strings; if unequal, return `false` directly
+2. Create hash table `count`, traverse string `s`, count each character's occurrences
+3. Traverse string `t`, decrement the count for each character in the hash table
+4. If any character count becomes negative, `t` has more of that character than `s`, return `false`
+5. Return `true` after traversal completes
 
 ```embed-go
 PATH: "vault://leetcode/0201-0300/0242_valid_anagram/solution.go"
-TITLE: "leetcode 242.有效的字母异位词"
+TITLE: "leetcode 242. Valid Anagram"
 ```

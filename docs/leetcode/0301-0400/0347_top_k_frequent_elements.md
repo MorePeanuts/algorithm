@@ -1,65 +1,68 @@
 ---
+link: https://leetcode.com/problems/top-k-frequent-elements/
 tags:
-  - 中等
-  - 数组
-  - 哈希表
-  - 分治
-  - 桶排序
-  - 计数
-  - 快速选择
-  - 排序
-  - 堆（优先队列）
+  - Medium
+  - Array
+  - Hash_Table
+  - Divide_and_Conquer
+  - Bucket_Sort
+  - Counting
+  - Quickselect
+  - Sorting
+  - Heap_(Priority_Queue)
 ---
-## 题目描述
-给你一个整数数组 `nums` 和一个整数 `k` ，请你返回其中出现频率前 `k` 高的元素。你可以按 **任意顺序** 返回答案。
+## Description
+Given an integer array `nums` and an integer `k`, return *the* `k` *most frequent elements*. You may return the answer in **any order**.
 
-**示例 1：**
-```
-输入：nums = [1,1,1,2,2,3], k = 2
-输出：[1,2]
-```
+**Example 1:**
 
-**示例 2：**
-```
-输入：nums = [1], k = 1
-输出：[1]
-```
+**Input:** nums = [1,1,1,2,2,3], k = 2
 
-**示例 3：**
-```
-输入：nums = [1,2,1,2,1,2,3,1,3,2], k = 2
-输出：[1,2]
-```
+**Output:** [1,2]
 
-**提示：**
+**Example 2:**
 
-- `1 <= nums.length <= 10^5`
-- `-10^4 <= nums[i] <= 10^4`
-- `k` 的取值范围是 `[1, 数组中不相同的元素的个数]`
-- 题目数据保证答案唯一，换句话说，数组中前 `k` 个高频元素的集合是唯一的
+**Input:** nums = [1], k = 1
 
-进阶：你所设计算法的时间复杂度 **必须** 优于 `O(n log n)` ，其中 `n`是数组大小。
+**Output:** [1]
 
-## 题目解析
-### 解法1
-**哈希表 + 大顶堆**：先统计元素频率，再用堆取出频率最高的 k 个元素。
+**Example 3:**
 
-**原理：**
-利用哈希表 O(n) 统计每个元素的出现次数，然后构建一个按频率排序的大顶堆，依次弹出堆顶 k 次即可得到前 k 个高频元素。
+**Input:** nums = [1,2,1,2,1,2,3,1,3,2], k = 2
 
-**步骤：**
-1. 遍历数组，用哈希表 `freq` 统计每个元素的出现频率
-2. 将 `(元素, 频率)` 对转换为切片
-3. 基于该切片构建大顶堆（按频率降序）
-4. 从堆中弹出 k 个元素，收集其值作为结果
+**Output:** [1,2]
 
-**示例：**
-- 输入：`nums = [1,1,1,2,2,3], k = 2`
-- 频率统计：`{1: 3, 2: 2, 3: 1}`
-- 构建堆后弹出顺序：`(1,3) → (2,2)`
-- 输出：`[1, 2]`
+**Constraints:**
+
+- `1 <= nums.length <= 105`
+- `-104 <= nums[i] <= 104`
+- `k` is in the range `[1, the number of unique elements in the array]`.
+- It is **guaranteed** that the answer is **unique**.
+
+**Follow up:** Your algorithm's time complexity must be better than `O(n log n)`, where n is the array's size.
+
+## Solution
+
+### Approach 1
+
+**Hash Table + Max Heap**: First count element frequencies, then use a heap to extract the k elements with highest frequencies.
+
+**Principle:**
+Use a hash table to count each element's occurrences in O(n), then build a max heap sorted by frequency. Pop the heap top k times to get the k most frequent elements.
+
+**Steps:**
+1. Traverse the array, use hash table `freq` to count each element's occurrence frequency
+2. Convert `(element, frequency)` pairs to a slice
+3. Build a max heap based on this slice (sorted by frequency in descending order)
+4. Pop k elements from the heap, collect their values as the result
+
+**Example:**
+- Input: `nums = [1,1,1,2,2,3], k = 2`
+- Frequency count: `{1: 3, 2: 2, 3: 1}`
+- Heap pop order: `(1,3) → (2,2)`
+- Output: `[1, 2]`
 
 ```embed-go
 PATH: "vault://leetcode/0301-0400/0347_top_k_frequent_elements/solution.go"
-TITLE: "leetcode 347.前 K 个高频元素"
+TITLE: "leetcode 347. Top K Frequent Elements"
 ```

@@ -1,29 +1,29 @@
 ---
+link: https://leetcode.com/problems/valid-sudoku/
 tags:
-  - 中等
-  - 数组
-  - 哈希表
-  - 矩阵
+  - Medium
+  - Array
+  - Hash_Table
+  - Matrix
 ---
-## 题目描述
-请你判断一个 `9 x 9` 的数独是否有效。只需要 **根据以下规则** ，验证已经填入的数字是否有效即可。
+## Description
+Determine if a `9 x 9` Sudoku board is valid. Only the filled cells need to be validated **according to the following rules**:
 
-1. 数字 `1-9` 在每一行只能出现一次。
-2. 数字 `1-9` 在每一列只能出现一次。
-3. 数字 `1-9` 在每一个以粗实线分隔的 `3x3` 宫内只能出现一次。（请参考示例图）
+1. Each row must contain the digits `1-9` without repetition.
+2. Each column must contain the digits `1-9` without repetition.
+3. Each of the nine `3 x 3` sub-boxes of the grid must contain the digits `1-9` without repetition.
 
-**注意：**
+**Note:**
 
-- 一个有效的数独（部分已被填充）不一定是可解的。
-- 只需要根据以上规则，验证已经填入的数字是否有效即可。
-- 空白格用 `'.'` 表示。
+- A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+- Only the filled cells need to be validated according to the mentioned rules.
 
-**示例 1：**
+**Example 1:**
 
-![](https://assets.leetcode.cn/aliyun-lc-upload/uploads/2021/04/12/250px-sudoku-by-l2g-20050714svg.png)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png)
 
 ```
-输入：board = 
+Input: board = 
 [["5","3",".",".","7",".",".",".","."]
 ,["6",".",".","1","9","5",".",".","."]
 ,[".","9","8",".",".",".",".","6","."]
@@ -33,13 +33,13 @@ tags:
 ,[".","6",".",".",".",".","2","8","."]
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]
-输出：true
+Output: true
 ```
 
-**示例 2：**
+**Example 2:**
 
 ```
-输入：board = 
+Input: board = 
 [["8","3",".",".","7",".",".",".","."]
 ,["6",".",".","1","9","5",".",".","."]
 ,[".","9","8",".",".",".",".","6","."]
@@ -49,65 +49,65 @@ tags:
 ,[".","6",".",".",".",".","2","8","."]
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]
-输出：false
-解释：除了第一行的第一个数字从 5 改为 8 以外，空格内其他数字均与 示例1 相同。 但由于位于左上角的 3x3 宫内有两个 8 存在, 因此这个数独是无效的。
+Output: false
+Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
 ```
 
-**提示：**
+**Constraints:**
 
 - `board.length == 9`
 - `board[i].length == 9`
-- `board[i][j]` 是一位数字（`1-9`）或者 `'.'`
+- `board[i][j]` is a digit `1-9` or `'.'`.
 
-## 题目解析
+## Solution
 
-### 解法1
+### Approach 1
 
-**哈希表法**：使用哈希表分别记录每行、每列、每个 3x3 宫格中出现过的数字
+**Hash Table Method**: Use hash tables to record digits that have appeared in each row, column, and 3x3 sub-box.
 
-**原理：**
-通过一次遍历同时检查行、列和 3x3 宫格的有效性。利用外层循环变量 `i` 控制检查第 `i` 行、第 `i` 列和第 `i` 个宫格，内层循环变量 `j` 遍历该行/列/宫格中的 9 个位置。
+**Principle:**
+Check the validity of rows, columns, and 3x3 sub-boxes in a single traversal. The outer loop variable `i` controls checking the i-th row, i-th column, and i-th sub-box, while the inner loop variable `j` iterates through 9 positions in that row/column/sub-box.
 
-**步骤：**
-1. 创建三个哈希表 `row`、`col`、`squ` 分别记录当前行、列、宫格出现的数字
-2. 外层循环 `i` 从 0 到 8，表示第 `i` 行、第 `i` 列、第 `i` 个宫格
-3. 内层循环 `j` 从 0 到 8：
-   - 检查 `board[i][j]`（第 `i` 行第 `j` 个）是否在 `row` 中重复
-   - 检查 `board[j][i]`（第 `i` 列第 `j` 个）是否在 `col` 中重复
-   - 检查 `board[j/3+3*(i/3)][j%3+3*(i%3)]`（第 `i` 个宫格第 `j` 个）是否在 `squ` 中重复
-4. 每完成一轮外层循环，清空三个哈希表
+**Steps:**
+1. Create three hash tables `row`, `col`, `squ` to record digits in the current row, column, and sub-box
+2. Outer loop `i` from 0 to 8, representing the i-th row, i-th column, and i-th sub-box
+3. Inner loop `j` from 0 to 8:
+   - Check if `board[i][j]` (j-th element in row i) is duplicate in `row`
+   - Check if `board[j][i]` (j-th element in column i) is duplicate in `col`
+   - Check if `board[j/3+3*(i/3)][j%3+3*(i%3)]` (j-th element in sub-box i) is duplicate in `squ`
+4. Clear all three hash tables after each outer loop iteration
 
-**示例：**
-- 当 `i=0` 时：检查第 0 行、第 0 列、左上角 3x3 宫格
-- 宫格索引映射：`i=4` 对应中心宫格，`j` 遍历该宫格内 9 个位置
+**Example:**
+- When `i=0`: check row 0, column 0, and top-left 3x3 sub-box
+- Sub-box index mapping: `i=4` corresponds to center sub-box, `j` iterates through 9 positions
   - `j=0` → `board[1][3]`, `j=4` → `board[2][4]`, `j=8` → `board[3][5]`
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0036_valid_sudoku/solution.go"
-TITLE: "leetcode 36.有效的数独"
+TITLE: "leetcode 36. Valid Sudoku"
 ```
 
-### 解法2
+### Approach 2
 
-**位运算法**：使用整数的位来标记数字是否出现，替代哈希表
+**Bit Manipulation Method**: Use integer bits to mark whether a digit has appeared, replacing hash tables.
 
-**原理：**
-用一个整数的不同位表示数字 1-9 是否出现。例如第 1 位表示数字 1，第 2 位表示数字 2，以此类推。通过位运算 `&` 检查和 `|` 设置来判断和记录数字出现情况。
+**Principle:**
+Use different bits of an integer to represent whether digits 1-9 have appeared. For example, bit 1 represents digit 1, bit 2 represents digit 2, and so on. Use bitwise AND `&` to check and bitwise OR `|` to set the occurrence of digits.
 
-**步骤：**
-1. 使用三个整数 `row`、`col`、`squ` 作为位图
-2. 对于数字 `d`，用 `1 << (d - '.')` 计算对应的位掩码
-3. 检查重复：`row & (1 << (d - '.'))` 非零表示该数字已出现
-4. 记录出现：`row |= (1 << (d - '.'))` 将对应位设为 1
-5. 每轮外层循环结束后，将三个整数重置为 0
+**Steps:**
+1. Use three integers `row`, `col`, `squ` as bitmaps
+2. For digit `d`, calculate the corresponding bitmask using `1 << (d - '.')`
+3. Check duplicate: `row & (1 << (d - '.'))` non-zero means the digit has appeared
+4. Record occurrence: `row |= (1 << (d - '.'))` sets the corresponding bit to 1
+5. Reset all three integers to 0 after each outer loop iteration
 
-**示例：**
-- 数字 `'5'` 对应位掩码 `1 << ('5' - '.')` = `1 << 7` = `128`
-- 若 `row = 0b10000000`，再遇到 `'5'` 时，`row & 128 = 128 ≠ 0`，检测到重复
+**Example:**
+- Digit `'5'` corresponds to bitmask `1 << ('5' - '.')` = `1 << 7` = `128`
+- If `row = 0b10000000`, encountering `'5'` again gives `row & 128 = 128 ≠ 0`, duplicate detected
 
-> **注意**：这里用 `'.'` 作为基准计算偏移，`'.'` 的 ASCII 值为 46，`'1'` 为 49，所以数字 1-9 对应位 3-11。
+> **Note**: Using `'.'` as the base for offset calculation, `'.'` has ASCII value 46, `'1'` is 49, so digits 1-9 correspond to bits 3-11.
 
 ```embed-go
 PATH: "vault://leetcode/0001-0100/0036_valid_sudoku/solution2.go"
-TITLE: "leetcode 36.有效的数独"
+TITLE: "leetcode 36. Valid Sudoku"
 ```

@@ -1,50 +1,63 @@
 ---
+link: https://leetcode.com/problems/contains-duplicate/
 tags:
-  - 简单
-  - 数组
-  - 哈希表
-  - 排序
+  - Easy
+  - Array
+  - Hash_Table
+  - Sorting
 ---
-## 题目描述
-给你一个整数数组 `nums` 。如果任一值在数组中出现 **至少两次** ，返回 `true` ；如果数组中每个元素互不相同，返回 `false` 。
- 
----
-示例 1：
-- 输入：`nums = [1,2,3,1]`
-- 输出：`true`
-- 解释：元素 `1` 在下标 `0` 和 `3` 出现。
+## Description
+Given an integer array `nums`, return `true` if any value appears **at least twice** in the array, and return `false` if every element is distinct.
 
-示例 2：
-- 输入：`nums = [1,2,3,4]`
-- 输出：`false`
-- 解释：所有元素都不同。
+**Example 1:**
 
-示例 3：
-- 输入：`nums = [1,1,1,3,3,4,3,2,4,2]`
-- 输出：true
----
-提示：
-- `1 <= nums.length <= 10^5`
-- `-10^9 <= nums[i] <= 10^9`
+**Input:** nums = [1,2,3,1]
 
-## 题目解析
+**Output:** true
 
-### 解法1
+**Explanation:**
 
-**哈希集合法**：利用哈希集合记录已遍历元素，遇到重复时立即返回。
+The element 1 occurs at the indices 0 and 3.
 
-**原理：**
-遍历数组时，将每个元素存入哈希集合。在存入之前检查该元素是否已存在于集合中，若存在则说明有重复元素。
+**Example 2:**
 
-**步骤：**
-1. 创建一个空的哈希集合
-2. 遍历数组中的每个元素
-3. 检查当前元素是否已在集合中存在
-4. 若存在，直接返回 `true`
-5. 若不存在，将当前元素加入集合
-6. 遍历结束后返回 `false`
+**Input:** nums = [1,2,3,4]
+
+**Output:** false
+
+**Explanation:**
+
+All elements are distinct.
+
+**Example 3:**
+
+**Input:** nums = [1,1,1,3,3,4,3,2,4,2]
+
+**Output:** true
+
+**Constraints:**
+
+- `1 <= nums.length <= 105`
+- `-109 <= nums[i] <= 109`
+
+## Solution
+
+### Approach 1
+
+**Hash Set Method**: Use a hash set to record traversed elements, return immediately when a duplicate is encountered.
+
+**Principle:**
+While traversing the array, store each element in a hash set. Before storing, check if the element already exists in the set. If it does, there's a duplicate element.
+
+**Steps:**
+1. Create an empty hash set
+2. Iterate through each element in the array
+3. Check if the current element already exists in the set
+4. If exists, return `true` directly
+5. If not, add the current element to the set
+6. Return `false` after traversal completes
 
 ```embed-go
 PATH: "vault://leetcode/0201-0300/0217_contains_duplicate/solution.go"
-TITLE: "leetcode 217.Contains Duplicate"
+TITLE: "leetcode 217. Contains Duplicate"
 ```
