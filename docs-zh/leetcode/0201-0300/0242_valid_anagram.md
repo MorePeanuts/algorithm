@@ -1,4 +1,5 @@
 ---
+link: https://leetcode.cn/problems/valid-anagram/
 tags:
   - 简单
   - 哈希表

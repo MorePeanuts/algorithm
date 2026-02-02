@@ -1,4 +1,5 @@
 ---
+link: https://leetcode.cn/problems/longest-consecutive-sequence/
 tags:
   - 中等
   - 并查集

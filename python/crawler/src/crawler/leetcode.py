@@ -92,41 +92,54 @@ def fetch_problem(slug: str, site: str) -> dict:
     return question
 
 
-def normalize_problem(problem: dict, use_chinese: bool = False) -> dict:
+def normalize_problem(problem: dict, lang: str = "zh") -> dict:
     """Normalize problem data to a common format.
 
     Args:
         problem: Raw problem data from API
-        use_chinese: Whether to prefer Chinese content
+        lang: Language code ("zh" for Chinese, "en" for English)
 
     Returns:
         Normalized problem dictionary with keys:
         - id: Problem ID (int)
         - title: Problem title
         - slug: URL slug
-        - difficulty: Difficulty in Chinese
+        - difficulty: Difficulty level
         - tags: List of tag names
         - content: Problem content (HTML)
+        - lang: Language code
     """
     difficulty = problem["difficulty"]
-    difficulty_cn = DIFFICULTY_MAP.get(difficulty, difficulty)
+    use_chinese = lang == "zh"
+
+    if use_chinese:
+        difficulty_display = DIFFICULTY_MAP.get(difficulty, difficulty)
+    else:
+        difficulty_display = difficulty
 
     tags = []
     for tag in problem["topicTags"]:
-        tag_name = tag.get("translatedName") or tag.get("name")
+        if use_chinese:
+            tag_name = tag.get("translatedName") or tag.get("name")
+        else:
+            tag_name = tag.get("name")
         if tag_name:
             tags.append(tag_name)
 
-    content = problem.get("translatedContent") if use_chinese else None
-    if not content:
+    if use_chinese:
+        content = problem.get("translatedContent") or problem["content"]
+        title = problem.get("translatedTitle") or problem["title"]
+    else:
         content = problem["content"]
+        title = problem["title"]
 
     return {
         "id": int(problem["questionFrontendId"]),
-        "title": problem.get("translatedTitle") or problem["title"],
+        "title": title,
         "title_en": problem["title"],
         "slug": problem["titleSlug"],
-        "difficulty": difficulty_cn,
+        "difficulty": difficulty_display,
         "tags": tags,
         "content": content,
+        "lang": lang,
     }

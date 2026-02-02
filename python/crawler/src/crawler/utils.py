@@ -39,23 +39,51 @@ def generate_markdown(problem: dict) -> str:
 
     Args:
         problem: Normalized problem dictionary with keys:
-            - id, title, slug, difficulty, tags, content
+            - id, title, slug, difficulty, tags, content, lang
 
     Returns:
         Markdown content string
     """
+    lang = problem.get("lang", "zh")
+    slug = problem["slug"]
+
+    # Generate link based on language
+    if lang == "zh":
+        link = f"https://leetcode.cn/problems/{slug}/"
+    else:
+        link = f"https://leetcode.com/problems/{slug}/"
+
     tags = [problem["difficulty"]] + problem["tags"]
     tags_yaml = "\n".join(f"  - {tag}" for tag in tags)
-    frontmatter = f"---\ntags:\n{tags_yaml}\n---"
+    frontmatter = f"---\nlink: {link}\ntags:\n{tags_yaml}\n---"
 
     content_md = html_to_markdown(problem["content"])
 
+    if lang == "zh":
+        desc_header = "## 题目描述"
+        analysis_header = "## 题目解析"
+    else:
+        desc_header = "## Description"
+        analysis_header = "## Solution"
+
     return f"""{frontmatter}
-## 题目描述
+{desc_header}
 {content_md}
 
-## 题目解析
+{analysis_header}
 """
+
+
+def get_analysis_marker(lang: str) -> str:
+    """Get the analysis section marker for a language.
+
+    Args:
+        lang: Language code ("zh" or "en")
+
+    Returns:
+        Analysis section header string
+    """
+    return "## 题目解析" if lang == "zh" else "## Solution"
 
 
 def generate_go_template(problem: dict) -> str:
@@ -77,12 +105,13 @@ package leetcode{problem_id:04d}
 """
 
 
-def merge_existing_content(new_content: str, existing_path: Path) -> str:
+def merge_existing_content(new_content: str, existing_path: Path, lang: str = "zh") -> str:
     """Merge new content with existing file, preserving user analysis section.
 
     Args:
         new_content: New generated content
         existing_path: Path to existing file
+        lang: Language code ("zh" or "en")
 
     Returns:
         Merged content string
@@ -92,7 +121,7 @@ def merge_existing_content(new_content: str, existing_path: Path) -> str:
 
     existing = existing_path.read_text(encoding="utf-8")
 
-    analysis_marker = "## 题目解析"
+    analysis_marker = get_analysis_marker(lang)
     if analysis_marker in existing:
         analysis_start = existing.index(analysis_marker)
         existing_analysis = existing[analysis_start:]

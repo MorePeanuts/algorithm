@@ -1,4 +1,5 @@
 ---
+link: https://leetcode.cn/problems/valid-sudoku/
 tags:
   - 中等
   - 数组

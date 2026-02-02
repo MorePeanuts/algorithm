@@ -1,4 +1,5 @@
 ---
+link: https://leetcode.cn/problems/contains-duplicate/
 tags:
   - 简单
   - 数组

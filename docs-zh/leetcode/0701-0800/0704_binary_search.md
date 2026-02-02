@@ -1,4 +1,5 @@
 ---
+link: https://leetcode.cn/problems/binary-search/
 tags:
   - 简单
   - 数组
