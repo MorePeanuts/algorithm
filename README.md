@@ -44,14 +44,26 @@ Currently, this repository contains solutions to **12** LeetCode problems, cover
 The pie chart below shows the distribution of problems by difficulty level, while the bar chart highlights the top 10 most frequently encountered tags. The majority of problems fall into the **Medium** category, with a focus on fundamental topics like Array, Hash Table, Sorting.
 
 <p align="center">
-  <img src="./assets/difficulty_distribution.png" alt="Difficulty Distribution" width="380">
-  <img src="./assets/top_tags.png" alt="Top 10 Tags" width="420">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/difficulty_distribution_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/difficulty_distribution_light.png">
+    <img src="./assets/stats/difficulty_distribution_light.png" alt="Difficulty Distribution" width="380">
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/top_tags_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/top_tags_light.png">
+    <img src="./assets/stats/top_tags_light.png" alt="Top 10 Tags" width="420">
+  </picture>
 </p>
 
 The word cloud below provides a visual overview of all tags covered in this repository, with larger words indicating more frequently practiced topics.
 
 <p align="center">
-  <img src="./assets/tag_cloud.png" alt="Tag Cloud" width="700">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/tag_cloud_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/tag_cloud_light.png">
+    <img src="./assets/stats/tag_cloud_light.png" alt="Tag Cloud" width="700">
+  </picture>
 </p>
 
 <!-- STATS_END -->

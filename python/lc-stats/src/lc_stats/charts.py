@@ -16,6 +16,22 @@ DIFFICULTY_COLORS = {
     "Hard": "#ff375f",  # Red
 }
 
+# Theme configurations
+THEMES = {
+    "light": {
+        "text_color": "#1f2328",
+        "axis_color": "#1f2328",
+        "grid_color": "#d0d7de",
+        "spine_color": "#d0d7de",
+    },
+    "dark": {
+        "text_color": "#e6edf3",
+        "axis_color": "#e6edf3",
+        "grid_color": "#3d444d",
+        "spine_color": "#3d444d",
+    },
+}
+
 
 def get_chinese_font_path() -> str | None:
     """Get a system font path that supports Chinese characters.
@@ -58,12 +74,13 @@ def setup_chinese_font() -> None:
         plt.rcParams["font.family"] = prop.get_name()
 
 
-def generate_pie_chart(stats: Statistics, output_path: Path) -> None:
+def generate_pie_chart(stats: Statistics, output_path: Path, theme: str = "light") -> None:
     """Generate a pie chart for difficulty distribution.
 
     Args:
         stats: Statistics instance
         output_path: Path to save the chart image
+        theme: Color theme ("light" or "dark")
     """
     # Filter out zero counts
     labels = []
@@ -81,6 +98,7 @@ def generate_pie_chart(stats: Statistics, output_path: Path) -> None:
         return
 
     setup_chinese_font()
+    theme_config = THEMES[theme]
 
     # Create figure with transparent background
     fig, ax = plt.subplots(figsize=(5, 5), facecolor="none")
@@ -92,7 +110,7 @@ def generate_pie_chart(stats: Statistics, output_path: Path) -> None:
         colors=colors,
         autopct="%1.1f%%",
         startangle=90,
-        textprops={"fontsize": 11},
+        textprops={"fontsize": 11, "color": theme_config["text_color"]},
     )
 
     # Style the percentage text
@@ -100,7 +118,12 @@ def generate_pie_chart(stats: Statistics, output_path: Path) -> None:
         autotext.set_color("white")
         autotext.set_fontweight("bold")
 
-    ax.set_title(f"Difficulty Distribution", fontsize=13, pad=15)
+    ax.set_title(
+        "Difficulty Distribution",
+        fontsize=13,
+        pad=15,
+        color=theme_config["text_color"],
+    )
 
     # Save with tight layout
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -108,18 +131,22 @@ def generate_pie_chart(stats: Statistics, output_path: Path) -> None:
     plt.close()
 
 
-def generate_bar_chart(stats: Statistics, output_path: Path, top_n: int = 10) -> None:
+def generate_bar_chart(
+    stats: Statistics, output_path: Path, top_n: int = 10, theme: str = "light"
+) -> None:
     """Generate a horizontal bar chart for top N tags.
 
     Args:
         stats: Statistics instance
         output_path: Path to save the chart image
         top_n: Number of top tags to show
+        theme: Color theme ("light" or "dark")
     """
     if not stats.tag_counts:
         return
 
     setup_chinese_font()
+    theme_config = THEMES[theme]
 
     # Get top N tags sorted by count
     sorted_tags = sorted(stats.tag_counts.items(), key=lambda x: x[1], reverse=True)[:top_n]
@@ -146,12 +173,19 @@ def generate_bar_chart(stats: Statistics, output_path: Path, top_n: int = 10) ->
             str(count),
             va="center",
             fontsize=10,
+            color=theme_config["text_color"],
         )
 
-    ax.set_xlabel("Count", fontsize=11)
-    ax.set_title(f"Top {len(tags)} Tags", fontsize=13, pad=15)
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
+    # Style axis
+    ax.set_xlabel("Count", fontsize=11, color=theme_config["text_color"])
+    ax.set_title(f"Top {len(tags)} Tags", fontsize=13, pad=15, color=theme_config["text_color"])
+    ax.tick_params(axis="both", colors=theme_config["axis_color"])
+
+    # Style spines
+    for spine in ["top", "right"]:
+        ax.spines[spine].set_visible(False)
+    for spine in ["bottom", "left"]:
+        ax.spines[spine].set_color(theme_config["spine_color"])
 
     # Save with tight layout
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -159,17 +193,21 @@ def generate_bar_chart(stats: Statistics, output_path: Path, top_n: int = 10) ->
     plt.close()
 
 
-def generate_word_cloud(stats: Statistics, output_path: Path) -> None:
+def generate_word_cloud(stats: Statistics, output_path: Path, theme: str = "light") -> None:
     """Generate a word cloud for tag distribution.
 
     Args:
         stats: Statistics instance
         output_path: Path to save the word cloud image
+        theme: Color theme ("light" or "dark")
     """
     if not stats.tag_counts:
         return
 
     font_path = get_chinese_font_path()
+
+    # Use different colormap for different themes
+    colormap = "viridis" if theme == "light" else "plasma"
 
     # Create word cloud
     wc = WordCloud(
@@ -181,7 +219,7 @@ def generate_word_cloud(stats: Statistics, output_path: Path) -> None:
         max_words=100,
         min_font_size=12,
         max_font_size=80,
-        colormap="viridis",
+        colormap=colormap,
         prefer_horizontal=0.7,
     )
 
@@ -204,16 +242,23 @@ def generate_all_charts(stats: Statistics, assets_dir: Path) -> dict[str, Path]:
     """
     outputs = {}
 
-    pie_path = assets_dir / "difficulty_distribution.png"
-    generate_pie_chart(stats, pie_path)
-    outputs["pie"] = pie_path
+    # Generate charts for both themes in stats subdirectory
+    stats_dir = assets_dir / "stats"
+    stats_dir.mkdir(parents=True, exist_ok=True)
 
-    bar_path = assets_dir / "top_tags.png"
-    generate_bar_chart(stats, bar_path)
-    outputs["bar"] = bar_path
+    for theme in ["light", "dark"]:
+        suffix = f"_{theme}"
 
-    cloud_path = assets_dir / "tag_cloud.png"
-    generate_word_cloud(stats, cloud_path)
-    outputs["cloud"] = cloud_path
+        pie_path = stats_dir / f"difficulty_distribution{suffix}.png"
+        generate_pie_chart(stats, pie_path, theme=theme)
+        outputs[f"pie_{theme}"] = pie_path
+
+        bar_path = stats_dir / f"top_tags{suffix}.png"
+        generate_bar_chart(stats, bar_path, theme=theme)
+        outputs[f"bar_{theme}"] = bar_path
+
+        cloud_path = stats_dir / f"tag_cloud{suffix}.png"
+        generate_word_cloud(stats, cloud_path, theme=theme)
+        outputs[f"cloud_{theme}"] = cloud_path
 
     return outputs

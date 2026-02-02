@@ -41,14 +41,26 @@
 下方饼图展示了题目的难度分布，条形图则列出了出现频率最高的 10 个标签。可以看到，大部分题目集中在**中等**难度，重点练习了数组、哈希表、排序等基础主题。
 
 <p align="center">
-  <img src="./assets/difficulty_distribution.png" alt="难度分布" width="380">
-  <img src="./assets/top_tags.png" alt="Top 10 标签" width="420">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/difficulty_distribution_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/difficulty_distribution_light.png">
+    <img src="./assets/stats/difficulty_distribution_light.png" alt="难度分布" width="380">
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/top_tags_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/top_tags_light.png">
+    <img src="./assets/stats/top_tags_light.png" alt="Top 10 标签" width="420">
+  </picture>
 </p>
 
 下方词云图直观呈现了本仓库涉及的所有标签，字体越大表示该主题的练习频率越高。
 
 <p align="center">
-  <img src="./assets/tag_cloud.png" alt="标签云" width="700">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/stats/tag_cloud_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/stats/tag_cloud_light.png">
+    <img src="./assets/stats/tag_cloud_light.png" alt="标签云" width="700">
+  </picture>
 </p>
 
 <!-- STATS_END -->
