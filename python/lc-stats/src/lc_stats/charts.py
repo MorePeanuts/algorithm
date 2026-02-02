@@ -4,6 +4,7 @@ import platform
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 from wordcloud import WordCloud
 
 from .stats import Statistics
@@ -48,6 +49,15 @@ def get_chinese_font_path() -> str | None:
     return None
 
 
+def setup_chinese_font() -> None:
+    """Setup matplotlib to use Chinese font."""
+    font_path = get_chinese_font_path()
+    if font_path:
+        font_manager.fontManager.addfont(font_path)
+        prop = font_manager.FontProperties(fname=font_path)
+        plt.rcParams["font.family"] = prop.get_name()
+
+
 def generate_pie_chart(stats: Statistics, output_path: Path) -> None:
     """Generate a pie chart for difficulty distribution.
 
@@ -70,8 +80,10 @@ def generate_pie_chart(stats: Statistics, output_path: Path) -> None:
     if not sizes:
         return
 
+    setup_chinese_font()
+
     # Create figure with transparent background
-    fig, ax = plt.subplots(figsize=(6, 6), facecolor="none")
+    fig, ax = plt.subplots(figsize=(5, 5), facecolor="none")
     ax.set_facecolor("none")
 
     wedges, texts, autotexts = ax.pie(
@@ -80,7 +92,7 @@ def generate_pie_chart(stats: Statistics, output_path: Path) -> None:
         colors=colors,
         autopct="%1.1f%%",
         startangle=90,
-        textprops={"fontsize": 12},
+        textprops={"fontsize": 11},
     )
 
     # Style the percentage text
@@ -88,7 +100,58 @@ def generate_pie_chart(stats: Statistics, output_path: Path) -> None:
         autotext.set_color("white")
         autotext.set_fontweight("bold")
 
-    ax.set_title(f"Difficulty Distribution (Total: {stats.total})", fontsize=14, pad=20)
+    ax.set_title(f"Difficulty Distribution", fontsize=13, pad=15)
+
+    # Save with tight layout
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(output_path, dpi=150, bbox_inches="tight", transparent=True)
+    plt.close()
+
+
+def generate_bar_chart(stats: Statistics, output_path: Path, top_n: int = 10) -> None:
+    """Generate a horizontal bar chart for top N tags.
+
+    Args:
+        stats: Statistics instance
+        output_path: Path to save the chart image
+        top_n: Number of top tags to show
+    """
+    if not stats.tag_counts:
+        return
+
+    setup_chinese_font()
+
+    # Get top N tags sorted by count
+    sorted_tags = sorted(stats.tag_counts.items(), key=lambda x: x[1], reverse=True)[:top_n]
+
+    # Reverse for horizontal bar chart (top item at top)
+    sorted_tags = sorted_tags[::-1]
+
+    tags = [item[0] for item in sorted_tags]
+    counts = [item[1] for item in sorted_tags]
+
+    # Create figure
+    fig, ax = plt.subplots(figsize=(6, 5), facecolor="none")
+    ax.set_facecolor("none")
+
+    # Create horizontal bar chart with gradient colors
+    colors = plt.cm.viridis([i / len(tags) for i in range(len(tags))])
+    bars = ax.barh(tags, counts, color=colors)
+
+    # Add count labels on bars
+    for bar, count in zip(bars, counts):
+        ax.text(
+            bar.get_width() + 0.1,
+            bar.get_y() + bar.get_height() / 2,
+            str(count),
+            va="center",
+            fontsize=10,
+        )
+
+    ax.set_xlabel("Count", fontsize=11)
+    ax.set_title(f"Top {len(tags)} Tags", fontsize=13, pad=15)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
 
     # Save with tight layout
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -110,13 +173,13 @@ def generate_word_cloud(stats: Statistics, output_path: Path) -> None:
 
     # Create word cloud
     wc = WordCloud(
-        width=800,
-        height=400,
+        width=900,
+        height=350,
         background_color=None,
         mode="RGBA",
         font_path=font_path,
         max_words=100,
-        min_font_size=10,
+        min_font_size=12,
         max_font_size=80,
         colormap="viridis",
         prefer_horizontal=0.7,
@@ -144,6 +207,10 @@ def generate_all_charts(stats: Statistics, assets_dir: Path) -> dict[str, Path]:
     pie_path = assets_dir / "difficulty_distribution.png"
     generate_pie_chart(stats, pie_path)
     outputs["pie"] = pie_path
+
+    bar_path = assets_dir / "top_tags.png"
+    generate_bar_chart(stats, bar_path)
+    outputs["bar"] = bar_path
 
     cloud_path = assets_dir / "tag_cloud.png"
     generate_word_cloud(stats, cloud_path)

@@ -33,15 +33,25 @@ The project documentation is organized using Obsidian, supporting full-repositor
 - **AI Empowerment**: Planned intelligent translation and RAG-based Q&A assistant to enhance learning efficiency using modern technology.
 
 <!-- STATS_START -->
-## 📊 Progress
+## 📊 LeetCode Progress
+
+Currently, this repository contains solutions to **12** LeetCode problems, covering a range of difficulty levels and algorithmic topics.
 
 | Total | Easy | Medium | Hard |
 |:-----:|:----:|:------:|:----:|
 | 12 | 4 | 8 | 0 |
 
+The pie chart below shows the distribution of problems by difficulty level, while the bar chart highlights the top 10 most frequently encountered tags. The majority of problems fall into the **Medium** category, with a focus on fundamental topics like Array, Hash Table, Sorting.
+
 <p align="center">
-  <img src="./assets/difficulty_distribution.png" alt="Difficulty Distribution" width="400">
-  <img src="./assets/tag_cloud.png" alt="Tag Cloud" width="400">
+  <img src="./assets/difficulty_distribution.png" alt="Difficulty Distribution" width="380">
+  <img src="./assets/top_tags.png" alt="Top 10 Tags" width="420">
+</p>
+
+The word cloud below provides a visual overview of all tags covered in this repository, with larger words indicating more frequently practiced topics.
+
+<p align="center">
+  <img src="./assets/tag_cloud.png" alt="Tag Cloud" width="700">
 </p>
 
 <!-- STATS_END -->

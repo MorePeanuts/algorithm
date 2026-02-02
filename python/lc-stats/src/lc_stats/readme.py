@@ -8,6 +8,71 @@ from .stats import Statistics
 STATS_START_MARKER = "<!-- STATS_START -->"
 STATS_END_MARKER = "<!-- STATS_END -->"
 
+# Chinese to English tag mapping for common tags
+TAG_TRANSLATION = {
+    "数组": "Array",
+    "哈希表": "Hash Table",
+    "排序": "Sorting",
+    "字符串": "String",
+    "链表": "Linked List",
+    "树": "Tree",
+    "二叉树": "Binary Tree",
+    "动态规划": "Dynamic Programming",
+    "贪心": "Greedy",
+    "双指针": "Two Pointers",
+    "栈": "Stack",
+    "队列": "Queue",
+    "堆（优先队列）": "Heap",
+    "图": "Graph",
+    "深度优先搜索": "DFS",
+    "广度优先搜索": "BFS",
+    "二分查找": "Binary Search",
+    "回溯": "Backtracking",
+    "分治": "Divide and Conquer",
+    "位运算": "Bit Manipulation",
+    "数学": "Math",
+    "计数": "Counting",
+    "桶排序": "Bucket Sort",
+    "快速选择": "Quick Select",
+    "矩阵": "Matrix",
+}
+
+# Difficulty name mapping
+DIFFICULTY_NAME_EN = {"Easy": "Easy", "Medium": "Medium", "Hard": "Hard"}
+DIFFICULTY_NAME_ZH = {"Easy": "简单", "Medium": "中等", "Hard": "困难"}
+
+
+def get_dominant_difficulty(stats: Statistics) -> str:
+    """Get the difficulty level with the most problems.
+
+    Args:
+        stats: Statistics instance
+
+    Returns:
+        The dominant difficulty level name
+    """
+    max_count = 0
+    dominant = "Medium"  # Default fallback
+
+    for difficulty, count in stats.difficulty_counts.items():
+        if count > max_count:
+            max_count = count
+            dominant = difficulty
+
+    return dominant
+
+
+def translate_tag(tag: str) -> str:
+    """Translate a Chinese tag to English.
+
+    Args:
+        tag: Tag name (possibly in Chinese)
+
+    Returns:
+        English tag name
+    """
+    return TAG_TRANSLATION.get(tag, tag)
+
 
 def generate_stats_section_en(stats: Statistics) -> str:
     """Generate English statistics section content.
@@ -22,16 +87,35 @@ def generate_stats_section_en(stats: Statistics) -> str:
     medium = stats.difficulty_counts.get("Medium", 0)
     hard = stats.difficulty_counts.get("Hard", 0)
 
+    # Get dominant difficulty
+    dominant = get_dominant_difficulty(stats)
+    dominant_name = DIFFICULTY_NAME_EN[dominant]
+
+    # Get top tags for description (translated to English)
+    sorted_tags = sorted(stats.tag_counts.items(), key=lambda x: x[1], reverse=True)
+    top_3_tags = [translate_tag(tag) for tag, _ in sorted_tags[:3]]
+    top_tags_str = ", ".join(top_3_tags) if top_3_tags else "various topics"
+
     return f"""{STATS_START_MARKER}
-## 📊 Progress
+## 📊 LeetCode Progress
+
+Currently, this repository contains solutions to **{stats.total}** LeetCode problems, covering a range of difficulty levels and algorithmic topics.
 
 | Total | Easy | Medium | Hard |
 |:-----:|:----:|:------:|:----:|
 | {stats.total} | {easy} | {medium} | {hard} |
 
+The pie chart below shows the distribution of problems by difficulty level, while the bar chart highlights the top 10 most frequently encountered tags. The majority of problems fall into the **{dominant_name}** category, with a focus on fundamental topics like {top_tags_str}.
+
 <p align="center">
-  <img src="./assets/difficulty_distribution.png" alt="Difficulty Distribution" width="400">
-  <img src="./assets/tag_cloud.png" alt="Tag Cloud" width="400">
+  <img src="./assets/difficulty_distribution.png" alt="Difficulty Distribution" width="380">
+  <img src="./assets/top_tags.png" alt="Top 10 Tags" width="420">
+</p>
+
+The word cloud below provides a visual overview of all tags covered in this repository, with larger words indicating more frequently practiced topics.
+
+<p align="center">
+  <img src="./assets/tag_cloud.png" alt="Tag Cloud" width="700">
 </p>
 
 {STATS_END_MARKER}"""
@@ -50,16 +134,35 @@ def generate_stats_section_zh(stats: Statistics) -> str:
     medium = stats.difficulty_counts.get("Medium", 0)
     hard = stats.difficulty_counts.get("Hard", 0)
 
+    # Get dominant difficulty
+    dominant = get_dominant_difficulty(stats)
+    dominant_name = DIFFICULTY_NAME_ZH[dominant]
+
+    # Get top tags for description
+    sorted_tags = sorted(stats.tag_counts.items(), key=lambda x: x[1], reverse=True)
+    top_3_tags = [tag for tag, _ in sorted_tags[:3]]
+    top_tags_str = "、".join(top_3_tags) if top_3_tags else "多种主题"
+
     return f"""{STATS_START_MARKER}
-## 📊 刷题进度
+## 📊 LeetCode 解题进度
+
+目前，本仓库已收录 **{stats.total}** 道 LeetCode 题目的解答，涵盖不同难度级别和多种算法主题。
 
 | 总计 | 简单 | 中等 | 困难 |
 |:----:|:----:|:----:|:----:|
 | {stats.total} | {easy} | {medium} | {hard} |
 
+下方饼图展示了题目的难度分布，条形图则列出了出现频率最高的 10 个标签。可以看到，大部分题目集中在**{dominant_name}**难度，重点练习了{top_tags_str}等基础主题。
+
 <p align="center">
-  <img src="./assets/difficulty_distribution.png" alt="难度分布" width="400">
-  <img src="./assets/tag_cloud.png" alt="标签云" width="400">
+  <img src="./assets/difficulty_distribution.png" alt="难度分布" width="380">
+  <img src="./assets/top_tags.png" alt="Top 10 标签" width="420">
+</p>
+
+下方词云图直观呈现了本仓库涉及的所有标签，字体越大表示该主题的练习频率越高。
+
+<p align="center">
+  <img src="./assets/tag_cloud.png" alt="标签云" width="700">
 </p>
 
 {STATS_END_MARKER}"""

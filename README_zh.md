@@ -30,15 +30,25 @@
 - AI 赋能：规划中的智能翻译与 RAG 答疑助手，利用现代技术提升学习效率。
 
 <!-- STATS_START -->
-## 📊 刷题进度
+## 📊 LeetCode 解题进度
+
+目前，本仓库已收录 **12** 道 LeetCode 题目的解答，涵盖不同难度级别和多种算法主题。
 
 | 总计 | 简单 | 中等 | 困难 |
 |:----:|:----:|:----:|:----:|
 | 12 | 4 | 8 | 0 |
 
+下方饼图展示了题目的难度分布，条形图则列出了出现频率最高的 10 个标签。可以看到，大部分题目集中在**中等**难度，重点练习了数组、哈希表、排序等基础主题。
+
 <p align="center">
-  <img src="./assets/difficulty_distribution.png" alt="难度分布" width="400">
-  <img src="./assets/tag_cloud.png" alt="标签云" width="400">
+  <img src="./assets/difficulty_distribution.png" alt="难度分布" width="380">
+  <img src="./assets/top_tags.png" alt="Top 10 标签" width="420">
+</p>
+
+下方词云图直观呈现了本仓库涉及的所有标签，字体越大表示该主题的练习频率越高。
+
+<p align="center">
+  <img src="./assets/tag_cloud.png" alt="标签云" width="700">
 </p>
 
 <!-- STATS_END -->
