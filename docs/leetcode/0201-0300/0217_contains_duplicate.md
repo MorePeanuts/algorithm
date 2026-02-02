@@ -41,3 +41,23 @@ All elements are distinct.
 - `-109 <= nums[i] <= 109`
 
 ## Solution
+
+### Approach 1
+
+**Hash Set Method**: Use a hash set to record traversed elements, return immediately when a duplicate is encountered.
+
+**Principle:**
+While traversing the array, store each element in a hash set. Before storing, check if the element already exists in the set. If it does, there's a duplicate element.
+
+**Steps:**
+1. Create an empty hash set
+2. Iterate through each element in the array
+3. Check if the current element already exists in the set
+4. If exists, return `true` directly
+5. If not, add the current element to the set
+6. Return `false` after traversal completes
+
+```embed-go
+PATH: "vault://leetcode/0201-0300/0217_contains_duplicate/solution.go"
+TITLE: "leetcode 217. Contains Duplicate"
+```
