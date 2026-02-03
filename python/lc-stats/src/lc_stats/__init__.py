@@ -5,7 +5,7 @@ from pathlib import Path
 from .charts import generate_all_charts
 from .parser import scan_problems
 from .readme import update_readme
-from .stats import calculate_stats
+from .stats import calculate_stats, load_cached_stats, save_stats_cache
 
 
 def get_project_root() -> Path:
@@ -22,6 +22,8 @@ def main() -> None:
     project_root = get_project_root()
     assets_dir = project_root / "assets"
 
+    stats_dir = assets_dir / "stats"
+
     # Process English docs (docs/leetcode) -> README.md
     docs_en_dir = project_root / "docs" / "leetcode"
     print("Scanning English LeetCode docs...")
@@ -36,10 +38,18 @@ def main() -> None:
         print(f"  Hard: {stats_en.difficulty_counts['Hard']}")
         print(f"  Unique tags: {len(stats_en.tag_counts)}")
 
-        print("Generating charts (English)...")
-        charts = generate_all_charts(stats_en, assets_dir, lang="en")
-        for chart_type, path in charts.items():
-            print(f"  Generated: {path.relative_to(project_root)}")
+        # Check if stats changed before regenerating charts
+        cache_path_en = stats_dir / ".stats_cache_en.json"
+        cached_stats_en = load_cached_stats(cache_path_en)
+
+        if cached_stats_en == stats_en:
+            print("Statistics unchanged, skipping chart generation (English).")
+        else:
+            print("Generating charts (English)...")
+            charts = generate_all_charts(stats_en, assets_dir, lang="en")
+            for chart_type, path in charts.items():
+                print(f"  Generated: {path.relative_to(project_root)}")
+            save_stats_cache(stats_en, cache_path_en)
 
         print("Updating README.md...")
         readme_en = project_root / "README.md"
@@ -60,10 +70,18 @@ def main() -> None:
         print(f"  Hard: {stats_zh.difficulty_counts['Hard']}")
         print(f"  Unique tags: {len(stats_zh.tag_counts)}")
 
-        print("Generating charts (Chinese)...")
-        charts = generate_all_charts(stats_zh, assets_dir, lang="zh")
-        for chart_type, path in charts.items():
-            print(f"  Generated: {path.relative_to(project_root)}")
+        # Check if stats changed before regenerating charts
+        cache_path_zh = stats_dir / ".stats_cache_zh.json"
+        cached_stats_zh = load_cached_stats(cache_path_zh)
+
+        if cached_stats_zh == stats_zh:
+            print("Statistics unchanged, skipping chart generation (Chinese).")
+        else:
+            print("Generating charts (Chinese)...")
+            charts = generate_all_charts(stats_zh, assets_dir, lang="zh")
+            for chart_type, path in charts.items():
+                print(f"  Generated: {path.relative_to(project_root)}")
+            save_stats_cache(stats_zh, cache_path_zh)
 
         print("Updating README_zh.md...")
         readme_zh = project_root / "README_zh.md"
