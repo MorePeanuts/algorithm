@@ -68,6 +68,14 @@ git config core.hooksPath .githooks
 
 ```bash
 #!/bin/bash
+# Lock file to prevent infinite recursion during amend
+LOCK_FILE=".git/post-commit-running"
+
+# Check if we're already running (prevents infinite loop from amend)
+if [ -f "$LOCK_FILE" ]; then
+    exit 0
+fi
+
 # Get the commit message
 commit_msg=$(git log -1 --pretty=%B)
 
@@ -78,13 +86,18 @@ if echo "$commit_msg" | grep -iq "Add leetcode"; then
     # Run the stats generator
     uv run --package lc-stats lc-stats
 
+    # Create lock file before amend to prevent recursion
+    touch "$LOCK_FILE"
     # Amend the commit with updated files
     git add assets/stats/*.png README.md README_zh.md
     git commit --amend --no-edit
+    # Remove lock file after amend completes
+    rm -f "$LOCK_FILE"
 fi
 ```
 
 **Key points:**
+- Uses a **lock file** (`.git/post-commit-running`) to prevent infinite recursion when amending
 - Uses `grep -iq` for case-insensitive matching
 - Checks if `uv` is available before running
 - Uses `git commit --amend --no-edit` to include generated files in the same commit
