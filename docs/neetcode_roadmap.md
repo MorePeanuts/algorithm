@@ -16,6 +16,9 @@
 | 0020 | [[docs/leetcode/0001-0100/0020_valid_parentheses\|Valid Parentheses]]                               | Easy       |
 | 0155 | [[docs/leetcode/0101-0200/0155_min_stack\|Min Stack]]                                               | Medium     |
 | 0150 | [[docs/leetcode/0101-0200/0150_evaluate_reverse_polish_notation\|Evaluate Reverse Polish Notation]] | Medium     |
+| 0739 | [[docs/leetcode/0701-0800/0739_daily_temperatures\|Daily Temperatures]]                             | Medium     |
+| 0853 | [[docs/leetcode/0801-0900/0853_car_fleet\|Car Fleet]]                                               | Medium     |
+| 0084 | [[docs/leetcode/0001-0100/0084_largest_rectangle_in_histogram\|Largest Rectangle in Histogram]]     | Hard       |
 
 ## Two Pointers
 | ID   | Problem                                                             | Difficulty |
