@@ -1,8 +1,8 @@
 {
-  "total": 14,
+  "total": 15,
   "difficulty_counts": {
     "Easy": 6,
-    "Medium": 8,
+    "Medium": 9,
     "Hard": 0
   },
   "tag_counts": {
@@ -16,13 +16,14 @@
     "Heap (Priority Queue)": 1,
     "String": 4,
     "Matrix": 1,
-    "Stack": 1,
+    "Stack": 2,
     "Math": 2,
     "Dynamic Programming": 1,
     "Recursion": 1,
     "Linked List": 1,
     "Two Pointers": 1,
     "Union Find": 1,
+    "Design": 1,
     "Prefix Sum": 1,
     "Binary Search": 1
   }
