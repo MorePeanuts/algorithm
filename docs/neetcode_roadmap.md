@@ -21,6 +21,7 @@
 | 0084 | [[docs/leetcode/0001-0100/0084_largest_rectangle_in_histogram\|Largest Rectangle in Histogram]]     | Hard       |
 
 ## Two Pointers
-| ID   | Problem                                                             | Difficulty |
-| ---- | ------------------------------------------------------------------- | ---------- |
-| 0125 | [[docs/leetcode/0101-0200/0125_valid_palindrome\|Valid Palindrome]] | Easy       |
+| ID   | Problem                                                                                               | Difficulty |
+| ---- | ----------------------------------------------------------------------------------------------------- | ---------- |
+| 0125 | [[docs/leetcode/0101-0200/0125_valid_palindrome\|Valid Palindrome]]                                   | Easy       |
+| 0167 | [[docs/leetcode/0101-0200/0167_two_sum_ii_input_array_is_sorted\|Two Sum II - Input Array is Sorted]] | Medium     |

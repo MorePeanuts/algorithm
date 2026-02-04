@@ -1,12 +1,12 @@
 {
-  "total": 19,
+  "total": 20,
   "difficulty_counts": {
     "Easy": 6,
-    "Medium": 12,
+    "Medium": 13,
     "Hard": 1
   },
   "tag_counts": {
-    "Array": 13,
+    "Array": 14,
     "Hash Table": 7,
     "Divide and Conquer": 2,
     "Bucket Sort": 1,
@@ -22,10 +22,10 @@
     "Dynamic Programming": 1,
     "Recursion": 1,
     "Linked List": 1,
-    "Two Pointers": 1,
+    "Two Pointers": 2,
+    "Binary Search": 2,
     "Union Find": 1,
     "Design": 1,
-    "Prefix Sum": 1,
-    "Binary Search": 1
+    "Prefix Sum": 1
   }
 }

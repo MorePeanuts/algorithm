@@ -35,11 +35,11 @@ The project documentation is organized using Obsidian, supporting full-repositor
 <!-- STATS_START -->
 ## 📊 LeetCode Progress
 
-Currently, this repository contains solutions to **19** LeetCode problems, covering a range of difficulty levels and algorithmic topics.
+Currently, this repository contains solutions to **20** LeetCode problems, covering a range of difficulty levels and algorithmic topics.
 
 | Total | Easy | Medium | Hard |
 |:-----:|:----:|:------:|:----:|
-| 19 | 6 | 12 | 1 |
+| 20 | 6 | 13 | 1 |
 
 The pie chart below shows the distribution of problems by difficulty level, while the bar chart highlights the top 10 most frequently encountered tags. The majority of problems fall into the **Medium** category, with a focus on fundamental topics like Array, Hash Table, Stack.
 
