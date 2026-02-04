@@ -28,7 +28,7 @@ if echo "$commit_msg" | grep -iq "Add leetcode"; then
       echo "Amending commit with updated statistics..."
       # Create lock file before amend to prevent recursion
       touch "$LOCK_FILE"
-      git add assets/stats/* README.md README_zh.md 2>/dev/null
+      git add assets/stats/*.png assets/stats/.stats_cache_*.json README.md README_zh.md 2>/dev/null
       git commit --amend --no-edit
       # Remove lock file after amend completes
       rm -f "$LOCK_FILE"

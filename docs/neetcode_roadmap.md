@@ -11,10 +11,11 @@
 | 0036 | [[docs/leetcode/0001-0100/0036_valid_sudoku\|Valid Sudoku]]                                 | Medium     |
 | 0128 | [[docs/leetcode/0101-0200/0128_longest_consecutive_sequence\|Longest Consecutive Sequence]] | Medium     |
 ## Stack
-| ID   | Problem                                                               | Difficulty |
-| ---- | --------------------------------------------------------------------- | ---------- |
-| 0020 | [[docs/leetcode/0001-0100/0020_valid_parentheses\|Valid Parentheses]] | Easy       |
-| 0155 | [[docs/leetcode/0101-0200/0155_min_stack\|Min Stack]]                 | Medium     |
+| ID   | Problem                                                                                             | Difficulty |
+| ---- | --------------------------------------------------------------------------------------------------- | ---------- |
+| 0020 | [[docs/leetcode/0001-0100/0020_valid_parentheses\|Valid Parentheses]]                               | Easy       |
+| 0155 | [[docs/leetcode/0101-0200/0155_min_stack\|Min Stack]]                                               | Medium     |
+| 0150 | [[docs/leetcode/0101-0200/0150_evaluate_reverse_polish_notation\|Evaluate Reverse Polish Notation]] | Medium     |
 
 ## Two Pointers
 | ID   | Problem                                                             | Difficulty |
