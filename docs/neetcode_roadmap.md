@@ -14,6 +14,7 @@
 | ID   | Problem                                                               | Difficulty |
 | ---- | --------------------------------------------------------------------- | ---------- |
 | 0020 | [[docs/leetcode/0001-0100/0020_valid_parentheses\|Valid Parentheses]] | Easy       |
+| 0155 | [[docs/leetcode/0101-0200/0155_min_stack\|Min Stack]]                 | Medium     |
 
 ## Two Pointers
 | ID   | Problem                                                             | Difficulty |
