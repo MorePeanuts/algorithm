@@ -12,9 +12,9 @@ Given an array of strings `strs`, group the anagrams together. You can return th
 
 **Example 1:**
 
-**Input:** strs = ["eat","tea","tan","ate","nat","bat"]
+**Input:** `strs = ["eat","tea","tan","ate","nat","bat"]`
 
-**Output:** [["bat"],["nat","tan"],["ate","eat","tea"]]
+**Output:** `[["bat"],["nat","tan"],["ate","eat","tea"]]`
 
 **Explanation:**
 
@@ -24,15 +24,15 @@ Given an array of strings `strs`, group the anagrams together. You can return th
 
 **Example 2:**
 
-**Input:** strs = [""]
+**Input:** `strs = [""]`
 
-**Output:** [[""]]
+**Output:** `[[""]]`
 
 **Example 3:**
 
-**Input:** strs = ["a"]
+**Input:** `strs = ["a"]`
 
-**Output:** [["a"]]
+**Output:** `[["a"]]`
 
 **Constraints:**
 
