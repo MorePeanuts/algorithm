@@ -25,3 +25,4 @@
 | ---- | ----------------------------------------------------------------------------------------------------- | ---------- |
 | 0125 | [[docs/leetcode/0101-0200/0125_valid_palindrome\|Valid Palindrome]]                                   | Easy       |
 | 0167 | [[docs/leetcode/0101-0200/0167_two_sum_ii_input_array_is_sorted\|Two Sum II - Input Array is Sorted]] | Medium     |
+| 0015 | [[docs/leetcode/0001-0100/0015_3sum\|3 Sum]]                                                          | Medium     |
