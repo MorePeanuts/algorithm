@@ -27,3 +27,4 @@
 | 0167 | [[docs/leetcode/0101-0200/0167_two_sum_ii_input_array_is_sorted\|Two Sum II - Input Array is Sorted]] | Medium     |
 | 0015 | [[docs/leetcode/0001-0100/0015_3sum\|3 Sum]]                                                          | Medium     |
 | 0011 | [[docs/leetcode/0001-0100/0011_container_with_most_water\|Container With Most Water]]                 | Medium     |
+| 0042 | [[docs/leetcode/0001-0100/0042_trapping_rain_water\|Trapping Rain Water]]                             | Hard       |
