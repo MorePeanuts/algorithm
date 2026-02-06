@@ -1,13 +1,13 @@
 {
-  "total": 24,
+  "total": 25,
   "difficulty_counts": {
     "Easy": 7,
-    "Medium": 15,
+    "Medium": 16,
     "Hard": 2
   },
   "tag_counts": {
     "Array": 18,
-    "Hash Table": 7,
+    "Hash Table": 8,
     "Divide and Conquer": 2,
     "Bucket Sort": 1,
     "Counting": 1,
@@ -15,9 +15,10 @@
     "Sorting": 6,
     "Heap (Priority Queue)": 1,
     "Two Pointers": 5,
-    "String": 4,
+    "String": 5,
     "Stack": 7,
     "Monotonic Stack": 4,
+    "Sliding Window": 1,
     "Matrix": 1,
     "Math": 3,
     "Greedy": 1,
