@@ -10,6 +10,7 @@
 | 0238 | [[docs/leetcode/0201-0300/0238_product_of_array_except_self\|Product of Array Except Self]] | Medium     |
 | 0036 | [[docs/leetcode/0001-0100/0036_valid_sudoku\|Valid Sudoku]]                                 | Medium     |
 | 0128 | [[docs/leetcode/0101-0200/0128_longest_consecutive_sequence\|Longest Consecutive Sequence]] | Medium     |
+
 ## Stack
 | ID   | Problem                                                                                             | Difficulty |
 | ---- | --------------------------------------------------------------------------------------------------- | ---------- |
@@ -28,3 +29,8 @@
 | 0015 | [[docs/leetcode/0001-0100/0015_3sum\|3 Sum]]                                                          | Medium     |
 | 0011 | [[docs/leetcode/0001-0100/0011_container_with_most_water\|Container With Most Water]]                 | Medium     |
 | 0042 | [[docs/leetcode/0001-0100/0042_trapping_rain_water\|Trapping Rain Water]]                             | Hard       |
+
+## Sliding Window
+| ID   | Problem                                                                                           | Difficulty |
+| ---- | ------------------------------------------------------------------------------------------------- | ---------- |
+| 0121 | [[docs/leetcode/0101-0200/0121_best_time_to_buy_and_sell_stock\|Best Time to Buy And Sell Stock]] | Easy       |
