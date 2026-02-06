@@ -35,3 +35,4 @@
 | ---- | ------------------------------------------------------------------------------------------------------------------------------- | ---------- |
 | 0121 | [[docs/leetcode/0101-0200/0121_best_time_to_buy_and_sell_stock\|Best Time to Buy And Sell Stock]]                               | Easy       |
 | 0003 | [[docs/leetcode/0001-0100/0003_longest_substring_without_repeating_characters\|Longest Substring without Repeating Characters]] | Medium     |
+| 0424 | [[docs/leetcode/0401-0500/0424_longest_repeating_character_replacement\|Longest Repeating Character Replacement]]               | Medium     |
