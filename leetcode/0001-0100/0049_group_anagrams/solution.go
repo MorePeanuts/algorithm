@@ -6,7 +6,7 @@ func groupAnagrams(strs []string) [][]string {
 	for _, str := range strs {
 		key := [26]byte{}
 		for _, c := range str {
-			key[c-'a'] += byte(c)
+			key[c-'a'] += 1
 		}
 		anagrams[key] = append(anagrams[key], str)
 	}

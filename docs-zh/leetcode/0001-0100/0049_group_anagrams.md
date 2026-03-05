@@ -49,7 +49,7 @@ tags:
 - `"tan"` -> `[1,0,0,0,0,...,1,...]`（a=1, n=1, t=1，不同 Key）
 
 ```embed-go
-PATH: "vault://leetcode/0001-0100/0049_group_anagrams/solution1.go"
+PATH: "vault://leetcode/0001-0100/0049_group_anagrams/solution.go"
 TITLE: "leetcode 49.字母异位词分组"
 ```
 ### 解法2
