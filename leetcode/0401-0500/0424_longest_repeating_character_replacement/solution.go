@@ -6,10 +6,10 @@ func characterReplacement(s string, k int) int {
 	maxCount := 0
 	l := 0
 	for r := 0; r < len(s); r++ {
-		count[int(s[r]-'A')]++
-		maxCount = max(maxCount, count[int(s[r]-'A')])
+		count[s[r]-'A']++
+		maxCount = max(maxCount, count[s[r]-'A'])
 		if r-l+1-maxCount > k {
-			count[int(s[l]-'A')]--
+			count[s[l]-'A']--
 			l++
 		}
 	}
