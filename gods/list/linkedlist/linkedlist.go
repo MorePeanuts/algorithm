@@ -31,13 +31,10 @@ func New[T comparable](values ...T) *List[T] {
 // It returns the element and true if the index is valid,
 // otherwise it returns the zero value of T and false.
 func (list *List[T]) Get(idx int) (T, bool) {
-	if !list.withinRange(idx) {
-		var zero T
-		return zero, false
-	}
-	ptr := list.first
-	for range idx {
-		ptr = ptr.next
+	ptr := list.ptrAt(idx)
+	if ptr == nil {
+		var t T
+		return t, false
 	}
 	return ptr.value, true
 }
@@ -46,18 +43,15 @@ func (list *List[T]) Get(idx int) (T, bool) {
 // If the index is equal to the list length, the value is appended.
 // If the index is out of range, no action is taken.
 func (list *List[T]) Set(idx int, value T) {
-	if !list.withinRange(idx) {
+	ptr := list.ptrAt(idx)
+	if ptr == nil {
 		if idx == list.len {
 			list.Append(value)
 		}
 		return
+	} else {
+		ptr.value = value
 	}
-
-	ptr := list.first
-	for range idx {
-		ptr = ptr.next
-	}
-	ptr.value = value
 }
 
 // Append adds one or more values to the end of the list.
@@ -78,7 +72,8 @@ func (list *List[T]) Append(values ...T) {
 // Remove removes the element at the specified index.
 // If the index is out of range, no action is taken.
 func (list *List[T]) Remove(idx int) {
-	if !list.withinRange(idx) {
+	beforePtr, ptr := list.ptrBeforeAt(idx)
+	if ptr == nil {
 		return
 	}
 
@@ -87,11 +82,6 @@ func (list *List[T]) Remove(idx int) {
 		return
 	}
 
-	beforePtr := new(node[T])
-	ptr := list.first
-	for range idx {
-		beforePtr, ptr = ptr, ptr.next
-	}
 	switch ptr {
 	case list.first:
 		list.first = ptr.next
@@ -108,7 +98,8 @@ func (list *List[T]) Remove(idx int) {
 // If the index is equal to the list length, the values are appended.
 // If the index is out of range or no values are provided, no action is taken.
 func (list *List[T]) Insert(idx int, values ...T) {
-	if !list.withinRange(idx) {
+	beforePtr, ptr := list.ptrBeforeAt(idx)
+	if ptr == nil {
 		if idx == list.len {
 			list.Append(values...)
 		}
@@ -118,11 +109,6 @@ func (list *List[T]) Insert(idx int, values ...T) {
 		return
 	}
 
-	beforePtr := new(node[T])
-	ptr := list.first
-	for range idx {
-		beforePtr, ptr = ptr, ptr.next
-	}
 	newList := New(values...)
 	newList.last.next = ptr
 	if idx == 0 {
@@ -193,3 +179,29 @@ func (list *List[T]) Clear() {
 func (list *List[T]) withinRange(idx int) bool {
 	return idx >= 0 && idx < list.len
 }
+
+func (list *List[T]) ptrAt(idx int) *node[T] {
+	if !list.withinRange(idx) {
+		return nil
+	}
+
+	ptr := list.first
+	for range idx {
+		ptr = ptr.next
+	}
+	return ptr
+}
+
+func (list *List[T]) ptrBeforeAt(idx int) (*node[T], *node[T]) {
+	if !list.withinRange(idx) {
+		return nil, nil
+	}
+
+	var beforePtr *node[T]
+	ptr := list.first
+	for range idx {
+		beforePtr, ptr = ptr, ptr.next
+	}
+	return beforePtr, ptr
+}
+
