@@ -1,13 +1,14 @@
-// Package linkedlist provides a generic doubly linked list implementation.
-package linkedlist
+// Package doublylinkedlist provides a generic doubly linked list implementation.
+package doublylinkedlist
 
-// node represents a single element in the linked list.
+// node represents a single element in the doubly linked list.
 type node[T comparable] struct {
 	value T
+	prev  *node[T]
 	next  *node[T]
 }
 
-// List is a generic singly linked list that stores elements of type T.
+// List is a generic doubly linked list that stores elements of type T.
 // It implements the list.List interface and containers.Container interface.
 type List[T comparable] struct {
 	first *node[T]
@@ -15,7 +16,7 @@ type List[T comparable] struct {
 	len   int
 }
 
-// New creates a new linked list with the given values (optional).
+// New creates a new doubly linked list with the given values (optional).
 // If no values are provided, an empty list is returned.
 func New[T comparable](values ...T) *List[T] {
 	list := &List[T]{}
@@ -57,7 +58,7 @@ func (list *List[T]) Set(idx int, value T) {
 // Append adds one or more values to the end of the list.
 func (list *List[T]) Append(values ...T) {
 	for _, value := range values {
-		newNode := &node[T]{value, nil}
+		newNode := &node[T]{value: value, prev: list.last}
 		if list.last == nil {
 			list.last = newNode
 			list.first = newNode
@@ -72,7 +73,7 @@ func (list *List[T]) Append(values ...T) {
 // Remove removes the element at the specified index.
 // If the index is out of range, no action is taken.
 func (list *List[T]) Remove(idx int) {
-	beforePtr, ptr := list.ptrBeforeAt(idx)
+	ptr := list.ptrAt(idx)
 	if ptr == nil {
 		return
 	}
@@ -85,11 +86,13 @@ func (list *List[T]) Remove(idx int) {
 	switch ptr {
 	case list.first:
 		list.first = ptr.next
+		list.first.prev = nil
 	case list.last:
-		beforePtr.next = nil
-		list.last = beforePtr
+		ptr.prev.next = nil
+		list.last = ptr.prev
 	default:
-		beforePtr.next = ptr.next
+		ptr.prev.next = ptr.next
+		ptr.next.prev = ptr.prev
 	}
 	list.len--
 }
@@ -98,7 +101,7 @@ func (list *List[T]) Remove(idx int) {
 // If the index is equal to the list length, the values are appended.
 // If the index is out of range or no values are provided, no action is taken.
 func (list *List[T]) Insert(idx int, values ...T) {
-	beforePtr, ptr := list.ptrBeforeAt(idx)
+	ptr := list.ptrAt(idx)
 	if ptr == nil {
 		if idx == list.len {
 			list.Append(values...)
@@ -111,11 +114,13 @@ func (list *List[T]) Insert(idx int, values ...T) {
 
 	newList := New(values...)
 	newList.last.next = ptr
-	if idx == 0 {
+	if ptr == list.first {
 		list.first = newList.first
 	} else {
-		beforePtr.next = newList.first
+		ptr.prev.next = newList.first
+		newList.first.prev = ptr.prev
 	}
+	ptr.prev = newList.last
 
 	list.len += len(values)
 }
@@ -182,31 +187,24 @@ func (list *List[T]) withinRange(idx int) bool {
 
 // ptrAt returns the node at the specified index.
 // It returns nil if the index is out of range.
+// This method uses an optimization: it traverses from the head or tail
+// depending on which is closer to the target index.
 func (list *List[T]) ptrAt(idx int) *node[T] {
 	if !list.withinRange(idx) {
 		return nil
 	}
 
-	ptr := list.first
-	for range idx {
-		ptr = ptr.next
+	var ptr *node[T]
+	if list.len-idx < idx {
+		ptr = list.last
+		for range list.len - idx - 1 {
+			ptr = ptr.prev
+		}
+	} else {
+		ptr = list.first
+		for range idx {
+			ptr = ptr.next
+		}
 	}
 	return ptr
 }
-
-// ptrBeforeAt returns the node at the specified index and its predecessor.
-// It returns (nil, nil) if the index is out of range.
-// For index 0, the predecessor is nil.
-func (list *List[T]) ptrBeforeAt(idx int) (*node[T], *node[T]) {
-	if !list.withinRange(idx) {
-		return nil, nil
-	}
-
-	var beforePtr *node[T]
-	ptr := list.first
-	for range idx {
-		beforePtr, ptr = ptr, ptr.next
-	}
-	return beforePtr, ptr
-}
-
