@@ -1,15 +1,15 @@
 {
-  "total": 27,
+  "total": 28,
   "difficulty_counts": {
     "Easy": 7,
-    "Medium": 18,
+    "Medium": 19,
     "Hard": 2
   },
   "tag_counts": {
     "Hash Table": 10,
     "String": 7,
-    "Sliding Window": 3,
-    "Array": 18,
+    "Sliding Window": 4,
+    "Array": 19,
     "Divide and Conquer": 2,
     "Bucket Sort": 1,
     "Counting": 1,
@@ -25,9 +25,9 @@
     "Dynamic Programming": 3,
     "Recursion": 1,
     "Linked List": 1,
-    "Binary Search": 2,
+    "Binary Search": 3,
     "Union Find": 1,
     "Design": 1,
-    "Prefix Sum": 1
+    "Prefix Sum": 2
   }
 }

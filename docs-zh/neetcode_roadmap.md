@@ -37,3 +37,4 @@
 | 0003 | [[docs-zh/leetcode/0001-0100/0003_longest_substring_without_repeating_characters\|Longest Substring without Repeating Characters]] | Medium     |        |
 | 0424 | [[docs-zh/leetcode/0401-0500/0424_longest_repeating_character_replacement\|Longest Repeating Character Replacement]]               | Medium     | ✅      |
 | 0567 | [[docs-zh/leetcode/0501-0600/0567_permutation_in_string\|Permutation in String]]                                                   | Medium     |        |
+| 0209 | [[docs-zh/leetcode/0201-0300/0209_minimum_size_subarray_sum\|Minimum Size Subarray Sum]]                                           | Medium     |        |
