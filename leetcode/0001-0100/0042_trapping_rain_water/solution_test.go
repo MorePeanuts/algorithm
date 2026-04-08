@@ -26,6 +26,14 @@ func TestTrapExamples(t *testing.T) {
 			if got != tst.want {
 				t.Errorf("trap(%v) = %v, want %v", tst.height, got, tst.want)
 			}
+			got = trap2(tst.height)
+			if got != tst.want {
+				t.Errorf("trap(%v) = %v, want %v", tst.height, got, tst.want)
+			}
+			got = trap3(tst.height)
+			if got != tst.want {
+				t.Errorf("trap(%v) = %v, want %v", tst.height, got, tst.want)
+			}
 		})
 	}
 }
@@ -126,6 +134,14 @@ func TestTrap(t *testing.T) {
 	for _, tst := range tests {
 		t.Run(tst.name, func(t *testing.T) {
 			got := trap(tst.height)
+			if got != tst.want {
+				t.Errorf("trap(%v) = %v, want %v", tst.height, got, tst.want)
+			}
+			got = trap2(tst.height)
+			if got != tst.want {
+				t.Errorf("trap(%v) = %v, want %v", tst.height, got, tst.want)
+			}
+			got = trap3(tst.height)
 			if got != tst.want {
 				t.Errorf("trap(%v) = %v, want %v", tst.height, got, tst.want)
 			}
