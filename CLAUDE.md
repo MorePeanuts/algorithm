@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A data structures and algorithms learning repository combining LeetCode practice and various learning resources (books, tutorials, blogs, videos). Primary implementation language is Go, with Python tools for automation.
 
+### Key Components
+- **LeetCode Solutions**: Hands-on problem solving with Go implementations
+- **Go Data Structures (gods)**: Custom implementations of common data structures for learning purposes
+
 ## Common Commands
 
 ### Go Tests
@@ -53,3 +57,18 @@ uv run algo-chat
   - Frontmatter contains tags for difficulty level and problem categories (e.g., array, hash table)
   - Sections: problem description (with examples and constraints), solution analysis
   - Uses `embed-go` syntax to link source code from the leetcode directory
+
+### Go Data Structures (gods)
+- Location: `gods/`
+- Contains custom implementations of common data structures for learning purposes
+- Current modules:
+  - `tree/`: Tree data structures
+  - `hash/`: Hash-based structures
+  - `heap/`: Heap implementations
+  - `list/`: Linked lists and other list structures
+  - `queue/`: Queue implementations
+  - `stack/`: Stack implementations
+
+## Code Standards
+- If you need to execute Python-related commands (including dependency management, script execution, etc.), please use uv instead of the native Python command.
+- Please ensure that the code you generate includes necessary comments (neither redundant nor missing). Comments, logs, and command-line outputs should not contain languages other than English.

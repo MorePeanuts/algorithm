@@ -28,6 +28,8 @@ The project documentation is organized using Obsidian, supporting full-repositor
 
 - **LeetCode Problem Solving**: Select high-frequency algorithm problems, implement them in Go, and include comprehensive unit tests.
 
+- **Go Data Structures (gods)**: Custom implementations of common data structures (lists, trees, heaps, stacks, queues, hash tables, etc.) from scratch for deep learning.
+
 - **Obsidian Knowledge Base**: Record problem-solving ideas, complexity analysis, and study notes in the `docs` directory to build a personal algorithm encyclopedia.
 
 - **AI Empowerment**: Planned intelligent translation and RAG-based Q&A assistant to enhance learning efficiency using modern technology.
@@ -144,6 +146,13 @@ $ uv run --package lc-stats lc-stats
 ```plain
 .
 ├── assets/                      # Static assets (images, etc.)
+├── gods/                        # Go Data Structures - custom implementations
+│   ├── tree/                    # Tree data structures
+│   ├── hash/                    # Hash-based structures
+│   ├── heap/                    # Heap implementations
+│   ├── list/                    # Linked lists and list structures
+│   ├── queue/                   # Queue implementations
+│   └── stack/                   # Stack implementations
 ├── leetcode/                    # LeetCode problem-solving code
 │   └── 0001-0100/               # Grouped by problem number range
 │       └── 0001_two_sum/
