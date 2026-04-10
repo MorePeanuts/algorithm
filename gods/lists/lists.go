@@ -1,5 +1,5 @@
-// Package list
-package list
+// Package lists
+package lists
 
 import "github.com/MorePeanuts/algorithm/gods/containers"
 
