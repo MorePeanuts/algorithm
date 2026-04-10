@@ -41,6 +41,7 @@
 | 0076 | [[docs-zh/leetcode/0001-0100/0076_minimum_window_substring\|Minimum Window Substring]]                                             | Hard       | ✅      |
 | 0239 | [[docs-zh/leetcode/0201-0300/0239_sliding_window_maximum\|Sliding Window Maximum]]                                                 | Hard       | ✅      |
 ## Linked List
-| ID   | Problem                                                                      | Difficulty | Review |
-| ---- | ---------------------------------------------------------------------------- | ---------- | ------ |
-| 0206 | [[docs-zh/leetcode/0201-0300/0206_reverse_linked_list\|Reverse Linked List]] | Easy       |        |
+| ID   | Problem                                                                            | Difficulty | Review |
+| ---- | ---------------------------------------------------------------------------------- | ---------- | ------ |
+| 0206 | [[docs-zh/leetcode/0201-0300/0206_reverse_linked_list\|Reverse Linked List]]       | Easy       |        |
+| 0021 | [[docs-zh/leetcode/0001-0100/0021_merge_two_sorted_lists\|Merge Two Sorted Lists]] | Easy       |        |

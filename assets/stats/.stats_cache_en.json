@@ -1,7 +1,7 @@
 {
-  "total": 31,
+  "total": 32,
   "difficulty_counts": {
-    "Easy": 8,
+    "Easy": 9,
     "Medium": 19,
     "Hard": 4
   },
@@ -16,6 +16,8 @@
     "Quickselect": 1,
     "Sorting": 6,
     "Heap (Priority Queue)": 2,
+    "Recursion": 3,
+    "Linked List": 3,
     "Two Pointers": 6,
     "Stack": 7,
     "Monotonic Stack": 4,
@@ -23,8 +25,6 @@
     "Math": 3,
     "Greedy": 1,
     "Dynamic Programming": 3,
-    "Recursion": 2,
-    "Linked List": 2,
     "Binary Search": 3,
     "Union Find": 1,
     "Design": 1,
