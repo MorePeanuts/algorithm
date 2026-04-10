@@ -1,21 +1,21 @@
 {
-  "total": 29,
+  "total": 30,
   "difficulty_counts": {
     "Easy": 7,
     "Medium": 19,
-    "Hard": 3
+    "Hard": 4
   },
   "tag_counts": {
     "Hash Table": 11,
     "String": 8,
-    "Sliding Window": 5,
-    "Array": 19,
+    "Sliding Window": 6,
+    "Array": 20,
     "Divide and Conquer": 2,
     "Bucket Sort": 1,
     "Counting": 1,
     "Quickselect": 1,
     "Sorting": 6,
-    "Heap (Priority Queue)": 1,
+    "Heap (Priority Queue)": 2,
     "Two Pointers": 6,
     "Stack": 7,
     "Monotonic Stack": 4,
@@ -28,6 +28,8 @@
     "Binary Search": 3,
     "Union Find": 1,
     "Design": 1,
-    "Prefix Sum": 2
+    "Prefix Sum": 2,
+    "Queue": 1,
+    "Monotonic Queue": 1
   }
 }
