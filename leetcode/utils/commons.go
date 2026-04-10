@@ -42,3 +42,24 @@ func EqualLists(l1, l2 *ListNode) bool {
 	}
 	return l1 == nil && l2 == nil
 }
+
+// SliceToCyclicList converts an int slice to a linked list with a cycle.
+// pos is the index (0-based) of the node that the tail connects to.
+// If pos is -1, no cycle is created.
+func SliceToCyclicList(nums []int, pos int) *ListNode {
+	if len(nums) == 0 {
+		return nil
+	}
+	head := &ListNode{Val: nums[0]}
+	nodes := []*ListNode{head}
+	curr := head
+	for i := 1; i < len(nums); i++ {
+		curr.Next = &ListNode{Val: nums[i]}
+		curr = curr.Next
+		nodes = append(nodes, curr)
+	}
+	if pos >= 0 && pos < len(nodes) {
+		curr.Next = nodes[pos]
+	}
+	return head
+}

@@ -1,12 +1,12 @@
 {
-  "total": 32,
+  "total": 33,
   "difficulty_counts": {
-    "Easy": 9,
+    "Easy": 10,
     "Medium": 19,
     "Hard": 4
   },
   "tag_counts": {
-    "Hash Table": 11,
+    "Hash Table": 12,
     "String": 8,
     "Sliding Window": 6,
     "Array": 20,
@@ -17,8 +17,8 @@
     "Sorting": 6,
     "Heap (Priority Queue)": 2,
     "Recursion": 3,
-    "Linked List": 3,
-    "Two Pointers": 6,
+    "Linked List": 4,
+    "Two Pointers": 7,
     "Stack": 7,
     "Monotonic Stack": 4,
     "Matrix": 1,
