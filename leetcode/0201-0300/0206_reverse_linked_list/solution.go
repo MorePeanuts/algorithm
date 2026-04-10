@@ -13,9 +13,6 @@ func reverseList(head *ListNode) *ListNode {
 		p2.Next = p1
 		p1 = p2
 		p2 = p3
-		if p3 != nil {
-			p3 = p3.Next
-		}
 	}
 	return p1
 }
