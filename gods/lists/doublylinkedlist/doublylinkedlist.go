@@ -26,7 +26,7 @@ func New[T comparable](values ...T) *List[T] {
 	return list
 }
 
-// list.List interface implementation
+// lists.List interface implementation
 
 // Get returns the element at the specified index.
 // It returns the element and true if the index is valid,

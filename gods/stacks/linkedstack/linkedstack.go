@@ -1,31 +1,41 @@
-// Package arraystack provides a generic stack implementation using a dynamic array.
-package arraystack
+// Package linkedstack provides a generic stack implementation using a singly linked list.
+package linkedstack
+
+// node is a singly linked list node that holds a value and a pointer to the next node.
+type node[T any] struct {
+	value T
+	next  *node[T]
+}
 
 // Stack is a generic LIFO (Last In, First Out) stack that stores elements of type T.
-// It implements the containers.Container interface.
+// It implements the stacks.Stack interface and containers.Container interface.
 type Stack[T any] struct {
-	elements []T
+	top *node[T]
+	len int
 }
 
 // New creates a new empty stack.
 func New[T any]() *Stack[T] {
-	return &Stack[T]{make([]T, 0)}
+	return &Stack[T]{}
 }
 
 // stacks.Stack interface implementation
 
 // Push adds an element to the top of the stack.
 func (stack *Stack[T]) Push(value T) {
-	stack.elements = append(stack.elements, value)
+	newNode := &node[T]{value, stack.top}
+	stack.top = newNode
+	stack.len++
 }
 
 // Pop removes and returns the element from the top of the stack.
 // It returns the element and true if the stack is not empty,
 // otherwise it returns the zero value of T and false.
 func (stack *Stack[T]) Pop() (value T, ok bool) {
-	if stack.Len() > 0 {
-		value, ok = stack.elements[stack.Len()-1], true
-		stack.elements = stack.elements[:stack.Len()-1]
+	if stack.len > 0 {
+		value, ok = stack.top.value, true
+		stack.top = stack.top.next
+		stack.len--
 	}
 	return
 }
@@ -34,8 +44,8 @@ func (stack *Stack[T]) Pop() (value T, ok bool) {
 // It returns the element and true if the stack is not empty,
 // otherwise it returns the zero value of T and false.
 func (stack *Stack[T]) Peek() (value T, ok bool) {
-	if stack.Len() > 0 {
-		value, ok = stack.elements[stack.Len()-1], true
+	if stack.len > 0 {
+		value, ok = stack.top.value, true
 	}
 	return
 }
@@ -44,16 +54,16 @@ func (stack *Stack[T]) Peek() (value T, ok bool) {
 
 // IsEmpty returns true if the stack contains no elements.
 func (stack *Stack[T]) IsEmpty() bool {
-	return len(stack.elements) == 0
+	return stack.len == 0
 }
 
 // Len returns the number of elements in the stack.
 func (stack *Stack[T]) Len() int {
-	return len(stack.elements)
+	return stack.len
 }
 
 // Clear removes all elements from the stack.
 func (stack *Stack[T]) Clear() {
-	clear(stack.elements[:cap(stack.elements)])
-	stack.elements = stack.elements[:0]
+	stack.len = 0
+	stack.top = nil
 }
