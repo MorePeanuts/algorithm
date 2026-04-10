@@ -1,14 +1,14 @@
 {
-  "total": 28,
+  "total": 29,
   "difficulty_counts": {
     "Easy": 7,
     "Medium": 19,
-    "Hard": 2
+    "Hard": 3
   },
   "tag_counts": {
-    "Hash Table": 10,
-    "String": 7,
-    "Sliding Window": 4,
+    "Hash Table": 11,
+    "String": 8,
+    "Sliding Window": 5,
     "Array": 19,
     "Divide and Conquer": 2,
     "Bucket Sort": 1,
