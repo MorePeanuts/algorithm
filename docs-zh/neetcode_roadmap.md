@@ -40,3 +40,7 @@
 | 0209 | [[docs-zh/leetcode/0201-0300/0209_minimum_size_subarray_sum\|Minimum Size Subarray Sum]]                                           | Medium     | ✅      |
 | 0076 | [[docs-zh/leetcode/0001-0100/0076_minimum_window_substring\|Minimum Window Substring]]                                             | Hard       | ✅      |
 | 0239 | [[docs-zh/leetcode/0201-0300/0239_sliding_window_maximum\|Sliding Window Maximum]]                                                 | Hard       | ✅      |
+## Linked List
+| ID   | Problem                                                                      | Difficulty | Review |
+| ---- | ---------------------------------------------------------------------------- | ---------- | ------ |
+| 0206 | [[docs-zh/leetcode/0201-0300/0206_reverse_linked_list\|Reverse Linked List]] | Easy       |        |

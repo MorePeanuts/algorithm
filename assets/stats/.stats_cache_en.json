@@ -1,7 +1,7 @@
 {
-  "total": 30,
+  "total": 31,
   "difficulty_counts": {
-    "Easy": 7,
+    "Easy": 8,
     "Medium": 19,
     "Hard": 4
   },
@@ -23,8 +23,8 @@
     "Math": 3,
     "Greedy": 1,
     "Dynamic Programming": 3,
-    "Recursion": 1,
-    "Linked List": 1,
+    "Recursion": 2,
+    "Linked List": 2,
     "Binary Search": 3,
     "Union Find": 1,
     "Design": 1,
