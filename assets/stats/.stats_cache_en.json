@@ -1,8 +1,8 @@
 {
-  "total": 34,
+  "total": 35,
   "difficulty_counts": {
     "Easy": 10,
-    "Medium": 20,
+    "Medium": 21,
     "Hard": 4
   },
   "tag_counts": {
@@ -17,8 +17,8 @@
     "Sorting": 6,
     "Heap (Priority Queue)": 2,
     "Recursion": 4,
-    "Linked List": 5,
-    "Two Pointers": 8,
+    "Linked List": 6,
+    "Two Pointers": 9,
     "Stack": 8,
     "Monotonic Stack": 4,
     "Matrix": 1,
