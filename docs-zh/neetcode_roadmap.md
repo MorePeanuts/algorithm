@@ -51,3 +51,4 @@
 | 0019 | [[docs-zh/leetcode/0001-0100/0019_remove_nth_node_from_end_of_list\|Remove nth Node from End of List]] | Medium     |        |
 | 0138 | [[docs-zh/leetcode/0101-0200/0138_copy_list_with_random_pointer\|Copy List with Random Pointer]]       | Medium     | ✅      |
 | 0002 | [[docs-zh/leetcode/0001-0100/0002_add_two_numbers\|Add Two Numbers]]                                   | Medium     |        |
+| 0287 | [[docs-zh/leetcode/0201-0300/0287_find_the_duplicate_number\|Find the Duplicate Number]]               | Medium     | ✅      |
