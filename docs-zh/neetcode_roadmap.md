@@ -53,3 +53,4 @@
 | 0002 | [[docs-zh/leetcode/0001-0100/0002_add_two_numbers\|Add Two Numbers]]                                   | Medium     |        |
 | 0287 | [[docs-zh/leetcode/0201-0300/0287_find_the_duplicate_number\|Find the Duplicate Number]]               | Medium     | ✅      |
 | 0092 | [[docs-zh/leetcode/0001-0100/0092_reverse_linked_list_ii\|Reverse Linked List II]]                     | Medium     |        |
+| 0146 | [[docs-zh/leetcode/0101-0200/0146_lru_cache\|LRU Cache]]                                               | Medium     |        |
