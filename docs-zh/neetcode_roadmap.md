@@ -46,6 +46,7 @@
 | 0206 | [[docs-zh/leetcode/0201-0300/0206_reverse_linked_list\|Reverse Linked List]]                           | Easy       |        |
 | 0021 | [[docs-zh/leetcode/0001-0100/0021_merge_two_sorted_lists\|Merge Two Sorted Lists]]                     | Easy       |        |
 | 0141 | [[docs-zh/leetcode/0101-0200/0141_linked_list_cycle\|Linked List Cycle]]                               | Easy       |        |
+| 0142 | [[docs-zh/leetcode/0101-0200/0142_linked_list_cycle_ii\|Linked List Cycle II]]                         | Medium     | ✅      |
 | 0143 | [[docs-zh/leetcode/0101-0200/0143_reorder_list\|Reorder List]]                                         | Medium     | ✅      |
 | 0019 | [[docs-zh/leetcode/0001-0100/0019_remove_nth_node_from_end_of_list\|Remove nth Node from End of List]] | Medium     |        |
 | 0138 | [[docs-zh/leetcode/0101-0200/0138_copy_list_with_random_pointer\|Copy List with Random Pointer]]       | Medium     | ✅      |
