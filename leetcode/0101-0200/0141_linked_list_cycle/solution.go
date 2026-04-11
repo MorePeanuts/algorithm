@@ -7,14 +7,11 @@ type ListNode = utils.ListNode
 
 func hasCycle(head *ListNode) bool {
 	fast, slow := head, head
-	for fast != nil {
+	for fast != nil && fast.Next != nil {
 		slow = slow.Next
-		fast = fast.Next
-		if fast != nil {
-			fast = fast.Next
-			if slow == fast {
-				return true
-			}
+		fast = fast.Next.Next
+		if slow == fast {
+			return true
 		}
 	}
 	return false
