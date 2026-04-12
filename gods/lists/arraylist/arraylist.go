@@ -12,8 +12,8 @@ type List[T comparable] struct {
 const (
 	// growthFactor is the factor by which the array grows when resizing
 	growthFactor = float32(2.00)
-	// shrinkFactor is the threshold ratio (length/capacity) below which the array shrinks
-	shrinkFactor = float32(0.25)
+	// shrinkThreshold is the threshold ratio (length/capacity) below which the array shrinks
+	shrinkThreshold = float32(0.25)
 )
 
 // New creates a new array list with the given values (optional).
@@ -126,6 +126,8 @@ func (list *List[T]) Clear() {
 	list.values = list.values[:0]
 }
 
+// Private methods implementation of arraylist.
+
 // withinRange checks if the given index is valid for the list.
 // Returns true if idx is between 0 (inclusive) and list length (exclusive).
 func (list *List[T]) withinRange(idx int) bool {
@@ -154,9 +156,9 @@ func (list *List[T]) growBy(n int) {
 
 // shrink reduces the underlying array capacity if the length is below the shrink threshold.
 func (list *List[T]) shrink() {
-	if shrinkFactor > 0 {
+	if shrinkThreshold > 0 {
 		currentCapacity := cap(list.values)
-		if len(list.values) <= int(float32(currentCapacity)*shrinkFactor) {
+		if len(list.values) <= int(float32(currentCapacity)*shrinkThreshold) {
 			list.resize(len(list.values), len(list.values))
 		}
 	}

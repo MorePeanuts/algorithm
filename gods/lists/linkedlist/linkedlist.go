@@ -174,6 +174,8 @@ func (list *List[T]) Clear() {
 	list.len = 0
 }
 
+// Private methods implementation of linkedlist.
+
 // withinRange checks if the given index is valid for the list.
 // Returns true if idx is between 0 (inclusive) and list.len (exclusive).
 func (list *List[T]) withinRange(idx int) bool {
