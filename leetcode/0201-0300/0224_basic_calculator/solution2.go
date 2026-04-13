@@ -4,14 +4,14 @@ import "strconv"
 
 func calculate2(s string) int {
 	infix := expr2Infix(s)
-	return evalSimplePostfix(infix)
+	return evalSimpleInfix(infix)
 }
 
-func evalSimplePostfix(postfix []string) int {
+func evalSimpleInfix(infix []string) int {
 	nums := make([]int, 0)
 	ops := make([]string, 0)
 
-	for _, token := range postfix {
+	for _, token := range infix {
 		if num, err := strconv.Atoi(token); err == nil {
 			nums = append(nums, num)
 		} else {
