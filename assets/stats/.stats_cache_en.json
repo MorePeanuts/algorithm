@@ -1,13 +1,13 @@
 {
-  "total": 41,
+  "total": 42,
   "difficulty_counts": {
     "Easy": 10,
     "Medium": 26,
-    "Hard": 5
+    "Hard": 6
   },
   "tag_counts": {
     "Hash Table": 16,
-    "String": 8,
+    "String": 9,
     "Sliding Window": 6,
     "Design": 3,
     "Linked List": 11,
@@ -19,12 +19,12 @@
     "Quickselect": 1,
     "Sorting": 6,
     "Heap (Priority Queue)": 2,
-    "Recursion": 4,
+    "Recursion": 5,
     "Two Pointers": 11,
-    "Stack": 8,
+    "Stack": 9,
     "Monotonic Stack": 4,
     "Matrix": 1,
-    "Math": 3,
+    "Math": 4,
     "Greedy": 1,
     "Dynamic Programming": 3,
     "Binary Search": 4,
