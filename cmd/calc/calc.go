@@ -9,7 +9,10 @@ import (
 )
 
 func calc(expr string) (float64, error) {
-	infix := infix2postfix.String2Infix(expr)
+	infix, err := infix2postfix.String2Infix(expr)
+	if err != nil {
+		return math.NaN(), err
+	}
 	postfix, err := infix2postfix.Infix2Postfix(infix)
 	if err != nil {
 		return math.NaN(), err
