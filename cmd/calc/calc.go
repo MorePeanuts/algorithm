@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"os"
 
 	"github.com/MorePeanuts/algorithm/gods/examples/infix2postfix"
 )
@@ -19,11 +20,15 @@ func calc(expr string) (float64, error) {
 
 func main() {
 	fmt.Println("Hello from calc!")
-	expr := "5*-3"
+	if len(os.Args) != 2 {
+		fmt.Fprintf(os.Stderr, "calc accepts an expression as an argument. (got %v)", len(os.Args))
+		os.Exit(1)
+	}
+	expr := os.Args[1]
 	result, err := calc(expr)
 	if err != nil {
-		fmt.Printf("error occurred while evaluating the expression %s: %v\n", expr, err)
-		return
+		fmt.Fprintf(os.Stderr, "error occurred while evaluating the expression %s: %v\n", expr, err)
+		os.Exit(1)
 	}
 	fmt.Printf("%s=%v\n", expr, result)
 }
