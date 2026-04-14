@@ -7,54 +7,85 @@ import (
 
 func TestString2InfixExamples(t *testing.T) {
 	testCases := []struct {
-		name string
-		expr string
-		want []string
+		name    string
+		expr    string
+		want    []string
+		wantErr bool
 	}{
 		{
-			name: "simple addition",
-			expr: "3+5",
-			want: []string{"3", "+", "5"},
+			name:    "simple addition",
+			expr:    "3+5",
+			want:    []string{"3", "+", "5"},
+			wantErr: false,
 		},
 		{
-			name: "multiple operators",
-			expr: "3+5*2",
-			want: []string{"3", "+", "5", "*", "2"},
+			name:    "multiple operators",
+			expr:    "3+5*2",
+			want:    []string{"3", "+", "5", "*", "2"},
+			wantErr: false,
 		},
 		{
-			name: "with parentheses",
-			expr: "(3+5)*2",
-			want: []string{"(", "3", "+", "5", ")", "*", "2"},
+			name:    "with parentheses",
+			expr:    "(3+5)*2",
+			want:    []string{"(", "3", "+", "5", ")", "*", "2"},
+			wantErr: false,
 		},
 		{
-			name: "with exponentiation",
-			expr: "2^3",
-			want: []string{"2", "^", "3"},
+			name:    "with exponentiation",
+			expr:    "2^3",
+			want:    []string{"2", "^", "3"},
+			wantErr: false,
 		},
 		{
-			name: "with spaces",
-			expr: " 3 + 5 * 2 ",
-			want: []string{"3", "+", "5", "*", "2"},
+			name:    "with spaces",
+			expr:    " 3 + 5 * 2 ",
+			want:    []string{"3", "+", "5", "*", "2"},
+			wantErr: false,
 		},
 		{
-			name: "complex expression",
-			expr: "10+3*5/(16-4)",
-			want: []string{"10", "+", "3", "*", "5", "/", "(", "16", "-", "4", ")"},
+			name:    "complex expression",
+			expr:    "10+3*5/(16-4)",
+			want:    []string{"10", "+", "3", "*", "5", "/", "(", "16", "-", "4", ")"},
+			wantErr: false,
+		},
+		{
+			name:    "unary plus",
+			expr:    "(+3)+5",
+			want:    []string{"(", "0", "+", "3", ")", "+", "5"},
+			wantErr: false,
+		},
+		{
+			name:    "unary minus",
+			expr:    "(-3)+5",
+			want:    []string{"(", "0", "-", "3", ")", "+", "5"},
+			wantErr: false,
+		},
+		{
+			name:    "invalid operator",
+			expr:    "3%5",
+			want:    nil,
+			wantErr: true,
 		},
 	}
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			got := String2Infix(tc.expr)
-			if len(got) != len(tc.want) {
-				t.Errorf("String2Infix(%q) length = %v, want %v", tc.expr, len(got), len(tc.want))
-				t.Errorf("got = %v, want = %v", got, tc.want)
+			got, err := String2Infix(tc.expr)
+			if (err != nil) != tc.wantErr {
+				t.Errorf("String2Infix(%q) error = %v, wantErr %v", tc.expr, err, tc.wantErr)
 				return
 			}
-			for i := range got {
-				if got[i] != tc.want[i] {
-					t.Errorf("String2Infix(%q) = %v, want %v", tc.expr, got, tc.want)
-					break
+			if !tc.wantErr {
+				if len(got) != len(tc.want) {
+					t.Errorf("String2Infix(%q) length = %v, want %v", tc.expr, len(got), len(tc.want))
+					t.Errorf("got = %v, want = %v", got, tc.want)
+					return
+				}
+				for i := range got {
+					if got[i] != tc.want[i] {
+						t.Errorf("String2Infix(%q) = %v, want %v", tc.expr, got, tc.want)
+						break
+					}
 				}
 			}
 		})
@@ -292,7 +323,10 @@ func TestFullWorkflow(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			infix := String2Infix(tc.expr)
+			infix, err := String2Infix(tc.expr)
+			if err != nil {
+				t.Fatalf("String2Infix() error = %v", err)
+			}
 			postfix, err := Infix2Postfix(infix)
 			if err != nil {
 				t.Fatalf("Infix2Postfix() error = %v", err)
