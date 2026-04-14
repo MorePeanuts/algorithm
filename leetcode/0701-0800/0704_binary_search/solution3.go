@@ -2,18 +2,17 @@ package leetcode0704
 
 // Two-way comparison
 func search3(nums []int, target int) int {
-	left := 0
-	right := len(nums)
-	for left < right-1 {
-		mid := left + (right-left)/2
-		if target < nums[mid] {
-			right = mid
+	l, r := 0, len(nums)
+	for l < r {
+		m := l + (r-l)/2
+		if target < nums[m] {
+			r = m
 		} else {
-			left = mid
+			l = m + 1
 		}
 	}
-	if left < right && nums[left] == target {
-		return left
+	if l > 0 && target == nums[l-1] {
+		return l - 1
 	} else {
 		return -1
 	}

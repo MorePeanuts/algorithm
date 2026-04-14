@@ -80,15 +80,15 @@ TITLE: "leetcode 704. Binary Search"
 **Two-Way Comparison Binary Search**: Only do two-way comparison in the loop, check for target match outside the loop.
 
 **Principle:**
-Unlike standard three-way comparison, each iteration only checks if target is less than middle element, narrowing the search range to the side that might contain the target. After the loop, verify if the `left` position is the target value.
+Using a left-closed, right-open interval `[left, right)`, each iteration only checks if the target is less than the middle element. After the loop, `left` points to the first position where the element is greater than or equal to the target. We need to check if the element before this position is the target.
 
 **Steps:**
 1. Initialize `left = 0`, `right = len(nums)`
-2. While `left < right - 1`:
+2. While `left < right`:
    - Calculate middle position `mid = left + (right - left) / 2`
-   - If `target < nums[mid]`, shrink right boundary `right = mid`
-   - Otherwise, shrink left boundary `left = mid` (target might be at mid or to its right)
-3. After loop ends, check if `nums[left]` equals target, return `left` if equal, otherwise return -1
+   - If `target < nums[mid]`, shrink right boundary `right = mid` (target is in the left half)
+   - Otherwise, shrink left boundary `left = mid + 1` (target might be to the right of mid)
+3. After loop ends, check `left > 0 && nums[left-1] == target`, return `left-1` if equal, otherwise return -1
 
 ```embed-go
 PATH: "vault://leetcode/0701-0800/0704_binary_search/solution3.go"

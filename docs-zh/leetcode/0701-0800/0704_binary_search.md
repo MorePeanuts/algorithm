@@ -79,15 +79,15 @@ TITLE: "leetcode 704.二分查找"
 **双向比较二分查找**：循环中只做两路比较，最后在循环外判断是否找到目标值。
 
 **原理：**
-与标准三路比较不同，每次循环只判断目标值是否小于中间元素，将搜索范围缩小到可能包含目标的一侧。循环结束后再验证 `left` 位置是否为目标值。
+使用左闭右开区间 `[left, right)`，每次循环只判断目标值是否小于中间元素。循环结束后，`left` 指向第一个大于等于目标值的位置，需要检查该位置的前一个元素是否为目标值。
 
 **步骤：**
 1. 初始化 `left = 0`，`right = len(nums)`
-2. 当 `left < right - 1` 时循环：
+2. 当 `left < right` 时循环：
    - 计算中间位置 `mid = left + (right - left) / 2`
-   - 若 `target < nums[mid]`，收缩右边界 `right = mid`
-   - 否则，收缩左边界 `left = mid`（目标可能在 mid 或其右侧）
-3. 循环结束后，检查 `nums[left]` 是否等于目标值，相等则返回 `left`，否则返回 -1
+   - 若 `target < nums[mid]`，收缩右边界 `right = mid`（目标在左半部分）
+   - 否则，收缩左边界 `left = mid + 1`（目标可能在 mid 右侧）
+3. 循环结束后，检查 `left > 0 && nums[left-1] == target`，相等则返回 `left-1`，否则返回 -1
 
 ```embed-go
 PATH: "vault://leetcode/0701-0800/0704_binary_search/solution3.go"
