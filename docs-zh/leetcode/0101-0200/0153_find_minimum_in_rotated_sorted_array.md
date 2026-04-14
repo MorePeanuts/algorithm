@@ -76,3 +76,30 @@ tags:
 PATH: "vault://leetcode/0101-0200/0153_find_minimum_in_rotated_sorted_array/solution.go"
 TITLE: "leetcode 153. Find Minimum in Rotated Sorted Array"
 ```
+
+### 解法2
+**方法名**：二分查找（左边界比较）
+
+**原理：**
+以数组的第一个元素为基准，通过二分查找确定最小值的位置。如果中间元素大于等于左边界，说明最小值在右半部分；否则在左半部分。
+
+**步骤：**
+1. 首先检查数组是否未旋转（第一个元素小于最后一个元素），若是则直接返回第一个元素
+2. 初始化左右指针 `l=0`，`r=len(nums)`
+3. 当 `l < r` 时，计算中间位置 `m = l + (r-l)/2`
+4. 若 `nums[m] >= nums[0]`，说明最小值在右半部分，调整 `l = m + 1`
+5. 否则说明最小值在左半部分（包含 m），调整 `r = m`
+6. 循环结束后，检查 `l` 是否越界，若越界则返回最后一个元素，否则返回 `nums[l]`
+
+**示例：**
+- 输入 `nums = [4,5,6,7,0,1,2]`
+- nums[0] = 4 > nums[6] = 2，进入二分查找
+- m=3，nums[3]=7 >= 4 → l=4
+- m=5，nums[5]=1 < 4 → r=5
+- m=4，nums[4]=0 < 4 → r=4
+- l==r=4，返回 nums[4]=0
+
+```embed-go
+PATH: "vault://leetcode/0101-0200/0153_find_minimum_in_rotated_sorted_array/solution2.go"
+TITLE: "leetcode 153. Find Minimum in Rotated Sorted Array"
+```

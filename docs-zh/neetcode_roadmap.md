@@ -58,8 +58,10 @@
 | 0023 | [[docs-zh/leetcode/0001-0100/0023_merge_k_sorted_lists\|Merge k Sorted Lists]]                         | Hard       |        |
 | 0025 | [[docs-zh/leetcode/0001-0100/0025_reverse_nodes_in_k_group\|Reverse Nodes in k Group]]                 | Hard       |        |
 ## Binary Search
-| ID   | Problem                                                                      | Difficulty | Review |
-| ---- | ---------------------------------------------------------------------------- | ---------- | ------ |
-| 0704 | [[docs-zh/leetcode/0701-0800/0704_binary_search\|Binary Search]]             | Easy       |        |
-| 0074 | [[docs-zh/leetcode/0001-0100/0074_search_a_2d_matrix\|Search a 2D Matrix]]   | Medium     |        |
-| 0875 | [[docs-zh/leetcode/0801-0900/0875_koko_eating_bananas\|Koko Eating Bananas]] | Medium     |        |
+| ID   | Problem                                                                                                        | Difficulty | Review |
+| ---- | -------------------------------------------------------------------------------------------------------------- | ---------- | ------ |
+| 0704 | [[docs-zh/leetcode/0701-0800/0704_binary_search\|Binary Search]]                                               | Easy       |        |
+| 0074 | [[docs-zh/leetcode/0001-0100/0074_search_a_2d_matrix\|Search a 2D Matrix]]                                     | Medium     |        |
+| 0875 | [[docs-zh/leetcode/0801-0900/0875_koko_eating_bananas\|Koko Eating Bananas]]                                   | Medium     | ✅      |
+| 0153 | [[docs-zh/leetcode/0101-0200/0153_find_minimum_in_rotated_sorted_array\|Find Minimum in Rotated Sorted Array]] | Medium     | ✅      |
+| 0033 | [[docs-zh/leetcode/0001-0100/0033_search_in_rotated_sorted_array\|Search in Rotated Sorted Array]]             | Medium     |        |

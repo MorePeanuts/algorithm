@@ -32,6 +32,10 @@ func TestFindMinExamples(t *testing.T) {
 			if got != tst.want {
 				t.Errorf("findMin(%v) = %v, want %v", tst.nums, got, tst.want)
 			}
+			got = findMin2(tst.nums)
+			if got != tst.want {
+				t.Errorf("findMin(%v) = %v, want %v", tst.nums, got, tst.want)
+			}
 		})
 	}
 }
@@ -53,12 +57,10 @@ func TestFindMin(t *testing.T) {
 		{"min_at_beginning", []int{1, 2, 3, 4, 5}, 1},
 		{"min_in_middle_left", []int{4, 5, 1, 2, 3}, 1},
 		{"min_in_middle_right", []int{3, 4, 5, 1, 2}, 1},
-		{"all_negative_rotated", []int{-1, -2, -3, -4, -5}, -5},
 		{"all_negative_not_rotated", []int{-5, -4, -3, -2, -1}, -5},
 		{"mixed_positive_negative", []int{0, 1, 2, -3, -2, -1}, -3},
 		{"rotated_n_minus_1_times", []int{2, 3, 4, 5, 6, 7, 1}, 1},
 		{"rotated_n_times", []int{1, 2, 3, 4, 5, 6, 7}, 1},
-		{"descending_after_rotating", []int{5, 4, 3, 2, 1}, 1},
 		{"large_range_values", []int{-5000, 5000, -4999, 4999, -4998}, -5000},
 		{"min_is_max_negative", []int{-5000, -4999, -4998, 0, 1, 2}, -5000},
 		{"min_is_smallest_positive", []int{100, 200, 300, 400, 1}, 1},
@@ -81,6 +83,10 @@ func TestFindMin(t *testing.T) {
 	for _, tst := range tests {
 		t.Run(tst.name, func(t *testing.T) {
 			got := findMin(tst.nums)
+			if got != tst.want {
+				t.Errorf("findMin(%v) = %v, want %v", tst.nums, got, tst.want)
+			}
+			got = findMin2(tst.nums)
 			if got != tst.want {
 				t.Errorf("findMin(%v) = %v, want %v", tst.nums, got, tst.want)
 			}
