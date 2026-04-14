@@ -58,7 +58,8 @@
 | 0023 | [[docs-zh/leetcode/0001-0100/0023_merge_k_sorted_lists\|Merge k Sorted Lists]]                         | Hard       |        |
 | 0025 | [[docs-zh/leetcode/0001-0100/0025_reverse_nodes_in_k_group\|Reverse Nodes in k Group]]                 | Hard       |        |
 ## Binary Search
-| ID   | Problem                                                                    | Difficulty | Review |
-| ---- | -------------------------------------------------------------------------- | ---------- | ------ |
-| 0704 | [[docs-zh/leetcode/0701-0800/0704_binary_search\|Binary Search]]           | Easy       |        |
-| 0074 | [[docs-zh/leetcode/0001-0100/0074_search_a_2d_matrix\|Search a 2D Matrix]] | Medium     |        |
+| ID   | Problem                                                                      | Difficulty | Review |
+| ---- | ---------------------------------------------------------------------------- | ---------- | ------ |
+| 0704 | [[docs-zh/leetcode/0701-0800/0704_binary_search\|Binary Search]]             | Easy       |        |
+| 0074 | [[docs-zh/leetcode/0001-0100/0074_search_a_2d_matrix\|Search a 2D Matrix]]   | Medium     |        |
+| 0875 | [[docs-zh/leetcode/0801-0900/0875_koko_eating_bananas\|Koko Eating Bananas]] | Medium     |        |
