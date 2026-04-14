@@ -55,3 +55,5 @@
 | 0092 | [[docs-zh/leetcode/0001-0100/0092_reverse_linked_list_ii\|Reverse Linked List II]]                     | Medium     |        |
 | 0146 | [[docs-zh/leetcode/0101-0200/0146_lru_cache\|LRU Cache]]                                               | Medium     |        |
 | 0460 | [[docs-zh/leetcode/0401-0500/0460_lfu_cache\|LFU Cache]]                                               | Hard       | ✅      |
+| 0023 | [[docs-zh/leetcode/0001-0100/0023_merge_k_sorted_lists\|Merge k Sorted Lists]]                         | Hard       |        |
+| 0025 | [[docs-zh/leetcode/0001-0100/0025_reverse_nodes_in_k_group\|Reverse Nodes in k Group]]                 | Hard       |        |
