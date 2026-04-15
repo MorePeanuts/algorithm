@@ -1,15 +1,15 @@
 {
-  "total": 49,
+  "total": 50,
   "difficulty_counts": {
     "Easy": 10,
-    "Medium": 31,
+    "Medium": 32,
     "Hard": 8
   },
   "tag_counts": {
-    "Hash Table": 16,
-    "String": 10,
+    "Hash Table": 17,
+    "String": 11,
     "Sliding Window": 6,
-    "Design": 3,
+    "Design": 4,
     "Linked List": 13,
     "Doubly-Linked List": 2,
     "Array": 25,
@@ -19,7 +19,7 @@
     "Quickselect": 1,
     "Sorting": 6,
     "Heap (Priority Queue)": 3,
-    "Binary Search": 8,
+    "Binary Search": 9,
     "Matrix": 2,
     "Recursion": 6,
     "Two Pointers": 11,
