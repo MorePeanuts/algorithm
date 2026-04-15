@@ -39,6 +39,16 @@ func TestSearchExamples(t *testing.T) {
 			if got != tst.want {
 				t.Errorf("search(%v, %d) = %d, want %d", tst.nums, tst.target, got, tst.want)
 			}
+
+			got = search4(tst.nums, tst.target)
+			if got != tst.want {
+				t.Errorf("search(%v, %d) = %d, want %d", tst.nums, tst.target, got, tst.want)
+			}
+
+			got = search5(tst.nums, tst.target)
+			if got != tst.want {
+				t.Errorf("search(%v, %d) = %d, want %d", tst.nums, tst.target, got, tst.want)
+			}
 		})
 	}
 }
@@ -137,6 +147,16 @@ func TestSearch(t *testing.T) {
 			}
 
 			got = search3(tst.nums, tst.target)
+			if got != tst.want {
+				t.Errorf("search(%v, %d) = %d, want %d", tst.nums, tst.target, got, tst.want)
+			}
+
+			got = search4(tst.nums, tst.target)
+			if got != tst.want {
+				t.Errorf("search(%v, %d) = %d, want %d", tst.nums, tst.target, got, tst.want)
+			}
+
+			got = search5(tst.nums, tst.target)
 			if got != tst.want {
 				t.Errorf("search(%v, %d) = %d, want %d", tst.nums, tst.target, got, tst.want)
 			}

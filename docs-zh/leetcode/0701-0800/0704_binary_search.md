@@ -93,3 +93,44 @@ TITLE: "leetcode 704.二分查找"
 PATH: "vault://leetcode/0701-0800/0704_binary_search/solution3.go"
 TITLE: "leetcode 704.二分查找"
 ```
+
+### 解法4
+
+**闭区间迭代二分查找**：使用双闭区间 `[left, right]` 实现二分查找。
+
+**原理：**
+维护左右边界 `[left, right]` 形成双闭区间，每次根据中间元素与目标值的比较结果调整边界，直到找到目标或区间为空。
+
+**步骤：**
+1. 初始化 `left = 0`，`right = len(nums) - 1`
+2. 当 `left <= right` 时循环：
+   - 计算中间位置 `mid = left + (right - left) / 2`
+   - 若 `target < nums[mid]`，收缩右边界 `right = mid - 1`
+   - 若 `target > nums[mid]`，收缩左边界 `left = mid + 1`
+   - 若相等，返回 `mid`
+3. 循环结束仍未找到，返回 -1
+
+```embed-go
+PATH: "vault://leetcode/0701-0800/0704_binary_search/solution4.go"
+TITLE: "leetcode 704.二分查找"
+```
+
+### 解法5
+
+**闭区间双向比较二分查找**：在双闭区间上使用两路比较，最后判断目标值。
+
+**原理：**
+使用双闭区间 `[left, right]`，每次循环判断目标值是否小于等于中间元素。循环结束后，`left` 指向第一个大于等于目标值的位置，检查该位置元素是否为目标值。
+
+**步骤：**
+1. 初始化 `left = 0`，`right = len(nums) - 1`
+2. 当 `left < right` 时循环：
+   - 计算中间位置 `mid = left + (right - left) / 2`
+   - 若 `target <= nums[mid]`，收缩右边界 `right = mid`（目标可能在左半部分或就是 mid）
+   - 否则，收缩左边界 `left = mid + 1`（目标在右半部分）
+3. 循环结束后，检查 `nums[left] == target`，相等则返回 `left`，否则返回 -1
+
+```embed-go
+PATH: "vault://leetcode/0701-0800/0704_binary_search/solution5.go"
+TITLE: "leetcode 704.二分查找"
+```

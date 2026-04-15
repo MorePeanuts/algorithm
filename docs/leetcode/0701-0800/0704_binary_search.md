@@ -94,3 +94,44 @@ Using a left-closed, right-open interval `[left, right)`, each iteration only ch
 PATH: "vault://leetcode/0701-0800/0704_binary_search/solution3.go"
 TITLE: "leetcode 704. Binary Search"
 ```
+
+### Approach 4
+
+**Closed Interval Iterative Binary Search**: Implement binary search using a closed interval `[left, right]`.
+
+**Principle:**
+Maintain left and right boundaries `[left, right]` as a closed interval. Each time adjust boundaries based on comparison of middle element with target, until the target is found or the interval becomes empty.
+
+**Steps:**
+1. Initialize `left = 0`, `right = len(nums) - 1`
+2. While `left <= right`:
+   - Calculate middle position `mid = left + (right - left) / 2`
+   - If `target < nums[mid]`, shrink right boundary `right = mid - 1`
+   - If `target > nums[mid]`, shrink left boundary `left = mid + 1`
+   - If equal, return `mid`
+3. If loop ends without finding, return -1
+
+```embed-go
+PATH: "vault://leetcode/0701-0800/0704_binary_search/solution4.go"
+TITLE: "leetcode 704. Binary Search"
+```
+
+### Approach 5
+
+**Closed Interval Two-Way Comparison Binary Search**: Use two-way comparison on a closed interval, then check for target.
+
+**Principle:**
+Using a closed interval `[left, right]`, each iteration checks if the target is less than or equal to the middle element. After the loop, `left` points to the first position where the element is greater than or equal to the target. Check if the element at this position is the target.
+
+**Steps:**
+1. Initialize `left = 0`, `right = len(nums) - 1`
+2. While `left < right`:
+   - Calculate middle position `mid = left + (right - left) / 2`
+   - If `target <= nums[mid]`, shrink right boundary `right = mid` (target might be in the left half or is mid)
+   - Otherwise, shrink left boundary `left = mid + 1` (target is in the right half)
+3. After loop ends, check `nums[left] == target`, return `left` if equal, otherwise return -1
+
+```embed-go
+PATH: "vault://leetcode/0701-0800/0704_binary_search/solution5.go"
+TITLE: "leetcode 704. Binary Search"
+```
