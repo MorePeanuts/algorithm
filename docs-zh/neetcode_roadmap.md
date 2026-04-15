@@ -65,3 +65,5 @@
 | 0875 | [[docs-zh/leetcode/0801-0900/0875_koko_eating_bananas\|Koko Eating Bananas]]                                   | Medium     | ✅      |
 | 0153 | [[docs-zh/leetcode/0101-0200/0153_find_minimum_in_rotated_sorted_array\|Find Minimum in Rotated Sorted Array]] | Medium     | ✅      |
 | 0033 | [[docs-zh/leetcode/0001-0100/0033_search_in_rotated_sorted_array\|Search in Rotated Sorted Array]]             | Medium     |        |
+| 0981 | [[docs-zh/leetcode/0901-1000/0981_time_based_key_value_store\|Time Based Key Value Store]]                     | Medium     |        |
+| 0004 | [[docs-zh/leetcode/0001-0100/0004_median_of_two_sorted_arrays\|Median of Two Sorted Arrays]]                   | Hard       | ✅      |

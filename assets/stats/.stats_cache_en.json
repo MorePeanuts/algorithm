@@ -1,9 +1,9 @@
 {
-  "total": 50,
+  "total": 51,
   "difficulty_counts": {
     "Easy": 10,
     "Medium": 32,
-    "Hard": 8
+    "Hard": 9
   },
   "tag_counts": {
     "Hash Table": 17,
@@ -12,14 +12,14 @@
     "Design": 4,
     "Linked List": 13,
     "Doubly-Linked List": 2,
-    "Array": 25,
-    "Divide and Conquer": 3,
+    "Array": 26,
+    "Divide and Conquer": 4,
     "Bucket Sort": 1,
     "Counting": 1,
     "Quickselect": 1,
     "Sorting": 6,
     "Heap (Priority Queue)": 3,
-    "Binary Search": 9,
+    "Binary Search": 10,
     "Matrix": 2,
     "Recursion": 6,
     "Two Pointers": 11,

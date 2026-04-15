@@ -1,9 +1,16 @@
 package utils
 
 import (
+	"math"
 	"slices"
 	"sort"
 )
+
+// Float64AlmostEqual checks if two float64 values are almost equal within a small epsilon.
+func Float64AlmostEqual(a, b float64) bool {
+	const epsilon = 1e-9
+	return math.Abs(a-b) < epsilon
+}
 
 // MatchTwo2dStringSlice is used to judge whether two two-dimensional string slices are identical,
 // ignoring the order of strings within the inner slices and the order of inner slices within the
