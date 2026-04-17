@@ -46,9 +46,9 @@ func (queue *Queue[T]) IsEmpty() bool {
 	return queue.list.IsEmpty()
 }
 
-// Len returns the number of elements in the queue.
-func (queue *Queue[T]) Len() int {
-	return queue.list.Len()
+// Size returns the number of elements in the queue.
+func (queue *Queue[T]) Size() int {
+	return queue.list.Size()
 }
 
 // Clear removes all elements from the queue.

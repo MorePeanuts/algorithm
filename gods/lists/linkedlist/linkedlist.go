@@ -162,8 +162,8 @@ func (list *List[T]) IsEmpty() bool {
 	return list.len == 0
 }
 
-// Len returns the number of elements in the list.
-func (list *List[T]) Len() int {
+// Size returns the number of elements in the list.
+func (list *List[T]) Size() int {
 	return list.len
 }
 

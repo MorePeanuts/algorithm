@@ -10,8 +10,8 @@ func TestNew(t *testing.T) {
 	if !list.IsEmpty() {
 		t.Error("New list should be empty")
 	}
-	if list.Len() != 0 {
-		t.Errorf("New list length should be 0, got %d", list.Len())
+	if list.Size() != 0 {
+		t.Errorf("New list length should be 0, got %d", list.Size())
 	}
 
 	// Test list with initial values
@@ -19,8 +19,8 @@ func TestNew(t *testing.T) {
 	if list.IsEmpty() {
 		t.Error("List with initial values should not be empty")
 	}
-	if list.Len() != 3 {
-		t.Errorf("List length should be 3, got %d", list.Len())
+	if list.Size() != 3 {
+		t.Errorf("List length should be 3, got %d", list.Size())
 	}
 	if val, ok := list.Get(0); !ok || val != 1 {
 		t.Errorf("First element should be 1, got %v", val)
@@ -93,8 +93,8 @@ func TestSet(t *testing.T) {
 
 	// Test Set on index equal to length (should append)
 	list.Set(3, 400)
-	if list.Len() != 4 {
-		t.Errorf("Set(3, 400) should append, length should be 4, got %d", list.Len())
+	if list.Size() != 4 {
+		t.Errorf("Set(3, 400) should append, length should be 4, got %d", list.Size())
 	}
 	if val, ok := list.Get(3); !ok || val != 400 {
 		t.Errorf("Set(3, 400) failed, got %v", val)
@@ -102,21 +102,21 @@ func TestSet(t *testing.T) {
 
 	// Test Set on out of range index (should not append)
 	list.Set(10, 1000)
-	if list.Len() != 4 {
-		t.Errorf("Set(10, 1000) should not modify list, length should be 4, got %d", list.Len())
+	if list.Size() != 4 {
+		t.Errorf("Set(10, 1000) should not modify list, length should be 4, got %d", list.Size())
 	}
 
 	// Test Set on negative index (should not modify)
 	list.Set(-1, -100)
-	if list.Len() != 4 {
-		t.Errorf("Set(-1, -100) should not modify list, length should be 4, got %d", list.Len())
+	if list.Size() != 4 {
+		t.Errorf("Set(-1, -100) should not modify list, length should be 4, got %d", list.Size())
 	}
 
 	// Test Set on empty list at index 0 (should append)
 	emptyList := New[int]()
 	emptyList.Set(0, 50)
-	if emptyList.Len() != 1 {
-		t.Errorf("Set(0, 50) on empty list should append, length should be 1, got %d", emptyList.Len())
+	if emptyList.Size() != 1 {
+		t.Errorf("Set(0, 50) on empty list should append, length should be 1, got %d", emptyList.Size())
 	}
 	if val, ok := emptyList.Get(0); !ok || val != 50 {
 		t.Errorf("Set(0, 50) on empty list failed, got %v", val)
@@ -127,8 +127,8 @@ func TestAppend(t *testing.T) {
 	// Test append to empty list
 	list := New[int]()
 	list.Append(1)
-	if list.Len() != 1 {
-		t.Errorf("Append to empty list: length should be 1, got %d", list.Len())
+	if list.Size() != 1 {
+		t.Errorf("Append to empty list: length should be 1, got %d", list.Size())
 	}
 	if val, ok := list.Get(0); !ok || val != 1 {
 		t.Errorf("Append to empty list: first element should be 1, got %v", val)
@@ -136,8 +136,8 @@ func TestAppend(t *testing.T) {
 
 	// Test append multiple values
 	list.Append(2, 3, 4)
-	if list.Len() != 4 {
-		t.Errorf("Append multiple: length should be 4, got %d", list.Len())
+	if list.Size() != 4 {
+		t.Errorf("Append multiple: length should be 4, got %d", list.Size())
 	}
 	expected := []int{1, 2, 3, 4}
 	for i, exp := range expected {
@@ -148,8 +148,8 @@ func TestAppend(t *testing.T) {
 
 	// Test append single value
 	list.Append(5)
-	if list.Len() != 5 {
-		t.Errorf("Append single: length should be 5, got %d", list.Len())
+	if list.Size() != 5 {
+		t.Errorf("Append single: length should be 5, got %d", list.Size())
 	}
 	if val, ok := list.Get(4); !ok || val != 5 {
 		t.Errorf("Append single: last element should be 5, got %v", val)
@@ -157,15 +157,15 @@ func TestAppend(t *testing.T) {
 
 	// Test append no values
 	list.Append()
-	if list.Len() != 5 {
-		t.Errorf("Append no values: length should remain 5, got %d", list.Len())
+	if list.Size() != 5 {
+		t.Errorf("Append no values: length should remain 5, got %d", list.Size())
 	}
 
 	// Test append to list with one element
 	singleList := New(100)
 	singleList.Append(200)
-	if singleList.Len() != 2 {
-		t.Errorf("Append to single-element list: length should be 2, got %d", singleList.Len())
+	if singleList.Size() != 2 {
+		t.Errorf("Append to single-element list: length should be 2, got %d", singleList.Size())
 	}
 	if val, ok := singleList.Get(1); !ok || val != 200 {
 		t.Errorf("Append to single-element list: second element should be 200, got %v", val)
@@ -176,8 +176,8 @@ func TestRemove(t *testing.T) {
 	// Test remove from middle
 	list := New(1, 2, 3, 4, 5)
 	list.Remove(2)
-	if list.Len() != 4 {
-		t.Errorf("Remove middle: length should be 4, got %d", list.Len())
+	if list.Size() != 4 {
+		t.Errorf("Remove middle: length should be 4, got %d", list.Size())
 	}
 	expected := []int{1, 2, 4, 5}
 	for i, exp := range expected {
@@ -189,8 +189,8 @@ func TestRemove(t *testing.T) {
 	// Test remove first element
 	list = New(1, 2, 3)
 	list.Remove(0)
-	if list.Len() != 2 {
-		t.Errorf("Remove first: length should be 2, got %d", list.Len())
+	if list.Size() != 2 {
+		t.Errorf("Remove first: length should be 2, got %d", list.Size())
 	}
 	if val, ok := list.Get(0); !ok || val != 2 {
 		t.Errorf("Remove first: first element should be 2, got %v", val)
@@ -199,8 +199,8 @@ func TestRemove(t *testing.T) {
 	// Test remove last element
 	list = New(1, 2, 3)
 	list.Remove(2)
-	if list.Len() != 2 {
-		t.Errorf("Remove last: length should be 2, got %d", list.Len())
+	if list.Size() != 2 {
+		t.Errorf("Remove last: length should be 2, got %d", list.Size())
 	}
 	if val, ok := list.Get(1); !ok || val != 2 {
 		t.Errorf("Remove last: last element should be 2, got %v", val)
@@ -212,26 +212,26 @@ func TestRemove(t *testing.T) {
 	if !list.IsEmpty() {
 		t.Error("Remove from single-element list should leave it empty")
 	}
-	if list.Len() != 0 {
-		t.Errorf("Remove from single-element list: length should be 0, got %d", list.Len())
+	if list.Size() != 0 {
+		t.Errorf("Remove from single-element list: length should be 0, got %d", list.Size())
 	}
 
 	// Test remove invalid indices
 	list = New(1, 2, 3)
 	list.Remove(-1)
-	if list.Len() != 3 {
-		t.Errorf("Remove negative index: length should remain 3, got %d", list.Len())
+	if list.Size() != 3 {
+		t.Errorf("Remove negative index: length should remain 3, got %d", list.Size())
 	}
 	list.Remove(3)
-	if list.Len() != 3 {
-		t.Errorf("Remove out of range index: length should remain 3, got %d", list.Len())
+	if list.Size() != 3 {
+		t.Errorf("Remove out of range index: length should remain 3, got %d", list.Size())
 	}
 
 	// Test remove from empty list
 	emptyList := New[int]()
 	emptyList.Remove(0) // Should not panic
-	if emptyList.Len() != 0 {
-		t.Errorf("Remove from empty list: length should remain 0, got %d", emptyList.Len())
+	if emptyList.Size() != 0 {
+		t.Errorf("Remove from empty list: length should remain 0, got %d", emptyList.Size())
 	}
 }
 
@@ -239,8 +239,8 @@ func TestInsert(t *testing.T) {
 	// Test insert at beginning
 	list := New(3, 4, 5)
 	list.Insert(0, 1, 2)
-	if list.Len() != 5 {
-		t.Errorf("Insert at beginning: length should be 5, got %d", list.Len())
+	if list.Size() != 5 {
+		t.Errorf("Insert at beginning: length should be 5, got %d", list.Size())
 	}
 	expected := []int{1, 2, 3, 4, 5}
 	for i, exp := range expected {
@@ -252,8 +252,8 @@ func TestInsert(t *testing.T) {
 	// Test insert in middle
 	list = New(1, 2, 5, 6)
 	list.Insert(2, 3, 4)
-	if list.Len() != 6 {
-		t.Errorf("Insert in middle: length should be 6, got %d", list.Len())
+	if list.Size() != 6 {
+		t.Errorf("Insert in middle: length should be 6, got %d", list.Size())
 	}
 	expected = []int{1, 2, 3, 4, 5, 6}
 	for i, exp := range expected {
@@ -262,11 +262,11 @@ func TestInsert(t *testing.T) {
 		}
 	}
 
-	// Test insert at end (using list.Len())
+	// Test insert at end (using list.Size())
 	list = New(1, 2, 3)
 	list.Insert(3, 4, 5)
-	if list.Len() != 5 {
-		t.Errorf("Insert at end: length should be 5, got %d", list.Len())
+	if list.Size() != 5 {
+		t.Errorf("Insert at end: length should be 5, got %d", list.Size())
 	}
 	expected = []int{1, 2, 3, 4, 5}
 	for i, exp := range expected {
@@ -278,8 +278,8 @@ func TestInsert(t *testing.T) {
 	// Test insert single value
 	list = New(1, 3)
 	list.Insert(1, 2)
-	if list.Len() != 3 {
-		t.Errorf("Insert single: length should be 3, got %d", list.Len())
+	if list.Size() != 3 {
+		t.Errorf("Insert single: length should be 3, got %d", list.Size())
 	}
 	if val, ok := list.Get(1); !ok || val != 2 {
 		t.Errorf("Insert single: index 1 should be 2, got %v", val)
@@ -288,26 +288,26 @@ func TestInsert(t *testing.T) {
 	// Test insert no values
 	list = New(1, 2, 3)
 	list.Insert(1)
-	if list.Len() != 3 {
-		t.Errorf("Insert no values: length should remain 3, got %d", list.Len())
+	if list.Size() != 3 {
+		t.Errorf("Insert no values: length should remain 3, got %d", list.Size())
 	}
 
 	// Test insert at 0 in empty list
 	emptyList := New[int]()
 	emptyList.Insert(0, 1, 2, 3)
-	if emptyList.Len() != 3 {
-		t.Errorf("Insert in empty list: length should be 3, got %d", emptyList.Len())
+	if emptyList.Size() != 3 {
+		t.Errorf("Insert in empty list: length should be 3, got %d", emptyList.Size())
 	}
 
 	// Test insert at invalid index (should not modify)
 	list = New(1, 2, 3)
 	list.Insert(5, 10)
-	if list.Len() != 3 {
-		t.Errorf("Insert invalid index: length should remain 3, got %d", list.Len())
+	if list.Size() != 3 {
+		t.Errorf("Insert invalid index: length should remain 3, got %d", list.Size())
 	}
 	list.Insert(-1, 10)
-	if list.Len() != 3 {
-		t.Errorf("Insert negative index: length should remain 3, got %d", list.Len())
+	if list.Size() != 3 {
+		t.Errorf("Insert negative index: length should remain 3, got %d", list.Size())
 	}
 }
 
@@ -377,8 +377,8 @@ func TestSwap(t *testing.T) {
 	// Test swap in middle
 	list := New(1, 2, 3, 4, 5)
 	list.Swap(1, 3)
-	if list.Len() != 5 {
-		t.Errorf("Swap: length should remain 5, got %d", list.Len())
+	if list.Size() != 5 {
+		t.Errorf("Swap: length should remain 5, got %d", list.Size())
 	}
 	expected := []int{1, 4, 3, 2, 5}
 	for i, exp := range expected {
@@ -478,47 +478,47 @@ func TestIsEmpty(t *testing.T) {
 	}
 }
 
-func TestLen(t *testing.T) {
+func TestSize(t *testing.T) {
 	// Test empty list
 	list := New[int]()
-	if list.Len() != 0 {
-		t.Errorf("Len() on new list should be 0, got %d", list.Len())
+	if list.Size() != 0 {
+		t.Errorf("Len() on new list should be 0, got %d", list.Size())
 	}
 
 	// Test after append
 	list.Append(1)
-	if list.Len() != 1 {
-		t.Errorf("Len() after append should be 1, got %d", list.Len())
+	if list.Size() != 1 {
+		t.Errorf("Len() after append should be 1, got %d", list.Size())
 	}
 
 	// Test after multiple appends
 	list.Append(2, 3)
-	if list.Len() != 3 {
-		t.Errorf("Len() after multiple appends should be 3, got %d", list.Len())
+	if list.Size() != 3 {
+		t.Errorf("Len() after multiple appends should be 3, got %d", list.Size())
 	}
 
 	// Test after insert
 	list.Insert(1, 10)
-	if list.Len() != 4 {
-		t.Errorf("Len() after insert should be 4, got %d", list.Len())
+	if list.Size() != 4 {
+		t.Errorf("Len() after insert should be 4, got %d", list.Size())
 	}
 
 	// Test after remove
 	list.Remove(2)
-	if list.Len() != 3 {
-		t.Errorf("Len() after remove should be 3, got %d", list.Len())
+	if list.Size() != 3 {
+		t.Errorf("Len() after remove should be 3, got %d", list.Size())
 	}
 
 	// Test after clear
 	list.Clear()
-	if list.Len() != 0 {
-		t.Errorf("Len() after clear should be 0, got %d", list.Len())
+	if list.Size() != 0 {
+		t.Errorf("Len() after clear should be 0, got %d", list.Size())
 	}
 
 	// Test with initial values
 	list = New(1, 2, 3, 4, 5)
-	if list.Len() != 5 {
-		t.Errorf("Len() with initial values should be 5, got %d", list.Len())
+	if list.Size() != 5 {
+		t.Errorf("Len() with initial values should be 5, got %d", list.Size())
 	}
 }
 
@@ -529,8 +529,8 @@ func TestClear(t *testing.T) {
 	if !list.IsEmpty() {
 		t.Error("Clear() should leave list empty")
 	}
-	if list.Len() != 0 {
-		t.Errorf("Clear() should set length to 0, got %d", list.Len())
+	if list.Size() != 0 {
+		t.Errorf("Clear() should set length to 0, got %d", list.Size())
 	}
 
 	// Test clear empty list (should not panic)
@@ -544,8 +544,8 @@ func TestClear(t *testing.T) {
 	list = New(1, 2, 3)
 	list.Clear()
 	list.Append(10, 20)
-	if list.Len() != 2 {
-		t.Errorf("Clear() then append: length should be 2, got %d", list.Len())
+	if list.Size() != 2 {
+		t.Errorf("Clear() then append: length should be 2, got %d", list.Size())
 	}
 	if val, ok := list.Get(0); !ok || val != 10 {
 		t.Errorf("Clear() then append: first element should be 10, got %v", val)
@@ -570,8 +570,8 @@ func TestListComprehensive(t *testing.T) {
 
 	// Append and verify
 	list.Append(1, 2, 3)
-	if list.Len() != 3 {
-		t.Errorf("Length should be 3 after append, got %d", list.Len())
+	if list.Size() != 3 {
+		t.Errorf("Length should be 3 after append, got %d", list.Size())
 	}
 	if !list.Contains(1, 2, 3) {
 		t.Error("List should contain 1, 2, 3")
@@ -594,8 +594,8 @@ func TestListComprehensive(t *testing.T) {
 
 	// Remove
 	list.Remove(2)
-	if list.Len() != 4 {
-		t.Errorf("Length should be 4 after remove, got %d", list.Len())
+	if list.Size() != 4 {
+		t.Errorf("Length should be 4 after remove, got %d", list.Size())
 	}
 	if list.Contains(20) {
 		t.Error("List should not contain 20 after removal")
@@ -615,7 +615,7 @@ func TestListComprehensive(t *testing.T) {
 	if !list.IsEmpty() {
 		t.Error("List should be empty after clear")
 	}
-	if list.Len() != 0 {
-		t.Errorf("Length should be 0 after clear, got %d", list.Len())
+	if list.Size() != 0 {
+		t.Errorf("Length should be 0 after clear, got %d", list.Size())
 	}
 }

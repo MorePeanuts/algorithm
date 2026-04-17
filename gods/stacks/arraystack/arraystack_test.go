@@ -10,8 +10,8 @@ func TestNew(t *testing.T) {
 	if !stack.IsEmpty() {
 		t.Error("New stack should be empty")
 	}
-	if stack.Len() != 0 {
-		t.Errorf("New stack length should be 0, got %d", stack.Len())
+	if stack.Size() != 0 {
+		t.Errorf("New stack length should be 0, got %d", stack.Size())
 	}
 }
 
@@ -19,8 +19,8 @@ func TestPush(t *testing.T) {
 	// Test push to empty stack
 	stack := New[int]()
 	stack.Push(1)
-	if stack.Len() != 1 {
-		t.Errorf("Push to empty stack: length should be 1, got %d", stack.Len())
+	if stack.Size() != 1 {
+		t.Errorf("Push to empty stack: length should be 1, got %d", stack.Size())
 	}
 	if val, ok := stack.Peek(); !ok || val != 1 {
 		t.Errorf("Push to empty stack: top element should be 1, got %v", val)
@@ -29,8 +29,8 @@ func TestPush(t *testing.T) {
 	// Test push multiple values
 	stack.Push(2)
 	stack.Push(3)
-	if stack.Len() != 3 {
-		t.Errorf("Push multiple: length should be 3, got %d", stack.Len())
+	if stack.Size() != 3 {
+		t.Errorf("Push multiple: length should be 3, got %d", stack.Size())
 	}
 	if val, ok := stack.Peek(); !ok || val != 3 {
 		t.Errorf("Push multiple: top element should be 3, got %v", val)
@@ -41,8 +41,8 @@ func TestPush(t *testing.T) {
 	for i := 0; i < 100; i++ {
 		largeStack.Push(i)
 	}
-	if largeStack.Len() != 100 {
-		t.Errorf("Push 100 values: length should be 100, got %d", largeStack.Len())
+	if largeStack.Size() != 100 {
+		t.Errorf("Push 100 values: length should be 100, got %d", largeStack.Size())
 	}
 	if val, ok := largeStack.Peek(); !ok || val != 99 {
 		t.Errorf("Push 100 values: top element should be 99, got %v", val)
@@ -60,8 +60,8 @@ func TestPop(t *testing.T) {
 	if !ok || val != 3 {
 		t.Errorf("Pop should return 3, got %v (ok: %v)", val, ok)
 	}
-	if stack.Len() != 2 {
-		t.Errorf("After pop: length should be 2, got %d", stack.Len())
+	if stack.Size() != 2 {
+		t.Errorf("After pop: length should be 2, got %d", stack.Size())
 	}
 
 	// Test pop second element
@@ -69,8 +69,8 @@ func TestPop(t *testing.T) {
 	if !ok || val != 2 {
 		t.Errorf("Pop should return 2, got %v (ok: %v)", val, ok)
 	}
-	if stack.Len() != 1 {
-		t.Errorf("After pop: length should be 1, got %d", stack.Len())
+	if stack.Size() != 1 {
+		t.Errorf("After pop: length should be 1, got %d", stack.Size())
 	}
 
 	// Test pop last element
@@ -109,8 +109,8 @@ func TestPeek(t *testing.T) {
 	if !ok || val != 2 {
 		t.Errorf("Peek should return 2, got %v (ok: %v)", val, ok)
 	}
-	if stack.Len() != 2 {
-		t.Errorf("Peek should not modify length, got %d", stack.Len())
+	if stack.Size() != 2 {
+		t.Errorf("Peek should not modify length, got %d", stack.Size())
 	}
 
 	// Test peek after push
@@ -179,36 +179,36 @@ func TestIsEmpty(t *testing.T) {
 	}
 }
 
-func TestLen(t *testing.T) {
+func TestSize(t *testing.T) {
 	// Test empty stack
 	stack := New[int]()
-	if stack.Len() != 0 {
-		t.Errorf("Len() on new stack should be 0, got %d", stack.Len())
+	if stack.Size() != 0 {
+		t.Errorf("Len() on new stack should be 0, got %d", stack.Size())
 	}
 
 	// Test after push
 	stack.Push(1)
-	if stack.Len() != 1 {
-		t.Errorf("Len() after push should be 1, got %d", stack.Len())
+	if stack.Size() != 1 {
+		t.Errorf("Len() after push should be 1, got %d", stack.Size())
 	}
 
 	// Test after multiple pushes
 	stack.Push(2)
 	stack.Push(3)
-	if stack.Len() != 3 {
-		t.Errorf("Len() after multiple pushes should be 3, got %d", stack.Len())
+	if stack.Size() != 3 {
+		t.Errorf("Len() after multiple pushes should be 3, got %d", stack.Size())
 	}
 
 	// Test after pop
 	stack.Pop()
-	if stack.Len() != 2 {
-		t.Errorf("Len() after pop should be 2, got %d", stack.Len())
+	if stack.Size() != 2 {
+		t.Errorf("Len() after pop should be 2, got %d", stack.Size())
 	}
 
 	// Test after clear
 	stack.Clear()
-	if stack.Len() != 0 {
-		t.Errorf("Len() after clear should be 0, got %d", stack.Len())
+	if stack.Size() != 0 {
+		t.Errorf("Len() after clear should be 0, got %d", stack.Size())
 	}
 }
 
@@ -224,8 +224,8 @@ func TestClear(t *testing.T) {
 	if !stack.IsEmpty() {
 		t.Error("Clear() should leave stack empty")
 	}
-	if stack.Len() != 0 {
-		t.Errorf("Clear() should set length to 0, got %d", stack.Len())
+	if stack.Size() != 0 {
+		t.Errorf("Clear() should set length to 0, got %d", stack.Size())
 	}
 
 	// Test clear empty stack (should not panic)
@@ -243,8 +243,8 @@ func TestClear(t *testing.T) {
 	stack.Clear()
 	stack.Push(10)
 	stack.Push(20)
-	if stack.Len() != 2 {
-		t.Errorf("Clear() then push: length should be 2, got %d", stack.Len())
+	if stack.Size() != 2 {
+		t.Errorf("Clear() then push: length should be 2, got %d", stack.Size())
 	}
 	if val, ok := stack.Peek(); !ok || val != 20 {
 		t.Errorf("Clear() then push: top element should be 20, got %v", val)
@@ -272,8 +272,8 @@ func TestStackComprehensive(t *testing.T) {
 	stack.Push(1)
 	stack.Push(2)
 	stack.Push(3)
-	if stack.Len() != 3 {
-		t.Errorf("Length should be 3 after pushes, got %d", stack.Len())
+	if stack.Size() != 3 {
+		t.Errorf("Length should be 3 after pushes, got %d", stack.Size())
 	}
 
 	// Peek
@@ -286,15 +286,15 @@ func TestStackComprehensive(t *testing.T) {
 	if !ok || val != 3 {
 		t.Errorf("Pop should return 3, got %v", val)
 	}
-	if stack.Len() != 2 {
-		t.Errorf("Length should be 2 after pop, got %d", stack.Len())
+	if stack.Size() != 2 {
+		t.Errorf("Length should be 2 after pop, got %d", stack.Size())
 	}
 
 	// Push more
 	stack.Push(4)
 	stack.Push(5)
-	if stack.Len() != 4 {
-		t.Errorf("Length should be 4 after more pushes, got %d", stack.Len())
+	if stack.Size() != 4 {
+		t.Errorf("Length should be 4 after more pushes, got %d", stack.Size())
 	}
 
 	// Pop all

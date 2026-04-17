@@ -10,8 +10,8 @@ func TestNew(t *testing.T) {
 	if !queue.IsEmpty() {
 		t.Error("New queue should be empty")
 	}
-	if queue.Len() != 0 {
-		t.Errorf("New queue length should be 0, got %d", queue.Len())
+	if queue.Size() != 0 {
+		t.Errorf("New queue length should be 0, got %d", queue.Size())
 	}
 }
 
@@ -19,8 +19,8 @@ func TestEnqueue(t *testing.T) {
 	// Test enqueue to empty queue
 	queue := New[int]()
 	queue.Enqueue(1)
-	if queue.Len() != 1 {
-		t.Errorf("Enqueue to empty queue: length should be 1, got %d", queue.Len())
+	if queue.Size() != 1 {
+		t.Errorf("Enqueue to empty queue: length should be 1, got %d", queue.Size())
 	}
 	if val, ok := queue.Peek(); !ok || val != 1 {
 		t.Errorf("Enqueue to empty queue: front element should be 1, got %v", val)
@@ -29,8 +29,8 @@ func TestEnqueue(t *testing.T) {
 	// Test enqueue multiple values
 	queue.Enqueue(2)
 	queue.Enqueue(3)
-	if queue.Len() != 3 {
-		t.Errorf("Enqueue multiple: length should be 3, got %d", queue.Len())
+	if queue.Size() != 3 {
+		t.Errorf("Enqueue multiple: length should be 3, got %d", queue.Size())
 	}
 	if val, ok := queue.Peek(); !ok || val != 1 {
 		t.Errorf("Enqueue multiple: front element should be 1, got %v", val)
@@ -41,8 +41,8 @@ func TestEnqueue(t *testing.T) {
 	for i := 0; i < 100; i++ {
 		largeQueue.Enqueue(i)
 	}
-	if largeQueue.Len() != 100 {
-		t.Errorf("Enqueue 100 values: length should be 100, got %d", largeQueue.Len())
+	if largeQueue.Size() != 100 {
+		t.Errorf("Enqueue 100 values: length should be 100, got %d", largeQueue.Size())
 	}
 	if val, ok := largeQueue.Peek(); !ok || val != 0 {
 		t.Errorf("Enqueue 100 values: front element should be 0, got %v", val)
@@ -60,8 +60,8 @@ func TestDequeue(t *testing.T) {
 	if !ok || val != 1 {
 		t.Errorf("Dequeue should return 1, got %v (ok: %v)", val, ok)
 	}
-	if queue.Len() != 2 {
-		t.Errorf("After dequeue: length should be 2, got %d", queue.Len())
+	if queue.Size() != 2 {
+		t.Errorf("After dequeue: length should be 2, got %d", queue.Size())
 	}
 
 	// Test dequeue second element
@@ -69,8 +69,8 @@ func TestDequeue(t *testing.T) {
 	if !ok || val != 2 {
 		t.Errorf("Dequeue should return 2, got %v (ok: %v)", val, ok)
 	}
-	if queue.Len() != 1 {
-		t.Errorf("After dequeue: length should be 1, got %d", queue.Len())
+	if queue.Size() != 1 {
+		t.Errorf("After dequeue: length should be 1, got %d", queue.Size())
 	}
 
 	// Test dequeue last element
@@ -109,8 +109,8 @@ func TestPeek(t *testing.T) {
 	if !ok || val != 1 {
 		t.Errorf("Peek should return 1, got %v (ok: %v)", val, ok)
 	}
-	if queue.Len() != 2 {
-		t.Errorf("Peek should not modify length, got %d", queue.Len())
+	if queue.Size() != 2 {
+		t.Errorf("Peek should not modify length, got %d", queue.Size())
 	}
 
 	// Test peek after enqueue
@@ -179,36 +179,36 @@ func TestIsEmpty(t *testing.T) {
 	}
 }
 
-func TestLen(t *testing.T) {
+func TestSize(t *testing.T) {
 	// Test empty queue
 	queue := New[int]()
-	if queue.Len() != 0 {
-		t.Errorf("Len() on new queue should be 0, got %d", queue.Len())
+	if queue.Size() != 0 {
+		t.Errorf("Len() on new queue should be 0, got %d", queue.Size())
 	}
 
 	// Test after enqueue
 	queue.Enqueue(1)
-	if queue.Len() != 1 {
-		t.Errorf("Len() after enqueue should be 1, got %d", queue.Len())
+	if queue.Size() != 1 {
+		t.Errorf("Len() after enqueue should be 1, got %d", queue.Size())
 	}
 
 	// Test after multiple enqueues
 	queue.Enqueue(2)
 	queue.Enqueue(3)
-	if queue.Len() != 3 {
-		t.Errorf("Len() after multiple enqueues should be 3, got %d", queue.Len())
+	if queue.Size() != 3 {
+		t.Errorf("Len() after multiple enqueues should be 3, got %d", queue.Size())
 	}
 
 	// Test after dequeue
 	queue.Dequeue()
-	if queue.Len() != 2 {
-		t.Errorf("Len() after dequeue should be 2, got %d", queue.Len())
+	if queue.Size() != 2 {
+		t.Errorf("Len() after dequeue should be 2, got %d", queue.Size())
 	}
 
 	// Test after clear
 	queue.Clear()
-	if queue.Len() != 0 {
-		t.Errorf("Len() after clear should be 0, got %d", queue.Len())
+	if queue.Size() != 0 {
+		t.Errorf("Len() after clear should be 0, got %d", queue.Size())
 	}
 }
 
@@ -224,8 +224,8 @@ func TestClear(t *testing.T) {
 	if !queue.IsEmpty() {
 		t.Error("Clear() should leave queue empty")
 	}
-	if queue.Len() != 0 {
-		t.Errorf("Clear() should set length to 0, got %d", queue.Len())
+	if queue.Size() != 0 {
+		t.Errorf("Clear() should set length to 0, got %d", queue.Size())
 	}
 
 	// Test clear empty queue (should not panic)
@@ -243,8 +243,8 @@ func TestClear(t *testing.T) {
 	queue.Clear()
 	queue.Enqueue(10)
 	queue.Enqueue(20)
-	if queue.Len() != 2 {
-		t.Errorf("Clear() then enqueue: length should be 2, got %d", queue.Len())
+	if queue.Size() != 2 {
+		t.Errorf("Clear() then enqueue: length should be 2, got %d", queue.Size())
 	}
 	if val, ok := queue.Peek(); !ok || val != 10 {
 		t.Errorf("Clear() then enqueue: front element should be 10, got %v", val)
@@ -374,8 +374,8 @@ func TestQueueComprehensive(t *testing.T) {
 	queue.Enqueue(1)
 	queue.Enqueue(2)
 	queue.Enqueue(3)
-	if queue.Len() != 3 {
-		t.Errorf("Length should be 3 after enqueues, got %d", queue.Len())
+	if queue.Size() != 3 {
+		t.Errorf("Length should be 3 after enqueues, got %d", queue.Size())
 	}
 
 	// Peek
@@ -388,15 +388,15 @@ func TestQueueComprehensive(t *testing.T) {
 	if !ok || val != 1 {
 		t.Errorf("Dequeue should return 1, got %v", val)
 	}
-	if queue.Len() != 2 {
-		t.Errorf("Length should be 2 after dequeue, got %d", queue.Len())
+	if queue.Size() != 2 {
+		t.Errorf("Length should be 2 after dequeue, got %d", queue.Size())
 	}
 
 	// Enqueue more
 	queue.Enqueue(4)
 	queue.Enqueue(5)
-	if queue.Len() != 4 {
-		t.Errorf("Length should be 4 after more enqueues, got %d", queue.Len())
+	if queue.Size() != 4 {
+		t.Errorf("Length should be 4 after more enqueues, got %d", queue.Size())
 	}
 
 	// Dequeue all

@@ -57,8 +57,8 @@ func (stack *Stack[T]) IsEmpty() bool {
 	return stack.len == 0
 }
 
-// Len returns the number of elements in the stack.
-func (stack *Stack[T]) Len() int {
+// Size returns the number of elements in the stack.
+func (stack *Stack[T]) Size() int {
 	return stack.len
 }
 

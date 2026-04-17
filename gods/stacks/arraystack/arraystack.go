@@ -23,9 +23,9 @@ func (stack *Stack[T]) Push(value T) {
 // It returns the element and true if the stack is not empty,
 // otherwise it returns the zero value of T and false.
 func (stack *Stack[T]) Pop() (value T, ok bool) {
-	if stack.Len() > 0 {
-		value, ok = stack.elements[stack.Len()-1], true
-		stack.elements = stack.elements[:stack.Len()-1]
+	if stack.Size() > 0 {
+		value, ok = stack.elements[stack.Size()-1], true
+		stack.elements = stack.elements[:stack.Size()-1]
 	}
 	return
 }
@@ -34,8 +34,8 @@ func (stack *Stack[T]) Pop() (value T, ok bool) {
 // It returns the element and true if the stack is not empty,
 // otherwise it returns the zero value of T and false.
 func (stack *Stack[T]) Peek() (value T, ok bool) {
-	if stack.Len() > 0 {
-		value, ok = stack.elements[stack.Len()-1], true
+	if stack.Size() > 0 {
+		value, ok = stack.elements[stack.Size()-1], true
 	}
 	return
 }
@@ -47,8 +47,8 @@ func (stack *Stack[T]) IsEmpty() bool {
 	return len(stack.elements) == 0
 }
 
-// Len returns the number of elements in the stack.
-func (stack *Stack[T]) Len() int {
+// Size returns the number of elements in the stack.
+func (stack *Stack[T]) Size() int {
 	return len(stack.elements)
 }
 
