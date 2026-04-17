@@ -5,6 +5,11 @@
 // size drops below a threshold, it automatically shrinks.
 package circularqueue
 
+import "github.com/MorePeanuts/algorithm/gods/queues"
+
+// Interface guard
+var _ queues.Queue[int] = (*Queue[int])(nil)
+
 // Queue represents a circular queue with elements of type T.
 // T must be comparable to support equality checks.
 type Queue[T comparable] struct {

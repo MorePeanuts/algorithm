@@ -1,6 +1,11 @@
 // Package doublylinkedlist provides a generic doubly linked list implementation.
 package doublylinkedlist
 
+import "github.com/MorePeanuts/algorithm/gods/lists"
+
+// Interface guard
+var _ lists.List[int] = (*List[int])(nil)
+
 // node represents a single element in the doubly linked list.
 type node[T comparable] struct {
 	value T

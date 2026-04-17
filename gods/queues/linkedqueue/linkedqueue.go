@@ -1,7 +1,13 @@
 // Package linkedqueue provides a generic queue implementation using a singly linked list.
 package linkedqueue
 
-import "github.com/MorePeanuts/algorithm/gods/lists/linkedlist"
+import (
+	"github.com/MorePeanuts/algorithm/gods/lists/linkedlist"
+	"github.com/MorePeanuts/algorithm/gods/queues"
+)
+
+// Interface guard
+var _ queues.Queue[int] = (*Queue[int])(nil)
 
 // Queue is a generic FIFO (First In, First Out) queue that stores elements of type T.
 // It implements the queues.Queue interface and containers.Container interface.

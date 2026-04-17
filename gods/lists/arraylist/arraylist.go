@@ -1,7 +1,14 @@
 // Package arraylist provides a generic dynamic array implementation.
 package arraylist
 
-import "slices"
+import (
+	"slices"
+
+	"github.com/MorePeanuts/algorithm/gods/lists"
+)
+
+// Interface guard
+var _ lists.List[int] = (*List[int])(nil)
 
 // List is a generic dynamic array that stores elements of type T.
 // It implements the list.List interface and containers.Container interface.

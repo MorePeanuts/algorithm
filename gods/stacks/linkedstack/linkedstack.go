@@ -1,6 +1,11 @@
 // Package linkedstack provides a generic stack implementation using a singly linked list.
 package linkedstack
 
+import "github.com/MorePeanuts/algorithm/gods/stacks"
+
+// Interface guard
+var _ stacks.Stack[any] = (*Stack[any])(nil)
+
 // node is a singly linked list node that holds a value and a pointer to the next node.
 type node[T any] struct {
 	value T

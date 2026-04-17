@@ -1,6 +1,11 @@
 // Package arraystack provides a generic stack implementation using a dynamic array.
 package arraystack
 
+import "github.com/MorePeanuts/algorithm/gods/stacks"
+
+// Interface guard
+var _ stacks.Stack[any] = (*Stack[any])(nil)
+
 // Stack is a generic LIFO (Last In, First Out) stack that stores elements of type T.
 // It implements the containers.Container interface.
 type Stack[T any] struct {
