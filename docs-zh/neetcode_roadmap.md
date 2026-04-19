@@ -80,3 +80,4 @@
 | 0102 | [[docs-zh/leetcode/0101-0200/0102_binary_tree_level_order_traversal\|Binary Tree Level Order Traversal]]                            | Medium     |        |
 | 0199 | [[docs-zh/leetcode/0101-0200/0199_binary_tree_right_side_view\|Binary Tree Right Side View]]                                        | Medium     |        |
 | 1448 | [[docs-zh/leetcode/1401-1500/1448_count_good_nodes_in_binary_tree\|Count Good Nodes in Binary Tree]]                                | Medium     |        |
+| 0098 | [[docs-zh/leetcode/0001-0100/0098_validate_binary_search_tree\|Validate Binary Search Tree]]                                        | Medium     |        |
