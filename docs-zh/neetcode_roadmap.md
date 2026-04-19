@@ -74,3 +74,4 @@
 | 0104 | [[docs-zh/leetcode/0101-0200/0104_maximum_depth_of_binary_tree\|Maximum Depth of Binary Tree]] | Easy       |        |
 | 0543 | [[docs-zh/leetcode/0501-0600/0543_diameter_of_binary_tree\|Diameter of Binary Tree]]           | Easy       |        |
 | 0110 | [[docs-zh/leetcode/0101-0200/0110_balanced_binary_tree\|Balanced Binary Tree]]                 | Easy       |        |
+| 0100 | [[docs-zh/leetcode/0001-0100/0100_same_tree\|Same Tree]]                                       | Easy       |        |

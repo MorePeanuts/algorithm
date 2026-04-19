@@ -1,7 +1,7 @@
 {
-  "total": 55,
+  "total": 56,
   "difficulty_counts": {
-    "Easy": 14,
+    "Easy": 15,
     "Medium": 32,
     "Hard": 9
   },
@@ -19,6 +19,10 @@
     "Quickselect": 1,
     "Sorting": 6,
     "Heap (Priority Queue)": 3,
+    "Tree": 5,
+    "Depth-First Search": 5,
+    "Breadth-First Search": 3,
+    "Binary Tree": 5,
     "Binary Search": 10,
     "Matrix": 2,
     "Recursion": 6,
@@ -29,10 +33,6 @@
     "Math": 5,
     "Greedy": 1,
     "Dynamic Programming": 3,
-    "Tree": 4,
-    "Depth-First Search": 4,
-    "Binary Tree": 4,
-    "Breadth-First Search": 2,
     "Union Find": 1,
     "Prefix Sum": 2,
     "Queue": 1,
