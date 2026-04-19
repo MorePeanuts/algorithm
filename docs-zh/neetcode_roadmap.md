@@ -68,17 +68,18 @@
 | 0981 | [[docs-zh/leetcode/0901-1000/0981_time_based_key_value_store\|Time Based Key Value Store]]                     | Medium     |        |
 | 0004 | [[docs-zh/leetcode/0001-0100/0004_median_of_two_sorted_arrays\|Median of Two Sorted Arrays]]                   | Hard       | ✅      |
 ## Trees
-| ID   | Problem                                                                                                                             | Difficulty | Review |
-| ---- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------ |
-| 0226 | [[docs-zh/leetcode/0201-0300/0226_invert_binary_tree\|Invert Binary Tree]]                                                          | Easy       |        |
-| 0104 | [[docs-zh/leetcode/0101-0200/0104_maximum_depth_of_binary_tree\|Maximum Depth of Binary Tree]]                                      | Easy       |        |
-| 0543 | [[docs-zh/leetcode/0501-0600/0543_diameter_of_binary_tree\|Diameter of Binary Tree]]                                                | Easy       |        |
-| 0110 | [[docs-zh/leetcode/0101-0200/0110_balanced_binary_tree\|Balanced Binary Tree]]                                                      | Easy       |        |
-| 0100 | [[docs-zh/leetcode/0001-0100/0100_same_tree\|Same Tree]]                                                                            | Easy       |        |
-| 0572 | [[docs-zh/leetcode/0501-0600/0572_subtree_of_another_tree\|Subtree of Another Tree]]                                                | Easy       |        |
-| 0235 | [[docs-zh/leetcode/0201-0300/0235_lowest_common_ancestor_of_a_binary_search_tree\|Lowest Common Anacestor of a Binary Search Tree]] | Medium     | ✅      |
-| 0102 | [[docs-zh/leetcode/0101-0200/0102_binary_tree_level_order_traversal\|Binary Tree Level Order Traversal]]                            | Medium     |        |
-| 0199 | [[docs-zh/leetcode/0101-0200/0199_binary_tree_right_side_view\|Binary Tree Right Side View]]                                        | Medium     |        |
-| 1448 | [[docs-zh/leetcode/1401-1500/1448_count_good_nodes_in_binary_tree\|Count Good Nodes in Binary Tree]]                                | Medium     |        |
-| 0098 | [[docs-zh/leetcode/0001-0100/0098_validate_binary_search_tree\|Validate Binary Search Tree]]                                        | Medium     |        |
-| 0230 | [[docs-zh/leetcode/0201-0300/0230_kth_smallest_element_in_a_bst\|Kth Smallest Element in a BST]]                                    | Medium     |        |
+| ID   | Problem                                                                                                                                                  | Difficulty | Review |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------ |
+| 0226 | [[docs-zh/leetcode/0201-0300/0226_invert_binary_tree\|Invert Binary Tree]]                                                                               | Easy       |        |
+| 0104 | [[docs-zh/leetcode/0101-0200/0104_maximum_depth_of_binary_tree\|Maximum Depth of Binary Tree]]                                                           | Easy       |        |
+| 0543 | [[docs-zh/leetcode/0501-0600/0543_diameter_of_binary_tree\|Diameter of Binary Tree]]                                                                     | Easy       |        |
+| 0110 | [[docs-zh/leetcode/0101-0200/0110_balanced_binary_tree\|Balanced Binary Tree]]                                                                           | Easy       |        |
+| 0100 | [[docs-zh/leetcode/0001-0100/0100_same_tree\|Same Tree]]                                                                                                 | Easy       |        |
+| 0572 | [[docs-zh/leetcode/0501-0600/0572_subtree_of_another_tree\|Subtree of Another Tree]]                                                                     | Easy       |        |
+| 0235 | [[docs-zh/leetcode/0201-0300/0235_lowest_common_ancestor_of_a_binary_search_tree\|Lowest Common Anacestor of a Binary Search Tree]]                      | Medium     | ✅      |
+| 0102 | [[docs-zh/leetcode/0101-0200/0102_binary_tree_level_order_traversal\|Binary Tree Level Order Traversal]]                                                 | Medium     |        |
+| 0199 | [[docs-zh/leetcode/0101-0200/0199_binary_tree_right_side_view\|Binary Tree Right Side View]]                                                             | Medium     |        |
+| 1448 | [[docs-zh/leetcode/1401-1500/1448_count_good_nodes_in_binary_tree\|Count Good Nodes in Binary Tree]]                                                     | Medium     |        |
+| 0098 | [[docs-zh/leetcode/0001-0100/0098_validate_binary_search_tree\|Validate Binary Search Tree]]                                                             | Medium     |        |
+| 0230 | [[docs-zh/leetcode/0201-0300/0230_kth_smallest_element_in_a_bst\|Kth Smallest Element in a BST]]                                                         | Medium     |        |
+| 0105 | [[docs-zh/leetcode/0101-0200/0105_construct_binary_tree_from_preorder_and_inorder_traversal\|Construct Binary Tree from Preorder and Inorder Traversal]] | Medium     |        |
