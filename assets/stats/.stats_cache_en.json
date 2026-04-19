@@ -1,7 +1,7 @@
 {
-  "total": 53,
+  "total": 54,
   "difficulty_counts": {
-    "Easy": 12,
+    "Easy": 13,
     "Medium": 32,
     "Hard": 9
   },
@@ -29,10 +29,10 @@
     "Math": 5,
     "Greedy": 1,
     "Dynamic Programming": 3,
-    "Tree": 2,
-    "Depth-First Search": 2,
+    "Tree": 3,
+    "Depth-First Search": 3,
     "Breadth-First Search": 2,
-    "Binary Tree": 2,
+    "Binary Tree": 3,
     "Union Find": 1,
     "Prefix Sum": 2,
     "Queue": 1,

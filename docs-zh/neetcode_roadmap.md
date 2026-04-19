@@ -72,3 +72,4 @@
 | ---- | ---------------------------------------------------------------------------------------------- | ---------- | ------ |
 | 0226 | [[docs-zh/leetcode/0201-0300/0226_invert_binary_tree\|Invert Binary Tree]]                     | Easy       |        |
 | 0104 | [[docs-zh/leetcode/0101-0200/0104_maximum_depth_of_binary_tree\|Maximum Depth of Binary Tree]] | Easy       |        |
+| 0543 | [[docs-zh/leetcode/0501-0600/0543_diameter_of_binary_tree\|Diameter of Binary Tree]]           | Easy       |        |
