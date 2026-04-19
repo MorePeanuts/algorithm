@@ -270,3 +270,18 @@ func TreeNodeToSlice(root *TreeNode) []*int {
 func IntPtr(val int) *int {
 	return &val
 }
+
+// FindNode finds a node with the given value in a binary tree.
+// Returns nil if no such node exists.
+func FindNode(root *TreeNode, val int) *TreeNode {
+	if root == nil {
+		return nil
+	}
+	if root.Val == val {
+		return root
+	}
+	if left := FindNode(root.Left, val); left != nil {
+		return left
+	}
+	return FindNode(root.Right, val)
+}
