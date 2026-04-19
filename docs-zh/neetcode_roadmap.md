@@ -68,6 +68,7 @@
 | 0981 | [[docs-zh/leetcode/0901-1000/0981_time_based_key_value_store\|Time Based Key Value Store]]                     | Medium     |        |
 | 0004 | [[docs-zh/leetcode/0001-0100/0004_median_of_two_sorted_arrays\|Median of Two Sorted Arrays]]                   | Hard       | ✅      |
 ## Trees
-| ID   | Problem                                                                    | Difficulty | Review |
-| ---- | -------------------------------------------------------------------------- | ---------- | ------ |
-| 0226 | [[docs-zh/leetcode/0201-0300/0226_invert_binary_tree\|Invert Binary Tree]] | Easy       |        |
+| ID   | Problem                                                                                        | Difficulty | Review |
+| ---- | ---------------------------------------------------------------------------------------------- | ---------- | ------ |
+| 0226 | [[docs-zh/leetcode/0201-0300/0226_invert_binary_tree\|Invert Binary Tree]]                     | Easy       |        |
+| 0104 | [[docs-zh/leetcode/0101-0200/0104_maximum_depth_of_binary_tree\|Maximum Depth of Binary Tree]] | Easy       |        |
