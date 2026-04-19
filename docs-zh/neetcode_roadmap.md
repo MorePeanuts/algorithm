@@ -78,3 +78,5 @@
 | 0572 | [[docs-zh/leetcode/0501-0600/0572_subtree_of_another_tree\|Subtree of Another Tree]]                                                | Easy       |        |
 | 0235 | [[docs-zh/leetcode/0201-0300/0235_lowest_common_ancestor_of_a_binary_search_tree\|Lowest Common Anacestor of a Binary Search Tree]] | Medium     | ✅      |
 | 0102 | [[docs-zh/leetcode/0101-0200/0102_binary_tree_level_order_traversal\|Binary Tree Level Order Traversal]]                            | Medium     |        |
+| 0199 | [[docs-zh/leetcode/0101-0200/0199_binary_tree_right_side_view\|Binary Tree Right Side View]]                                        | Medium     |        |
+| 1448 | [[docs-zh/leetcode/1401-1500/1448_count_good_nodes_in_binary_tree\|Count Good Nodes in Binary Tree]]                                | Medium     |        |
