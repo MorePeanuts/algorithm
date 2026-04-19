@@ -1,15 +1,15 @@
 {
-  "total": 62,
+  "total": 63,
   "difficulty_counts": {
     "Easy": 16,
-    "Medium": 37,
+    "Medium": 38,
     "Hard": 9
   },
   "tag_counts": {
-    "Tree": 11,
-    "Depth-First Search": 10,
+    "Tree": 12,
+    "Depth-First Search": 11,
     "Breadth-First Search": 6,
-    "Binary Tree": 11,
+    "Binary Tree": 12,
     "Hash Table": 17,
     "String": 11,
     "Sliding Window": 6,
@@ -33,7 +33,7 @@
     "Math": 5,
     "Greedy": 1,
     "Dynamic Programming": 3,
-    "Binary Search Tree": 2,
+    "Binary Search Tree": 3,
     "Union Find": 1,
     "String Matching": 1,
     "Hash Function": 1,
