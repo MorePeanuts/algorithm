@@ -104,3 +104,17 @@ func MatchTwo2dIntSlice(got, want [][]int) bool {
 
 	return slices.EqualFunc(sortedGot, sortedWant, slices.Equal)
 }
+
+// EqualTrees checks if two binary trees are equal in structure and values.
+func EqualTrees(t1, t2 *TreeNode) bool {
+	if t1 == nil && t2 == nil {
+		return true
+	}
+	if t1 == nil || t2 == nil {
+		return false
+	}
+	if t1.Val != t2.Val {
+		return false
+	}
+	return EqualTrees(t1.Left, t2.Left) && EqualTrees(t1.Right, t2.Right)
+}

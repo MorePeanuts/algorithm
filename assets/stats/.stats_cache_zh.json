@@ -1,7 +1,7 @@
 {
-  "total": 51,
+  "total": 52,
   "difficulty_counts": {
-    "Easy": 10,
+    "Easy": 11,
     "Medium": 32,
     "Hard": 9
   },
@@ -33,6 +33,10 @@
     "\u524d\u7f00\u548c": 2,
     "\u961f\u5217": 1,
     "\u5355\u8c03\u961f\u5217": 1,
-    "\u4f4d\u8fd0\u7b97": 1
+    "\u4f4d\u8fd0\u7b97": 1,
+    "\u6811": 1,
+    "\u6df1\u5ea6\u4f18\u5148\u641c\u7d22": 1,
+    "\u5e7f\u5ea6\u4f18\u5148\u641c\u7d22": 1,
+    "\u4e8c\u53c9\u6811": 1
   }
 }

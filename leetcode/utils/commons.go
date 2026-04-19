@@ -195,3 +195,78 @@ func EqualNodeWithRandom(original, got *Node) bool {
 
 	return true
 }
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+// SliceToTreeNode converts a slice in level order to a binary tree.
+// nil values in the slice represent null nodes.
+func SliceToTreeNode(vals []*int) *TreeNode {
+	if len(vals) == 0 || vals[0] == nil {
+		return nil
+	}
+
+	root := &TreeNode{Val: *vals[0]}
+	queue := []*TreeNode{root}
+	index := 1
+
+	for index < len(vals) && len(queue) > 0 {
+		current := queue[0]
+		queue = queue[1:]
+
+		// Left child
+		if index < len(vals) && vals[index] != nil {
+			current.Left = &TreeNode{Val: *vals[index]}
+			queue = append(queue, current.Left)
+		}
+		index++
+
+		// Right child
+		if index < len(vals) && vals[index] != nil {
+			current.Right = &TreeNode{Val: *vals[index]}
+			queue = append(queue, current.Right)
+		}
+		index++
+	}
+
+	return root
+}
+
+// TreeNodeToSlice converts a binary tree to a slice in level order.
+func TreeNodeToSlice(root *TreeNode) []*int {
+	if root == nil {
+		return nil
+	}
+
+	var result []*int
+	queue := []*TreeNode{root}
+
+	for len(queue) > 0 {
+		current := queue[0]
+		queue = queue[1:]
+
+		if current == nil {
+			result = append(result, nil)
+			continue
+		}
+
+		val := current.Val
+		result = append(result, &val)
+		queue = append(queue, current.Left, current.Right)
+	}
+
+	// Remove trailing nils
+	for len(result) > 0 && result[len(result)-1] == nil {
+		result = result[:len(result)-1]
+	}
+
+	return result
+}
+
+// IntPtr returns a pointer to the given int value.
+func IntPtr(val int) *int {
+	return &val
+}

@@ -1,7 +1,7 @@
 {
-  "total": 51,
+  "total": 52,
   "difficulty_counts": {
-    "Easy": 10,
+    "Easy": 11,
     "Medium": 32,
     "Hard": 9
   },
@@ -33,6 +33,10 @@
     "Prefix Sum": 2,
     "Queue": 1,
     "Monotonic Queue": 1,
-    "Bit Manipulation": 1
+    "Bit Manipulation": 1,
+    "Tree": 1,
+    "Depth-First Search": 1,
+    "Breadth-First Search": 1,
+    "Binary Tree": 1
   }
 }
