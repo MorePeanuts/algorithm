@@ -1,8 +1,8 @@
 {
-  "total": 58,
+  "total": 59,
   "difficulty_counts": {
     "Easy": 16,
-    "Medium": 33,
+    "Medium": 34,
     "Hard": 9
   },
   "tag_counts": {
@@ -19,10 +19,10 @@
     "Quickselect": 1,
     "Sorting": 6,
     "Heap (Priority Queue)": 3,
-    "Tree": 7,
+    "Tree": 8,
     "Depth-First Search": 7,
-    "Breadth-First Search": 3,
-    "Binary Tree": 7,
+    "Breadth-First Search": 4,
+    "Binary Tree": 8,
     "Binary Search": 10,
     "Matrix": 2,
     "Recursion": 6,
