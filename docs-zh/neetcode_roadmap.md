@@ -83,3 +83,4 @@
 | 0098 | [[docs-zh/leetcode/0001-0100/0098_validate_binary_search_tree\|Validate Binary Search Tree]]                                                             | Medium     |        |
 | 0230 | [[docs-zh/leetcode/0201-0300/0230_kth_smallest_element_in_a_bst\|Kth Smallest Element in a BST]]                                                         | Medium     |        |
 | 0105 | [[docs-zh/leetcode/0101-0200/0105_construct_binary_tree_from_preorder_and_inorder_traversal\|Construct Binary Tree from Preorder and Inorder Traversal]] | Medium     |        |
+| 0124 | [[docs-zh/leetcode/0101-0200/0124_binary_tree_maximum_path_sum\|Binary Tree Maximum Path Sum]]                                                           | Hard       |        |
