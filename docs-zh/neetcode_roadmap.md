@@ -82,5 +82,6 @@
 | 1448 | [[docs-zh/leetcode/1401-1500/1448_count_good_nodes_in_binary_tree\|Count Good Nodes in Binary Tree]]                                                     | Medium     |        |
 | 0098 | [[docs-zh/leetcode/0001-0100/0098_validate_binary_search_tree\|Validate Binary Search Tree]]                                                             | Medium     |        |
 | 0230 | [[docs-zh/leetcode/0201-0300/0230_kth_smallest_element_in_a_bst\|Kth Smallest Element in a BST]]                                                         | Medium     |        |
-| 0105 | [[docs-zh/leetcode/0101-0200/0105_construct_binary_tree_from_preorder_and_inorder_traversal\|Construct Binary Tree from Preorder and Inorder Traversal]] | Medium     |        |
+| 0105 | [[docs-zh/leetcode/0101-0200/0105_construct_binary_tree_from_preorder_and_inorder_traversal\|Construct Binary Tree from Preorder and Inorder Traversal]] | Medium     | ✅ (s2) |
 | 0124 | [[docs-zh/leetcode/0101-0200/0124_binary_tree_maximum_path_sum\|Binary Tree Maximum Path Sum]]                                                           | Hard       |        |
+| 0297 | [[docs-zh/leetcode/0201-0300/0297_serialize_and_deserialize_binary_tree\|Serialize and Deserialize Binary Tree]]                                         | Hard       | ✅      |

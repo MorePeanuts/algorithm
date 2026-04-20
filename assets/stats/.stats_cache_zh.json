@@ -1,19 +1,19 @@
 {
-  "total": 65,
+  "total": 66,
   "difficulty_counts": {
     "Easy": 16,
     "Medium": 39,
-    "Hard": 10
+    "Hard": 11
   },
   "tag_counts": {
-    "\u6811": 14,
-    "\u6df1\u5ea6\u4f18\u5148\u641c\u7d22": 12,
-    "\u5e7f\u5ea6\u4f18\u5148\u641c\u7d22": 6,
-    "\u4e8c\u53c9\u6811": 14,
+    "\u6811": 15,
+    "\u6df1\u5ea6\u4f18\u5148\u641c\u7d22": 13,
+    "\u5e7f\u5ea6\u4f18\u5148\u641c\u7d22": 7,
+    "\u4e8c\u53c9\u6811": 15,
     "\u54c8\u5e0c\u8868": 18,
-    "\u5b57\u7b26\u4e32": 11,
+    "\u5b57\u7b26\u4e32": 12,
     "\u6ed1\u52a8\u7a97\u53e3": 6,
-    "\u8bbe\u8ba1": 4,
+    "\u8bbe\u8ba1": 5,
     "\u94fe\u8868": 13,
     "\u53cc\u5411\u94fe\u8868": 2,
     "\u6570\u7ec4": 27,

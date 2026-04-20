@@ -1,19 +1,19 @@
 {
-  "total": 65,
+  "total": 66,
   "difficulty_counts": {
     "Easy": 16,
     "Medium": 39,
-    "Hard": 10
+    "Hard": 11
   },
   "tag_counts": {
-    "Tree": 14,
-    "Depth-First Search": 12,
-    "Breadth-First Search": 6,
-    "Binary Tree": 14,
+    "Tree": 15,
+    "Depth-First Search": 13,
+    "Breadth-First Search": 7,
+    "Binary Tree": 15,
     "Hash Table": 18,
-    "String": 11,
+    "String": 12,
     "Sliding Window": 6,
-    "Design": 4,
+    "Design": 5,
     "Linked List": 13,
     "Doubly-Linked List": 2,
     "Array": 27,
