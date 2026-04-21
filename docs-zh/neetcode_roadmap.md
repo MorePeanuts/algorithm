@@ -85,3 +85,7 @@
 | 0105 | [[docs-zh/leetcode/0101-0200/0105_construct_binary_tree_from_preorder_and_inorder_traversal\|Construct Binary Tree from Preorder and Inorder Traversal]] | Medium     | ✅ (s2) |
 | 0124 | [[docs-zh/leetcode/0101-0200/0124_binary_tree_maximum_path_sum\|Binary Tree Maximum Path Sum]]                                                           | Hard       |        |
 | 0297 | [[docs-zh/leetcode/0201-0300/0297_serialize_and_deserialize_binary_tree\|Serialize and Deserialize Binary Tree]]                                         | Hard       | ✅      |
+## Trie
+| ID   | Problem                                                                                    | Difficulty | Review |
+| ---- | ------------------------------------------------------------------------------------------ | ---------- | ------ |
+| 0208 | [[docs-zh/leetcode/0201-0300/0208_implement_trie_prefix_tree\|Implement Trie Prefix Tree]] | Medium     |        |
