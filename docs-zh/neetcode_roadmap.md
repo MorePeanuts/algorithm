@@ -90,3 +90,4 @@
 | ---- | -------------------------------------------------------------------------------------------------------------------------- | ---------- | ------ |
 | 0208 | [[docs-zh/leetcode/0201-0300/0208_implement_trie_prefix_tree\|Implement Trie Prefix Tree]]                                 | Medium     |        |
 | 0211 | [[docs-zh/leetcode/0201-0300/0211_design_add_and_search_words_data_structure\|Design Add and Search Words Data Structure]] | Medium     |        |
+| 0212 | [[docs-zh/leetcode/0201-0300/0212_word_search_ii\|Word Search II]]                                                         | Hard       | ✅      |

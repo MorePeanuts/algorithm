@@ -1,9 +1,9 @@
 {
-  "total": 68,
+  "total": 69,
   "difficulty_counts": {
     "Easy": 16,
     "Medium": 41,
-    "Hard": 11
+    "Hard": 12
   },
   "tag_counts": {
     "Tree": 15,
@@ -11,12 +11,12 @@
     "Breadth-First Search": 7,
     "Binary Tree": 15,
     "Hash Table": 19,
-    "String": 14,
+    "String": 15,
     "Sliding Window": 6,
     "Design": 7,
     "Linked List": 13,
     "Doubly-Linked List": 2,
-    "Array": 27,
+    "Array": 28,
     "Divide and Conquer": 5,
     "Bucket Sort": 1,
     "Counting": 1,
@@ -24,7 +24,7 @@
     "Sorting": 6,
     "Heap (Priority Queue)": 3,
     "Binary Search": 10,
-    "Matrix": 2,
+    "Matrix": 3,
     "Recursion": 6,
     "Two Pointers": 11,
     "Stack": 10,
@@ -37,10 +37,11 @@
     "Union Find": 1,
     "String Matching": 1,
     "Hash Function": 1,
+    "Trie": 3,
+    "Backtracking": 1,
     "Prefix Sum": 2,
     "Queue": 1,
     "Monotonic Queue": 1,
-    "Bit Manipulation": 1,
-    "Trie": 2
+    "Bit Manipulation": 1
   }
 }

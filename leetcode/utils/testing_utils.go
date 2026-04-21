@@ -66,6 +66,21 @@ func MatchIntSlice(got, want []int) bool {
 	return slices.Equal(gotCopy, wantCopy)
 }
 
+// MatchStringSlice compares two string slices ignoring order.
+// Returns true if both slices contain the same elements (with same multiplicities).
+func MatchStringSlice(got, want []string) bool {
+	if len(got) != len(want) {
+		return false
+	}
+	gotCopy := make([]string, len(got))
+	wantCopy := make([]string, len(want))
+	copy(gotCopy, got)
+	copy(wantCopy, want)
+	sort.Strings(gotCopy)
+	sort.Strings(wantCopy)
+	return slices.Equal(gotCopy, wantCopy)
+}
+
 // MatchTwo2dIntSlice is used to judge whether two two-dimensional int slices are identical,
 // ignoring the order of ints within the inner slices and the order of inner slices within the
 // outer slice.
