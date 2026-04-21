@@ -86,6 +86,7 @@
 | 0124 | [[docs-zh/leetcode/0101-0200/0124_binary_tree_maximum_path_sum\|Binary Tree Maximum Path Sum]]                                                           | Hard       |        |
 | 0297 | [[docs-zh/leetcode/0201-0300/0297_serialize_and_deserialize_binary_tree\|Serialize and Deserialize Binary Tree]]                                         | Hard       | ✅      |
 ## Trie
-| ID   | Problem                                                                                    | Difficulty | Review |
-| ---- | ------------------------------------------------------------------------------------------ | ---------- | ------ |
-| 0208 | [[docs-zh/leetcode/0201-0300/0208_implement_trie_prefix_tree\|Implement Trie Prefix Tree]] | Medium     |        |
+| ID   | Problem                                                                                                                    | Difficulty | Review |
+| ---- | -------------------------------------------------------------------------------------------------------------------------- | ---------- | ------ |
+| 0208 | [[docs-zh/leetcode/0201-0300/0208_implement_trie_prefix_tree\|Implement Trie Prefix Tree]]                                 | Medium     |        |
+| 0211 | [[docs-zh/leetcode/0201-0300/0211_design_add_and_search_words_data_structure\|Design Add and Search Words Data Structure]] | Medium     |        |
