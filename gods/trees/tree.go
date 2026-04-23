@@ -11,3 +11,5 @@ type Tree[T any] interface {
 	// Size() int
 	// Clear()
 }
+
+// TODO: Interfaces need to be designed for trees with different purposes.

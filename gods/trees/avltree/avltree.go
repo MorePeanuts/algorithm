@@ -10,6 +10,8 @@ import (
 	"github.com/MorePeanuts/algorithm/gods/utils"
 )
 
+// TODO: AVL trees require interface guards.
+
 // Node represents a single node in the AVL tree.
 type Node[K comparable, V any] struct {
 	Key        K
