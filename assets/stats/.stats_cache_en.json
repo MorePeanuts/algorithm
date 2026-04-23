@@ -1,8 +1,8 @@
 {
-  "total": 74,
+  "total": 75,
   "difficulty_counts": {
     "Easy": 18,
-    "Medium": 44,
+    "Medium": 45,
     "Hard": 12
   },
   "tag_counts": {
@@ -10,11 +10,11 @@
     "Depth-First Search": 14,
     "Breadth-First Search": 7,
     "Binary Tree": 16,
-    "Hash Table": 20,
+    "Hash Table": 21,
     "String": 15,
     "Sliding Window": 6,
-    "Design": 8,
-    "Linked List": 13,
+    "Design": 9,
+    "Linked List": 14,
     "Doubly-Linked List": 2,
     "Array": 32,
     "Divide and Conquer": 7,
@@ -22,7 +22,7 @@
     "Counting": 2,
     "Quickselect": 3,
     "Sorting": 9,
-    "Heap (Priority Queue)": 8,
+    "Heap (Priority Queue)": 9,
     "Binary Search": 10,
     "Matrix": 3,
     "Recursion": 6,
