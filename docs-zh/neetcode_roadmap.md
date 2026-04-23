@@ -98,3 +98,4 @@
 | 1046 | [[docs-zh/leetcode/1001-1100/1046_last_stone_weight\|Last Stone Weight]]                             | Easy       |        |
 | 0973 | [[docs-zh/leetcode/0901-1000/0973_k_closest_points_to_origin\|K Cloest Points to Origin]]            | Medium     |        |
 | 0215 | [[docs-zh/leetcode/0201-0300/0215_kth_largest_element_in_an_array\|Kth Largest Element in an array]] | Medium     | ✅      |
+| 0621 | [[docs-zh/leetcode/0601-0700/0621_task_scheduler\|Task Scheduler]]                                   | Medium     | ✅ (s2) |
