@@ -91,3 +91,8 @@
 | 0208 | [[docs-zh/leetcode/0201-0300/0208_implement_trie_prefix_tree\|Implement Trie Prefix Tree]]                                 | Medium     |        |
 | 0211 | [[docs-zh/leetcode/0201-0300/0211_design_add_and_search_words_data_structure\|Design Add and Search Words Data Structure]] | Medium     |        |
 | 0212 | [[docs-zh/leetcode/0201-0300/0212_word_search_ii\|Word Search II]]                                                         | Hard       | ✅      |
+## Heap (Priority Queue)
+| ID   | Problem                                                                                              | Difficulty | Review |
+| ---- | ---------------------------------------------------------------------------------------------------- | ---------- | ------ |
+| 0703 | [[docs-zh/leetcode/0701-0800/0703_kth_largest_element_in_a_stream\|Kth Largest Element in a Stream]] | Easy       |        |
+| 1046 | [[docs-zh/leetcode/1001-1100/1046_last_stone_weight\|Last Stone Weight]]                             | Easy       |        |
