@@ -100,3 +100,4 @@
 | 0215 | [[docs-zh/leetcode/0201-0300/0215_kth_largest_element_in_an_array\|Kth Largest Element in an array]] | Medium     | ✅      |
 | 0621 | [[docs-zh/leetcode/0601-0700/0621_task_scheduler\|Task Scheduler]]                                   | Medium     | ✅ (s2) |
 | 0355 | [[docs-zh/leetcode/0301-0400/0355_design_twitter\|Design Twitter]]                                   | Medium     |        |
+| 0295 | [[docs-zh/leetcode/0201-0300/0295_find_median_from_data_stream\|Find Median from Data Stream]]       | Hard       | ✅      |
