@@ -96,3 +96,4 @@
 | ---- | ---------------------------------------------------------------------------------------------------- | ---------- | ------ |
 | 0703 | [[docs-zh/leetcode/0701-0800/0703_kth_largest_element_in_a_stream\|Kth Largest Element in a Stream]] | Easy       |        |
 | 1046 | [[docs-zh/leetcode/1001-1100/1046_last_stone_weight\|Last Stone Weight]]                             | Easy       |        |
+| 0973 | [[docs-zh/leetcode/0901-1000/0973_k_closest_points_to_origin\|K Cloest Points to Origin]]            | Medium     |        |

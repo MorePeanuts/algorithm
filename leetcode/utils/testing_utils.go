@@ -120,6 +120,43 @@ func MatchTwo2dIntSlice(got, want [][]int) bool {
 	return slices.EqualFunc(sortedGot, sortedWant, slices.Equal)
 }
 
+// MatchTwo2dIntSlicePreserveInner is used to judge whether two two-dimensional int slices are identical,
+// preserving the order of ints within the inner slices but ignoring the order of inner slices within the
+// outer slice. Useful for comparing slices of points where inner slice order matters.
+func MatchTwo2dIntSlicePreserveInner(got, want [][]int) bool {
+	if len(got) != len(want) {
+		return false
+	}
+
+	// 1. Copy data (to avoid modifying the original data)
+	// 2. Sort the outer slice without modifying inner slices
+	normalize := func(input [][]int) [][]int {
+		output := make([][]int, len(input))
+		for i, group := range input {
+			groupCopy := make([]int, len(group))
+			copy(groupCopy, group)
+			output[i] = groupCopy
+		}
+		sort.Slice(output, func(i, j int) bool {
+			a, b := output[i], output[j]
+			lenA, lenB := len(a), len(b)
+			minLen := min(lenA, lenB)
+			for k := range minLen {
+				if a[k] != b[k] {
+					return a[k] < b[k]
+				}
+			}
+			return lenA < lenB
+		})
+		return output
+	}
+
+	sortedGot := normalize(got)
+	sortedWant := normalize(want)
+
+	return slices.EqualFunc(sortedGot, sortedWant, slices.Equal)
+}
+
 // EqualTrees checks if two binary trees are equal in structure and values.
 func EqualTrees(t1, t2 *TreeNode) bool {
 	if t1 == nil && t2 == nil {
