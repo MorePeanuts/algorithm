@@ -1,19 +1,19 @@
 {
-  "total": 69,
+  "total": 70,
   "difficulty_counts": {
-    "Easy": 16,
+    "Easy": 17,
     "Medium": 41,
     "Hard": 12
   },
   "tag_counts": {
-    "Tree": 15,
+    "Tree": 16,
     "Depth-First Search": 14,
     "Breadth-First Search": 7,
-    "Binary Tree": 15,
+    "Binary Tree": 16,
     "Hash Table": 19,
     "String": 15,
     "Sliding Window": 6,
-    "Design": 7,
+    "Design": 8,
     "Linked List": 13,
     "Doubly-Linked List": 2,
     "Array": 28,
@@ -22,7 +22,7 @@
     "Counting": 1,
     "Quickselect": 1,
     "Sorting": 6,
-    "Heap (Priority Queue)": 3,
+    "Heap (Priority Queue)": 4,
     "Binary Search": 10,
     "Matrix": 3,
     "Recursion": 6,
@@ -33,7 +33,7 @@
     "Math": 5,
     "Greedy": 1,
     "Dynamic Programming": 4,
-    "Binary Search Tree": 3,
+    "Binary Search Tree": 4,
     "Union Find": 1,
     "String Matching": 1,
     "Hash Function": 1,
@@ -42,6 +42,7 @@
     "Prefix Sum": 2,
     "Queue": 1,
     "Monotonic Queue": 1,
-    "Bit Manipulation": 1
+    "Bit Manipulation": 1,
+    "Data Stream": 1
   }
 }
