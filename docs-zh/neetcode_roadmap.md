@@ -97,7 +97,7 @@
 | 0703 | [[docs-zh/leetcode/0701-0800/0703_kth_largest_element_in_a_stream\|Kth Largest Element in a Stream]] | Easy       |        |
 | 1046 | [[docs-zh/leetcode/1001-1100/1046_last_stone_weight\|Last Stone Weight]]                             | Easy       |        |
 | 0973 | [[docs-zh/leetcode/0901-1000/0973_k_closest_points_to_origin\|K Cloest Points to Origin]]            | Medium     |        |
-| 0215 | [[docs-zh/leetcode/0201-0300/0215_kth_largest_element_in_an_array\|Kth Largest Element in an array]] | Medium     | ✅      |
+| 0215 | [[docs-zh/leetcode/0201-0300/0215_kth_largest_element_in_an_array\|Kth Largest Element in an array]] | Medium     | ✅ (s3) |
 | 0621 | [[docs-zh/leetcode/0601-0700/0621_task_scheduler\|Task Scheduler]]                                   | Medium     | ✅ (s2) |
 | 0355 | [[docs-zh/leetcode/0301-0400/0355_design_twitter\|Design Twitter]]                                   | Medium     |        |
 | 0295 | [[docs-zh/leetcode/0201-0300/0295_find_median_from_data_stream\|Find Median from Data Stream]]       | Hard       | ✅      |

@@ -25,14 +25,19 @@ func TestFindKthLargestExamples(t *testing.T) {
 
 	for _, tst := range tests {
 		t.Run(tst.name, func(t *testing.T) {
-			got := findKthLargest(tst.nums, tst.k)
+			got := findKthLargest(append([]int{}, tst.nums...), tst.k)
 			if got != tst.want {
 				t.Errorf("findKthLargest(%v, %d) = %d, want %d", tst.nums, tst.k, got, tst.want)
 			}
 
-			got = findKthLargest2(tst.nums, tst.k)
+			got = findKthLargest2(append([]int{}, tst.nums...), tst.k)
 			if got != tst.want {
 				t.Errorf("findKthLargest2(%v, %d) = %d, want %d", tst.nums, tst.k, got, tst.want)
+			}
+
+			got = findKthLargest3(append([]int{}, tst.nums...), tst.k)
+			if got != tst.want {
+				t.Errorf("findKthLargest3(%v, %d) = %d, want %d", tst.nums, tst.k, got, tst.want)
 			}
 		})
 	}
@@ -88,14 +93,19 @@ func TestFindKthLargest(t *testing.T) {
 
 	for _, tst := range tests {
 		t.Run(tst.name, func(t *testing.T) {
-			got := findKthLargest(tst.nums, tst.k)
+			got := findKthLargest(append([]int{}, tst.nums...), tst.k)
 			if got != tst.want {
 				t.Errorf("findKthLargest(%v, %d) = %d, want %d", tst.nums, tst.k, got, tst.want)
 			}
 
-			got = findKthLargest2(tst.nums, tst.k)
+			got = findKthLargest2(append([]int{}, tst.nums...), tst.k)
 			if got != tst.want {
 				t.Errorf("findKthLargest2(%v, %d) = %d, want %d", tst.nums, tst.k, got, tst.want)
+			}
+
+			got = findKthLargest3(append([]int{}, tst.nums...), tst.k)
+			if got != tst.want {
+				t.Errorf("findKthLargest3(%v, %d) = %d, want %d", tst.nums, tst.k, got, tst.want)
 			}
 		})
 	}
