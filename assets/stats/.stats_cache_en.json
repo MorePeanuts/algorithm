@@ -1,8 +1,8 @@
 {
-  "total": 76,
+  "total": 77,
   "difficulty_counts": {
     "Easy": 18,
-    "Medium": 45,
+    "Medium": 46,
     "Hard": 13
   },
   "tag_counts": {
@@ -16,17 +16,17 @@
     "Design": 10,
     "Linked List": 14,
     "Doubly-Linked List": 2,
-    "Array": 32,
+    "Array": 33,
     "Divide and Conquer": 7,
     "Bucket Sort": 1,
     "Counting": 2,
     "Quickselect": 3,
-    "Sorting": 10,
+    "Sorting": 11,
     "Heap (Priority Queue)": 10,
     "Binary Search": 10,
     "Matrix": 3,
     "Recursion": 6,
-    "Two Pointers": 12,
+    "Two Pointers": 13,
     "Stack": 10,
     "Monotonic Stack": 4,
     "Merge Sort": 1,
